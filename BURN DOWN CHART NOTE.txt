@@ -1,0 +1,10 @@
+
+A note to inform why a burn down chart is not available yet:
+
+We are using the pivitol tracker to organize our agile methods.
+https://www.pivotaltracker.com/projects/1513342
+
+once we START completing stories, (putting them in the "Done" list) then
+Pivitol Tracker will have charts we can view and take screenshots of
+
+This technology replaces the need for a hand-drawn burndown chart.
