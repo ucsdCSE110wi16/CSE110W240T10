@@ -12,6 +12,12 @@
 
     <!-- Login progress -->
 
+    <android.gesture.GestureOverlayView
+        android:layout_width="102dp"
+        android:layout_height="70dp"
+        android:id="@+id/gestureOverlayView"
+        android:layout_gravity="right"></android.gesture.GestureOverlayView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,10 +89,10 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/button_signin"
                 style="?android:textAppearanceSmall"
-                android:layout_width="179dp"
-                android:layout_height="66dp"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Sign In"
                 android:textStyle="bold"
@@ -94,16 +100,17 @@
                 android:shadowColor="#e4bd4b"
                 android:foregroundTint="#4c1b1b"
                 android:foregroundGravity="top"
-                android:foreground="#381e1e"
-                android:textColor="#653019"
+                android:foreground="#0e2a28"
+                android:textColor="#0e2a28"
                 android:background="#a1e4dc"
-                android:layout_weight="1.08" />
+                android:textColorHighlight="#50e4d9"
+                 />
 
             <Button
                 style="?android:textAppearanceSmall"
-                android:id="@+id/button"
+                android:id="@+id/button_register"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="29dp"
                 android:layout_marginTop="16dp"
                 android:text="Register"
                 android:textStyle="bold"
@@ -112,11 +119,18 @@
                 android:foregroundTint="#4c1b1b"
                 android:foregroundGravity="top"
                 android:foreground="#381e1e"
-                android:textColor="#653019"
-                android:background="#a1e4dc" />
+                android:textColor="#0e2a28"
+                android:background="#a1e4dc"
+                android:onClick="goRegister"/>
 
         </LinearLayout>
     </ScrollView>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/horizontalScrollView"
+        android:layout_gravity="right" />
 
     <TableRow
         android:layout_width="match_parent"
