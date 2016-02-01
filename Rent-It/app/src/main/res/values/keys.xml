@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- strings related to Firebase -->
     <string name="firebase_url">https://rentit.firebaseio.com</string>
+    <string name="email">Email Address</string>
 </resources>

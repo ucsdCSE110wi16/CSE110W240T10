@@ -12,9 +12,13 @@ import android.view.View;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+//TODO: add Firebase authorization, persistence, user account creation
+//TODO: add event listeners to buttons, storing data from datafields
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -96,6 +100,11 @@ public class RegistrationActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
 
+    /**
+     * Firebase database reference
+     */
+    private Firebase myFirebaseRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +135,10 @@ public class RegistrationActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        //initialize database reference so that we can store user data
+        Firebase.setAndroidContext(this);
+        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
     }
 
 
