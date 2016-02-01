@@ -30,6 +30,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -72,6 +75,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+
+    /**
+     * Firebase database stuff
+     */
+    private Firebase myFirebaseRef; //stores reference to database
+    private AuthData mAuthData;     //Data from the authorized user
+    private Firebase.AuthStateListener mAuthStateListener;  //listener for Firebase session changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +126,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        Firebase.setAndroidContext(this);
+        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+        mAuthStateListener = new Firebase.AuthStateListener()
+        {
+            @Override
+            public void onAuthStateChanged(AuthData authData)
+            {
+
+            }
+        };
+        myFirebaseRef.addAuthStateListener(mAuthStateListener);
     }
 
     private void populateAutoComplete() {
@@ -228,7 +250,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 0;
     }
 
     /**
@@ -316,7 +338,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
+        /*client.connect();
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "Login Page", // TODO: Define a title for the content shown.
@@ -327,7 +349,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
         );
-        AppIndex.AppIndexApi.start(client, viewAction);
+        AppIndex.AppIndexApi.start(client, viewAction);*/
+
+
     }
 
     @Override
@@ -336,7 +360,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
+        /*Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "Login Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
@@ -347,7 +371,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
         );
         AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
+        client.disconnect();*/
     }
 
 
@@ -378,6 +402,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
+            myFirebaseRef.authWithPassword(mEmail, mPassword,
+                    new Firebase.AuthResultHandler()
+                    {
+                        @Override
+                        public void onAuthenticated(AuthData authData)
+                        {
+                            mEmailView.setText("Success!");
+                        }
+
+                        @Override
+                        public void onAuthenticationError(FirebaseError error)
+                        {
+                            mEmailView.setText("Failure :(");
+                        }
+                    });
 
             try {
                 // Simulate network access.
@@ -404,7 +443,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                finish();
+                //finish();
+                System.out.println("Successful execution");
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
