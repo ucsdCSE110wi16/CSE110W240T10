@@ -14,7 +14,14 @@
         completions."
     </string>
 
+    <string name="search_tab">Search</string>
+    <string name="favorites_tab">Favorites</string>
+    <string name="profile_tab">My Profile</string>
+
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main">Rent-It</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

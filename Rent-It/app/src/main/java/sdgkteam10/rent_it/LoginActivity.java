@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private Firebase myFirebaseRef;
 
+    //TODO: go directly to home page if still logged in
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -185,6 +186,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (mAuthTask != null) {
             return;
         }
+
+        //log out anyone previously logged in
+        //myFirebaseRef.unauth();
 
         // Reset errors.
         mEmailView.setError(null);
@@ -376,12 +380,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         private final String mEmail;
         private final String mPassword;
-        private boolean mAuthSuccess;
+        private Firebase.AuthResultHandler mHandler;
+        private FirebaseError mLoginError;
+
 
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
-            mAuthSuccess = false;
+            mLoginError = null;
+
+            //log out anyone previously logged in
+            myFirebaseRef.unauth();
+
+            mHandler = new Firebase.AuthResultHandler() {
+                @Override
+                public void onAuthenticated(AuthData authData) {
+                    //store user state in Firebase -- used for login persistence
+                    Map<String, String> map = new HashMap<String, String>();
+                    map.put(getResources().getString(R.string.firebase_provider), authData.getProvider());
+                    map.put(getResources().getString(R.string.firebase_email),
+                            authData.getProviderData().get(getResources().getString(R.string.firebase_email)).toString());
+
+                    myFirebaseRef.child("users").child(authData.getUid()).setValue(map);
+
+                   // mLoginError = null;
+                }
+
+                @Override
+                public void onAuthenticationError(FirebaseError error) {
+                    mLoginError = error;
+                }
+            };
         }
 
         /**
@@ -390,49 +419,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             //authenticate user login info with the database
-            myFirebaseRef.authWithPassword(mEmail, mPassword,
-                    new Firebase.AuthResultHandler() {
-                        @Override
-                        public void onAuthenticated(AuthData authData) {
-                            mAuthSuccess = true;
-
-                            //store user state in Firebase -- used for login persistence
-                            Map<String, String> map = new HashMap<String, String>();
-                            map.put("Provider", authData.getProvider());
-                            map.put(getResources().getString(R.string.email),
-                                    authData.getProviderData().get("email").toString());
-
-                            myFirebaseRef.child("users").child(authData.getUid()).setValue(map);
-                        }
-
-                        @Override
-                        public void onAuthenticationError(FirebaseError error) {
-                            switch (error.getCode()) {
-                                //handle invalid email
-                                case FirebaseError.USER_DOES_NOT_EXIST:
-                                case FirebaseError.INVALID_EMAIL:
-                                    mEmailView.setError(getString(R.string.error_invalid_email));
-                                    mEmailView.requestFocus();
-                                    break;
-                                //handle invalid password
-                                case FirebaseError.INVALID_PASSWORD:
-                                    mPasswordView.setError(getString(R.string.error_incorrect_password));
-                                    mPasswordView.requestFocus();
-                                    break;
-                                default:
-                                    new AlertDialog.Builder(LoginActivity.this)
-                                            .setTitle("Error")
-                                            .setMessage("An error occurred when attempting to login.\n\n" +
-                                                    "Please try again.")
-                                            .setIcon(android.R.drawable.ic_dialog_alert)
-                                            .setCancelable(true)
-                                            .show();
-                                    break;
-                            }
-
-                            mAuthSuccess = false;
-                        }
-                    });
+            myFirebaseRef.authWithPassword(mEmail, mPassword, mHandler);
 
             try {
                 // Simulate network access.
@@ -441,7 +428,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            return mAuthSuccess;
+            AuthData userData = myFirebaseRef.getAuth();
+
+            //user successfully logged in
+            //userData.getProviderData().get(getResources().getString(R.string.firebase_email)).toString() == mEmail)
+            if (userData != null) //&& mLoginError == null)
+                return true;
+            else
+                return false;
         }
 
         /**
@@ -450,22 +444,52 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
          */
         @Override
         protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
+            //super.onPostExecute(success);
+
             showProgress(false);
 
+            //TODO: bug -- every now and then fails with "Something went wrong" debugging message below
             if (success) {
-                //finish();
-                //TODO: replace this with loading the proper activity (main page)
-                //TODO: potential bug -- sometimes the alert does not show up, even when auth successful
-                new AlertDialog.Builder(LoginActivity.this)
-                        .setTitle("Success!")
-                        .setMessage("Successful login")
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setCancelable(true)
-                        .show();
+                //load the main page
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                mAuthTask = null;
+                finish();
+
             } else {
-                //unsuccessful login -> do nothing
-                //errors handled in Firebase AuthResultHandler in doInBackground
+                //check the error message thrown by Firebase
+                if (mLoginError != null)
+                {
+                    switch (mLoginError.getCode()) {
+                        //handle invalid email
+                        case FirebaseError.USER_DOES_NOT_EXIST:
+                        case FirebaseError.INVALID_EMAIL:
+                            mEmailView.setError(getString(R.string.error_invalid_email));
+                            mEmailView.requestFocus();
+                            break;
+                        //handle invalid password
+                        case FirebaseError.INVALID_PASSWORD:
+                            mPasswordView.setError(getString(R.string.error_incorrect_password));
+                            mPasswordView.requestFocus();
+                            break;
+                        default:
+                            new AlertDialog.Builder(LoginActivity.this)
+                                    .setTitle("Error")
+                                    .setMessage("An error occurred when attempting to login.\n\n" +
+                                            "Please try again.")
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .setCancelable(true)
+                                    .show();
+                            break;
+                    }
+                }
+                else
+                {
+                    //TODO: only for debugging
+                    mEmailView.setText("Something went wrong");
+                }
+                mAuthTask = null;
             }
         }
 
