@@ -423,7 +423,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
             }
@@ -448,7 +448,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             showProgress(false);
 
-            //TODO: bug -- every now and then fails with "Something went wrong" debugging message below
             if (success) {
                 //load the main page
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
