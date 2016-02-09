@@ -14,22 +14,157 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:layout_marginTop="39dp"
+        android:layout_alignTop="@+id/section_label"
+        android:layout_toLeftOf="@+id/button"
+        android:layout_toStartOf="@+id/button" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Edit Profile"
+        android:id="@+id/button"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Super Mario"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="30dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Name"
-        android:id="@+id/textView"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Contact Info"
+        android:id="@+id/textView4"
         android:textColor="#ffffff"
-        android:layout_alignTop="@+id/section_label"
+        android:textSize="20dp"
+        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email:"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView4"
+        android:layout_toRightOf="@+id/section_label"
+        android:layout_toEndOf="@+id/section_label"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:textStyle="italic" />
+
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp" />
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editText5"
+        android:layout_alignTop="@+id/textView5"
+        android:textColor="#ffffff"
+        android:text="email@email.com"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignStart="@+id/editText6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Phone:"
+        android:id="@+id/textView6"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:textStyle="italic"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/editText6"
+        android:layout_alignTop="@+id/textView6"
+        android:textColor="#ffffff"
+        android:text="5551234567"
+        android:layout_alignRight="@+id/button"
+        android:layout_alignEnd="@+id/button"
+        android:layout_toEndOf="@+id/textView7"
+        android:phoneNumber="false"
+        android:layout_toRightOf="@+id/textView7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Address:"
+        android:id="@+id/textView7"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:textStyle="italic"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Other:"
+        android:id="@+id/textView8"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:textStyle="italic"
+        android:layout_alignTop="@+id/editText8"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText8"
+        android:textColor="#ffffff"
+        android:text="Any other contact information a user might want to put in here"
+        android:maxLines="5"
+        android:layout_below="@+id/editText7"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignStart="@+id/editText6" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText7"
+        android:textColor="#ffffff"
+        android:text="1234 Rainbow Rd\nMushroom Kingdom, CA 92122\nUSA"
+        android:maxLines="3"
+        android:layout_alignTop="@+id/textView7"
+        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignStart="@+id/editText6"
+        android:layout_alignRight="@+id/editText8"
+        android:layout_alignEnd="@+id/editText8" />
 
 </RelativeLayout>
