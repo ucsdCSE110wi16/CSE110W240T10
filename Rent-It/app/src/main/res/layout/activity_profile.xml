@@ -1,170 +1,172 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="sdgkteam10.rent_it.ProfileActivity"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:background="#0e2a28">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0e2a28"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="sdgkteam10.rent_it.ProfileActivity">
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="150dp"
-        android:id="@+id/imageView"
-        android:layout_marginTop="39dp"
-        android:layout_alignTop="@+id/section_label"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="39dp"
+            android:layout_toLeftOf="@+id/button"
+            android:layout_toStartOf="@+id/button" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Edit Profile"
-        android:id="@+id/button"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/imageView"
+            android:text="Edit Profile" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Super Mario"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textSize="30dp" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Super Mario"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Contact Info"
-        android:id="@+id/textView4"
-        android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:text="Contact Info"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Email:"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView4"
-        android:layout_toRightOf="@+id/section_label"
-        android:layout_toEndOf="@+id/section_label"
-        android:textColor="#ffffff"
-        android:textSize="18dp"
-        android:textStyle="italic" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_below="@+id/textView4"
+            android:paddingTop="10dp"
+            android:text="Email:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="italic" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editText5"
-        android:layout_alignTop="@+id/textView5"
-        android:textColor="#ffffff"
-        android:text="email@email.com"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/editText6"
-        android:layout_alignStart="@+id/editText6" />
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText6"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignStart="@+id/editText6"
+            android:layout_alignTop="@+id/textView5"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:text="email@email.com"
+            android:textColor="#ffffff" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Phone:"
-        android:id="@+id/textView6"
-        android:textColor="#ffffff"
-        android:textSize="18dp"
-        android:textStyle="italic"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView5"
+            android:paddingTop="10dp"
+            android:text="Phone:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="italic" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/editText6"
-        android:layout_alignTop="@+id/textView6"
-        android:textColor="#ffffff"
-        android:text="5551234567"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button"
-        android:layout_toEndOf="@+id/textView7"
-        android:phoneNumber="false"
-        android:layout_toRightOf="@+id/textView7" />
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/button"
+            android:layout_alignRight="@+id/button"
+            android:layout_alignTop="@+id/textView6"
+            android:layout_toEndOf="@+id/textView7"
+            android:layout_toRightOf="@+id/textView7"
+            android:ems="10"
+            android:inputType="phone"
+            android:phoneNumber="false"
+            android:text="5551234567"
+            android:textColor="#ffffff" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Address:"
-        android:id="@+id/textView7"
-        android:textColor="#ffffff"
-        android:textSize="18dp"
-        android:textStyle="italic"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView6"
+            android:paddingTop="10dp"
+            android:text="Address:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="italic" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Other:"
-        android:id="@+id/textView8"
-        android:textColor="#ffffff"
-        android:textSize="18dp"
-        android:textStyle="italic"
-        android:layout_alignTop="@+id/editText8"
-        android:layout_alignRight="@+id/textView5"
-        android:layout_alignEnd="@+id/textView5" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignEnd="@+id/textView5"
+            android:layout_alignRight="@+id/textView5"
+            android:layout_alignTop="@+id/editText8"
+            android:paddingTop="10dp"
+            android:text="Other:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="italic" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText8"
-        android:textColor="#ffffff"
-        android:text="Any other contact information a user might want to put in here"
-        android:maxLines="5"
-        android:layout_below="@+id/editText7"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/editText6"
-        android:layout_alignStart="@+id/editText6" />
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText6"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignStart="@+id/editText6"
+            android:layout_below="@+id/editText7"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:maxLines="5"
+            android:text="Any other contact information a user might want to put in here"
+            android:textColor="#ffffff" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText7"
-        android:textColor="#ffffff"
-        android:text="1234 Rainbow Rd\nMushroom Kingdom, CA 92122\nUSA"
-        android:maxLines="3"
-        android:layout_alignTop="@+id/textView7"
-        android:layout_alignLeft="@+id/editText6"
-        android:layout_alignStart="@+id/editText6"
-        android:layout_alignRight="@+id/editText8"
-        android:layout_alignEnd="@+id/editText8" />
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText8"
+            android:layout_alignLeft="@+id/editText6"
+            android:layout_alignRight="@+id/editText8"
+            android:layout_alignStart="@+id/editText6"
+            android:layout_alignTop="@+id/textView7"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:maxLines="4"
+            android:text="1234 Rainbow Rd\nMushroom Kingdom, CA 92122\nUSA"
+            android:textColor="#ffffff" />
 
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
