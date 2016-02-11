@@ -2,100 +2,156 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="#0e2a28"
     tools:context="sdgkteam10.rent_it.RegistrationActivity">
 
-        <LinearLayout
-            android:orientation="vertical"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Register For Rent-It!"
+            android:id="@+id/textView9"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText" />
+
+        <EditText
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:textColor="#ffffff"
+            android:layout_gravity="right"
+            android:layout_below="@+id/textView9"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="47dp"
+            android:layout_toRightOf="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Email:"
+            android:id="@+id/textView2"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="italic"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/editText"
+            android:layout_above="@+id/editText3"
+            android:paddingTop="10dp" />
+
+        <EditText
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:text="Email"
+            android:textColor="#ffffff"
+            android:layout_gravity="right"
+            android:layout_below="@+id/editText2"
+            android:layout_toRightOf="@+id/textView2"
+            android:layout_alignRight="@+id/editText2"
+            android:layout_alignEnd="@+id/editText2" />
+
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal|top"
-            android:weightSum="1"
-            android:background="#0e2a28">
+            android:layout_height="wrap_content"
+            android:id="@+id/editText3"
+            android:text="Password"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/editText"
+            android:layout_alignParentLeft="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Register For Rent-It!"
-                android:id="@+id/textView2"
-                android:layout_gravity="center_horizontal"
-                android:textColor="#ffffff" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:text="Address 1"
+            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Name"
-                android:ems="10"
-                android:id="@+id/editText"
-                android:layout_gravity="center_horizontal"
-                android:textColor="#ffffff" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/editText10"
+            android:text="Address 2"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/editText4"
+            android:layout_alignParentLeft="true" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:ems="10"
-                android:id="@+id/editText3"
-                android:layout_gravity="center_horizontal"
-                android:text="Email"
-                android:textColor="#ffffff" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/editText9"
+            android:text="City"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/editText10"
+            android:layout_alignParentLeft="true" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText4"
-                android:text="Password"
-                android:textColor="#ffffff" />
+        <Spinner
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_below="@+id/editText9"
+            android:layout_alignParentLeft="true" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:id="@+id/editText2"
-                android:text="Address 1"
-                android:textColor="#ffffff" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/button3"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/spinner"
+            android:layout_centerHorizontal="true" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:id="@+id/editText9"
-                android:text="Address 2"
-                android:textColor="#ffffff" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Name"
+            android:id="@+id/textView10"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="italic"
+            android:layout_above="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/editText2" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:id="@+id/editText10"
-                android:text="City"
-                android:textColor="#ffffff" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText11"
+            android:text="Password"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/editText3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/state_spinner" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/editText11"
-                android:text="Zip"
-                android:textColor="#ffffff" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Submit"
-                android:id="@+id/button2"
-                android:layout_gravity="center_horizontal" />
-
-        </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>
