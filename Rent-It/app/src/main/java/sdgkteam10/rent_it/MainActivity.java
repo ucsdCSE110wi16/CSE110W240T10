@@ -1,5 +1,6 @@
 package sdgkteam10.rent_it;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+
+//TODO: move user profile page to lop right settings button, NOT as a tab
+
+//TODO from meeting: When creating listing, ideally use camera to take picture, but initially just
+//TODO: accessing gallery
+
+//TODO: users have zipcodes, option to filter by zipcode
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_profile) {
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -143,15 +153,15 @@ public class MainActivity extends AppCompatActivity {
             {
                 case 0: return SearchFragment.newInstance();
                 case 1: return FavoritesFragment.newInstance();
-                case 2: return ProfileFragment.newInstance();
+               // case 2: return ProfileFragment.newInstance();
                 default: return SearchFragment.newInstance();
             }
         }
 
         @Override
         public int getCount() {
-            // Show 3 total tabs.
-            return 3;
+            // Show 2 total tabs.
+            return 2;
         }
 
         @Override
@@ -161,8 +171,6 @@ public class MainActivity extends AppCompatActivity {
                     return getString(R.string.search_tab);
                 case 1:
                     return getString(R.string.favorites_tab);
-                case 2:
-                    return getString(R.string.profile_tab);
             }
             return null;
         }
