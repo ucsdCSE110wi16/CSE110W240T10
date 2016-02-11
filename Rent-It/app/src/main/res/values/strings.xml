@@ -19,6 +19,7 @@
     <string name="profile_activity">My Profile</string>
 
     <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_activity_createListing">New Posting</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main">Rent-It</string>
