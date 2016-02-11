@@ -10,7 +10,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal|top"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:background="#0e2a28">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -18,7 +19,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Register For Rent-It!"
                 android:id="@+id/textView2"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textColor="#ffffff" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -27,16 +29,8 @@
                 android:text="Name"
                 android:ems="10"
                 android:id="@+id/editText"
-                android:layout_gravity="center_horizontal" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:id="@+id/editText2"
                 android:layout_gravity="center_horizontal"
-                android:text="Address" />
+                android:textColor="#ffffff" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -45,58 +39,56 @@
                 android:ems="10"
                 android:id="@+id/editText3"
                 android:layout_gravity="center_horizontal"
-                android:text="Email" />
+                android:text="Email"
+                android:textColor="#ffffff" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText4"
-                android:text="Password" />
+                android:text="Password"
+                android:textColor="#ffffff" />
 
-            <TextView
-                android:layout_width="372dp"
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Intent"
-                android:id="@+id/textView"
-                android:layout_gravity="center"
-                android:textColor="#000000" />
+                android:inputType="textPostalAddress"
+                android:ems="10"
+                android:id="@+id/editText2"
+                android:text="Address 1"
+                android:textColor="#ffffff" />
 
-            <RadioGroup
-                android:layout_width="219dp"
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.05">
+                android:inputType="textPostalAddress"
+                android:ems="10"
+                android:id="@+id/editText9"
+                android:text="Address 2"
+                android:textColor="#ffffff" />
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress"
+                android:ems="10"
+                android:id="@+id/editText10"
+                android:text="City"
+                android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Post Items For Rent"
-                        android:id="@+id/radioButton"
-                        android:checked="false" />
-                </LinearLayout>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/state_spinner" />
 
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rent Items From Others"
-                    android:id="@+id/radioButton2"
-                    android:checked="false" />
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Both!"
-                    android:id="@+id/radioButton3"
-                    android:checked="false" />
-
-            </RadioGroup>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/editText11"
+                android:text="Zip"
+                android:textColor="#ffffff" />
 
             <Button
                 android:layout_width="wrap_content"
