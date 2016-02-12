@@ -25,4 +25,33 @@
     <string name="title_activity_main">Rent-It</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+
+
+    <string-array name="rentLength_arrays">
+        <item>Per Hour</item>
+        <item>Per Day</item>
+        <item>Per Month</item>
+    </string-array>
+
+    <string-array name="itemCategories_arrays">
+        <item>Arts</item>
+        <item>Baby</item>
+        <item>Books</item>
+        <item>Business</item>
+        <item>Clothes/Acc</item>
+        <item>Electronics</item>
+        <item>Equipment</item>
+        <item>Furniture</item>
+        <item>Health/Beauty</item>
+        <item>Photography</item>
+        <item>Sporting</item>
+        <item>Toys/Games</item>
+        <item>Vehicles</item>
+        <item>Other</item>
+    </string-array>
+
+
+
+
 </resources>
