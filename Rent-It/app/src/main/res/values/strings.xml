@@ -30,9 +30,9 @@
          <item>Per Hour</item>
          <item>Per Day</item>
          <item>Per Month</item>
-     </string-array>
+    </string-array>
  
-     <string-array name="itemCategories_arrays">
+    <string-array name="itemCategories_arrays">
          <item>Arts</item>
          <item>Baby</item>
          <item>Books</item>
@@ -47,7 +47,7 @@
          <item>Toys/Games</item>
          <item>Vehicles</item>
          <item>Other</item>
-     </string-array>
+    </string-array>
 
     <string-array name="states_array">
         <item>Alabama</item>
