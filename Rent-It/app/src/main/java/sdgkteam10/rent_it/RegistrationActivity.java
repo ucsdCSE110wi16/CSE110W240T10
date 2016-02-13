@@ -11,6 +11,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.google.android.gms.appindexing.Action;
@@ -25,6 +29,39 @@ import com.google.android.gms.common.api.GoogleApiClient;
  * status bar and navigation/system bar) with user interaction.
  */
 public class RegistrationActivity extends AppCompatActivity {
+
+    /**
+     * Create Spinner item for "State" option.
+     */
+    private Spinner stateSpinner;
+    /**
+     * Create adapter for stateSpinner
+     */
+    private ArrayAdapter<CharSequence> stateAdapter;
+
+    private void createStateSpinner() {
+        stateSpinner = (Spinner)findViewById(R.id.state_spinner);
+        stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
+                R.layout.white_spinner_item);
+        stateSpinner = (Spinner)findViewById(R.id.state_spinner);
+        stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
+                R.layout.white_spinner_item);
+        stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        stateSpinner.setAdapter(stateAdapter);
+        stateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -119,7 +156,8 @@ public class RegistrationActivity extends AppCompatActivity {
         //mControlsView = findViewById(R.id.fullscreen_content_controls);
        // mContentView = findViewById(R.id.fullscreen_content);
 
-
+        // Set up state spinner
+        createStateSpinner();
         // Set up the user interaction to manually show or hide the system UI.
         //mContentView.setOnClickListener(new View.OnClickListener() {
           //  @Override

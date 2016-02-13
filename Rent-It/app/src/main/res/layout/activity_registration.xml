@@ -14,15 +14,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Register For Rent-It!"
-            android:id="@+id/textView9"
+            android:text="@string/register_title_str"
+            android:id="@+id/register_title"
             android:layout_gravity="center_horizontal"
             android:textColor="#ffffff"
             android:textAlignment="center"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <EditText
@@ -30,42 +30,43 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText9"
+            android:id="@+id/fill_email"
             android:textColor="#ffffff"
             android:layout_marginTop="41dp"
-            android:layout_below="@+id/textView9"
+            android:layout_below="@+id/register_title"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/textView18"
-            android:layout_toEndOf="@+id/textView18" />
+            android:layout_toRightOf="@+id/email"
+            android:layout_toEndOf="@+id/email" />
 
         <Spinner
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner"
-            android:layout_below="@+id/editText10"
-            android:layout_alignLeft="@+id/editText10"
-            android:layout_alignStart="@+id/editText10" />
+            android:layout_width="125dp"
+            android:layout_height="150dp"
+            android:id="@+id/state_spinner"
+            android:layout_below="@+id/fill_city"
+            android:layout_alignLeft="@+id/fill_city"
+            android:layout_alignStart="@+id/fill_city"
+            android:layout_alignBottom="@+id/state" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit"
-            android:id="@+id/button3"
+            android:text="@string/submit_button_str"
+            android:id="@+id/submit_button"
             android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/editText12"
+            android:layout_below="@+id/fill_phone"
             android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Email:"
-            android:id="@+id/textView18"
+            android:text="@string/email_str"
+            android:id="@+id/email"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
-            android:layout_alignBottom="@+id/editText9"
+            android:layout_alignBottom="@+id/fill_email"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:paddingBottom="10dp" />
@@ -74,12 +75,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="First Name:"
-            android:id="@+id/textView2"
+            android:text="@string/first_name_str"
+            android:id="@+id/first_name"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
-            android:layout_below="@+id/editText9"
+            android:layout_below="@+id/fill_email"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:paddingTop="10dp" />
@@ -89,24 +90,24 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/fill_first_name"
             android:textColor="#ffffff"
-            android:layout_below="@+id/editText9"
-            android:layout_toRightOf="@+id/textView2"
-            android:layout_alignRight="@+id/editText9"
-            android:layout_alignEnd="@+id/editText9" />
+            android:layout_below="@+id/fill_email"
+            android:layout_toRightOf="@+id/first_name"
+            android:layout_alignRight="@+id/fill_email"
+            android:layout_alignEnd="@+id/fill_email" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Last Name:"
-            android:id="@+id/textView14"
+            android:text="@string/last_name_str"
+            android:id="@+id/last_name"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
             android:paddingTop="10dp"
-            android:layout_below="@+id/editText"
+            android:layout_below="@+id/fill_first_name"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -115,23 +116,23 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/fill_last_name"
             android:textColor="#ffffff"
-            android:layout_alignTop="@+id/textView14"
-            android:layout_toRightOf="@+id/textView14"
-            android:layout_alignRight="@+id/editText"
-            android:layout_alignEnd="@+id/editText" />
+            android:layout_alignTop="@+id/last_name"
+            android:layout_toRightOf="@+id/last_name"
+            android:layout_alignRight="@+id/fill_first_name"
+            android:layout_alignEnd="@+id/fill_first_name" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Street\nAddress:"
-            android:id="@+id/textView15"
+            android:text="@string/street_address_str"
+            android:id="@+id/street_address"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
-            android:layout_below="@+id/editText2"
+            android:layout_below="@+id/fill_last_name"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:paddingBottom="10dp" />
@@ -141,24 +142,24 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/fill_street_address"
             android:textColor="#ffffff"
-            android:layout_above="@+id/textView16"
+            android:layout_above="@+id/address_linetwo"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/textView16"
-            android:layout_toEndOf="@+id/textView16" />
+            android:layout_toRightOf="@+id/address_linetwo"
+            android:layout_toEndOf="@+id/address_linetwo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Apt/Ste/Unit\nNumber:"
-            android:id="@+id/textView16"
+            android:text="@string/address_linetwo_str"
+            android:id="@+id/address_linetwo"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
-            android:layout_below="@+id/textView15"
+            android:layout_below="@+id/street_address"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:paddingTop="5dp"
@@ -169,25 +170,25 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText4"
+            android:id="@+id/fill_address_linetwo"
             android:textColor="#ffffff"
             android:paddingTop="0dp"
-            android:layout_alignBottom="@+id/textView16"
+            android:layout_alignBottom="@+id/address_linetwo"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/textView16"
-            android:layout_toEndOf="@+id/textView16" />
+            android:layout_toRightOf="@+id/address_linetwo"
+            android:layout_toEndOf="@+id/address_linetwo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="City:"
-            android:id="@+id/textView17"
+            android:text="@string/city_str"
+            android:id="@+id/city"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
-            android:layout_below="@+id/editText4"
+            android:layout_below="@+id/fill_address_linetwo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:paddingTop="10dp" />
@@ -197,25 +198,25 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText10"
+            android:id="@+id/fill_city"
             android:textColor="#ffffff"
-            android:layout_below="@+id/editText4"
-            android:layout_alignRight="@+id/editText3"
-            android:layout_alignEnd="@+id/editText3"
-            android:layout_toRightOf="@+id/textView18"
-            android:layout_toEndOf="@+id/textView18" />
+            android:layout_below="@+id/fill_address_linetwo"
+            android:layout_alignRight="@+id/fill_street_address"
+            android:layout_alignEnd="@+id/fill_street_address"
+            android:layout_toRightOf="@+id/email"
+            android:layout_toEndOf="@+id/email" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="State:"
-            android:id="@+id/textView19"
+            android:text="@string/state_str"
+            android:id="@+id/state"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
             android:paddingTop="10dp"
-            android:layout_below="@+id/editText10"
+            android:layout_below="@+id/fill_city"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -223,52 +224,53 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Zip:"
-            android:id="@+id/textView20"
+            android:text="@string/zip_str"
+            android:id="@+id/zip"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
-            android:paddingTop="10dp"
-            android:layout_alignBottom="@+id/editText11"
-            android:layout_toRightOf="@+id/spinner"
-            android:layout_toEndOf="@+id/spinner" />
+            android:paddingTop="0dp"
+            android:layout_alignBottom="@+id/fill_zip"
+            android:layout_toRightOf="@+id/state_spinner"
+            android:layout_toEndOf="@+id/state_spinner" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText11"
+            android:id="@+id/fill_zip"
             android:textColor="#ffffff"
             android:paddingTop="0dp"
-            android:layout_below="@+id/editText10"
-            android:layout_toRightOf="@+id/textView20"
-            android:layout_toEndOf="@+id/textView20" />
+            android:layout_above="@+id/phone"
+            android:layout_toRightOf="@+id/zip"
+            android:layout_toEndOf="@+id/zip" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Phone:"
-            android:id="@+id/textView21"
+            android:text="@string/phone_str"
+            android:id="@+id/phone"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="italic"
             android:paddingTop="10dp"
-            android:layout_below="@+id/spinner"
+            android:layout_below="@+id/state_spinner"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="29dp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText12"
+            android:id="@+id/fill_phone"
             android:textColor="#ffffff"
-            android:layout_alignTop="@+id/textView21"
-            android:layout_toRightOf="@+id/textView15"
-            android:layout_toEndOf="@+id/textView15" />
+            android:layout_alignTop="@+id/phone"
+            android:layout_toRightOf="@+id/street_address"
+            android:layout_toEndOf="@+id/street_address" />
 
     </RelativeLayout>
 </FrameLayout>
