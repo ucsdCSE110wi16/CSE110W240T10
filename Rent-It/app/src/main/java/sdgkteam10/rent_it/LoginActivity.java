@@ -1,47 +1,50 @@
 package sdgkteam10.rent_it;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
+import android.animation.Animator;                  //  http://developer.android.com/reference/android/animation/Animator.html
+import android.animation.AnimatorListenerAdapter;   //  http://developer.android.com/reference/android/animation/AnimatorListenerAdapter.html
+import android.annotation.TargetApi;                //  http://developer.android.com/reference/android/annotation/TargetApi.html
+import android.app.AlertDialog;                     //  http://developer.android.com/reference/android/app/AlertDialog.html
+import android.content.Intent;                      //  http://developer.android.com/reference/android/content/Intent.html
+import android.content.pm.PackageManager;           //  http://developer.android.com/reference/android/content/pm/PackageManager.html
+import android.support.annotation.NonNull;          //  http://tools.android.com/tech-docs/support-annotations
+import android.support.design.widget.Snackbar;      //  http://developer.android.com/reference/android/support/design/widget/Snackbar.html
+import android.support.v7.app.AppCompatActivity;    //  http://developer.android.com/reference/android/support/v7/app/AppCompatActivity.html
+import android.app.LoaderManager.LoaderCallbacks;   //  http://developer.android.com/reference/android/app/LoaderManager.LoaderCallbacks.html
 
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
+import android.content.CursorLoader;                //  http://developer.android.com/reference/android/content/CursorLoader.html
+import android.content.Loader;                      //  http://developer.android.com/reference/android/content/Loader.html
+import android.database.Cursor;                     //  http://developer.android.com/reference/android/database/Cursor.html
+import android.net.Uri;                             //  http://developer.android.com/reference/android/net/Uri.html
+import android.os.AsyncTask;                        //  http://developer.android.com/reference/android/os/AsyncTask.html
 
-import android.os.Build;
-import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.os.Build;                            //  http://developer.android.com/reference/android/os/Build.html
+import android.os.Bundle;                           //  http://developer.android.com/reference/android/os/Bundle.html
+import android.provider.ContactsContract;           //  http://developer.android.com/reference/android/provider/ContactsContract.html
+import android.text.TextUtils;                      //  http://developer.android.com/reference/android/text/TextUtils.html
+import android.view.KeyEvent;                       //  http://developer.android.com/reference/android/view/KeyEvent.html
+import android.view.View;                           //  http://developer.android.com/reference/android/view/View.html
+import android.view.View.OnClickListener;           //  http://developer.android.com/reference/android/view/View.OnClickListener.html
+import android.view.inputmethod.EditorInfo;         //  http://developer.android.com/reference/android/view/inputmethod/EditorInfo.html
+import android.widget.ArrayAdapter;                 //  http://developer.android.com/reference/android/widget/ArrayAdapter.html
+import android.widget.AutoCompleteTextView;         //  http://developer.android.com/reference/android/widget/AutoCompleteTextView.html
+import android.widget.Button;                       //  http://developer.android.com/reference/android/widget/Button.html
+import android.widget.EditText;                     //  http://developer.android.com/reference/android/widget/EditText.html
+import android.widget.TextView;                     //  http://developer.android.com/reference/android/widget/TextView.html
 
-import com.firebase.client.AuthData;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.firebase.client.AuthData;                //  https://www.firebase.com/docs/java-api/javadoc/com/firebase/client/AuthData.html
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+//for info on package com.firebase.client:   https://www.firebase.com/docs/java-api/javadoc/com/firebase/client/package-summary.html
+
+import com.firebase.client.Firebase;                        //  https://www.firebase.com/docs/java-api/javadoc/com/firebase/client/Firebase.html
+import com.firebase.client.FirebaseError;                   //  https://www.firebase.com/docs/java-api/javadoc/com/firebase/client/FirebaseError.html
+import com.google.android.gms.appindexing.Action;           //  https://developers.google.com/android/reference/com/google/android/gms/appindexing/Action
+import com.google.android.gms.appindexing.AppIndex;         //  https://developers.google.com/android/reference/com/google/android/gms/appindexing/AppIndex
+import com.google.android.gms.common.api.GoogleApiClient;   //  https://developers.google.com/android/reference/com/google/android/gms/common/api/GoogleApiClient
+
+import java.util.ArrayList;                                 //  https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
+import java.util.HashMap;                                   //  https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html
+import java.util.List;                                      //  https://docs.oracle.com/javase/8/docs/api/java/util/List.html
+import java.util.Map;                                       //  https://docs.oracle.com/javase/7/docs/api/java/util/Map.html
 
 import static android.Manifest.permission.READ_CONTACTS;
 import static sdgkteam10.rent_it.R.id.button_signin;
@@ -324,6 +327,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     public void onStart() {
         super.onStart();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -341,11 +347,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         AppIndex.AppIndexApi.start(client, viewAction);*/
 
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Login Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Login Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -361,6 +393,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();*/
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.disconnect();
     }
 
 
