@@ -48,6 +48,8 @@ import static sdgkteam10.rent_it.R.id.button_signin;
 
 /**
  * A login screen that offers login via email/password.
+ *
+ * AppCombatActivity - base class for activities that use the support library action bar features
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
