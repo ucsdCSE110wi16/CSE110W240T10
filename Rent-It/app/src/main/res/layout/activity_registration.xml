@@ -75,8 +75,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/first_name_str"
-            android:id="@+id/first_name"
+            android:text="@string/name_str"
+            android:id="@+id/name"
             android:textColor="#ffffff"
             android:textSize="18sp"
             android:textStyle="italic"
@@ -93,16 +93,17 @@
             android:id="@+id/fill_first_name"
             android:textColor="#ffffff"
             android:layout_below="@+id/fill_email"
-            android:layout_toRightOf="@+id/first_name"
             android:layout_alignRight="@+id/fill_email"
-            android:layout_alignEnd="@+id/fill_email" />
+            android:layout_alignEnd="@+id/fill_email"
+            android:layout_toRightOf="@+id/phone"
+            android:layout_toEndOf="@+id/phone" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/last_name_str"
-            android:id="@+id/last_name"
+            android:text="@string/password_str"
+            android:id="@+id/password"
             android:textColor="#ffffff"
             android:textSize="18sp"
             android:textStyle="italic"
@@ -118,10 +119,9 @@
             android:ems="10"
             android:id="@+id/fill_last_name"
             android:textColor="#ffffff"
-            android:layout_alignTop="@+id/last_name"
-            android:layout_toRightOf="@+id/last_name"
-            android:layout_alignRight="@+id/fill_first_name"
-            android:layout_alignEnd="@+id/fill_first_name" />
+            android:layout_below="@+id/editText"
+            android:layout_alignLeft="@+id/editText"
+            android:layout_alignStart="@+id/editText" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -271,6 +271,17 @@
             android:layout_alignTop="@+id/phone"
             android:layout_toRightOf="@+id/street_address"
             android:layout_toEndOf="@+id/street_address" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/fill_first_name"
+            android:layout_alignLeft="@+id/submit_button"
+            android:layout_alignStart="@+id/submit_button" />
 
     </RelativeLayout>
 </FrameLayout>
