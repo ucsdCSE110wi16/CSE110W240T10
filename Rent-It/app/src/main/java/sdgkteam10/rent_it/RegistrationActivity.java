@@ -13,10 +13,14 @@ import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -29,6 +33,10 @@ import com.google.android.gms.common.api.GoogleApiClient;
  * status bar and navigation/system bar) with user interaction.
  */
 public class RegistrationActivity extends AppCompatActivity {
+
+    Button button_send = (Button)findViewById(R.id.submit_button);
+
+
 
     /**
      * Create Spinner item for "State" option.
@@ -147,6 +155,9 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_registration);
+
+        Firebase.setAndroidContext(this);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -176,7 +187,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //initialize database reference so that we can store user data
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+
     }
 
 
@@ -262,6 +273,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
         );
         AppIndex.AppIndexApi.start(client, viewAction);
+        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+        myFirebaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String newCondition = (String)dataSnapshot.getValue();
+                mTextCondition.setText(newCondition);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        })
     }
 
     @Override
