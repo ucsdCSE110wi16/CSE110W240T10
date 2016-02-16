@@ -5,283 +5,301 @@
     android:background="#0e2a28"
     tools:context="sdgkteam10.rent_it.RegistrationActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|top">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <TextView
-            android:layout_width="fill_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/register_title_str"
-            android:id="@+id/register_title"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#ffffff"
-            android:textAlignment="center"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:layout_gravity="center_horizontal|top">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/fill_email"
-            android:textColor="#ffffff"
-            android:layout_marginTop="41dp"
-            android:layout_below="@+id/register_title"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/email"
-            android:layout_toEndOf="@+id/email" />
+            <TextView
+                android:id="@+id/register_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/register_title_str"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffffff"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:foregroundGravity="center_horizontal" />
 
-        <Spinner
-            android:layout_width="125dp"
-            android:layout_height="150dp"
-            android:id="@+id/state_spinner"
-            android:layout_below="@+id/fill_city"
-            android:layout_alignLeft="@+id/fill_city"
-            android:layout_alignStart="@+id/fill_city"
-            android:layout_alignBottom="@+id/state" />
+            <EditText
+                android:id="@+id/fill_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/register_title"
+                android:layout_marginTop="41dp"
+                android:layout_toEndOf="@+id/email"
+                android:layout_toRightOf="@+id/email"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:textColor="#ffffff" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/submit_button_str"
-            android:id="@+id/submit_button"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/fill_phone"
-            android:layout_centerHorizontal="true" />
+            <Spinner
+                android:id="@+id/state_spinner"
+                android:layout_width="125dp"
+                android:layout_height="150dp"
+                android:layout_alignBottom="@+id/state"
+                android:layout_alignLeft="@+id/fill_city"
+                android:layout_alignStart="@+id/fill_city"
+                android:layout_below="@+id/fill_city" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/email_str"
-            android:id="@+id/email"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:layout_alignBottom="@+id/fill_email"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:paddingBottom="10dp" />
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fill_phone"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/submit_button_str" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/name_str"
-            android:id="@+id/name"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:layout_below="@+id/fill_email"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:paddingTop="10dp" />
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/fill_email"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingBottom="10dp"
+                android:text="@string/email_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/fill_first_name"
-            android:textColor="#ffffff"
-            android:layout_below="@+id/fill_email"
-            android:layout_alignRight="@+id/fill_email"
-            android:layout_alignEnd="@+id/fill_email"
-            android:layout_toRightOf="@+id/phone"
-            android:layout_toEndOf="@+id/phone" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/fill_email"
+                android:paddingTop="10dp"
+                android:text="@string/name_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/password_str"
-            android:id="@+id/password"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:paddingTop="10dp"
-            android:layout_below="@+id/fill_first_name"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <EditText
+                android:id="@+id/fill_first_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/fill_email"
+                android:layout_alignRight="@+id/fill_email"
+                android:layout_below="@+id/fill_email"
+                android:layout_toEndOf="@+id/phone"
+                android:layout_toRightOf="@+id/phone"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:textColor="#ffffff" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/fill_last_name"
-            android:textColor="#ffffff"
-            android:layout_below="@+id/editText"
-            android:layout_alignLeft="@+id/editText"
-            android:layout_alignStart="@+id/editText" />
+            <TextView
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/fill_first_name"
+                android:paddingTop="10dp"
+                android:text="@string/password_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/street_address_str"
-            android:id="@+id/street_address"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:layout_below="@+id/fill_last_name"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:paddingBottom="10dp" />
+            <EditText
+                android:id="@+id/fill_last_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/editText"
+                android:layout_alignStart="@+id/editText"
+                android:layout_below="@+id/editText"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:textColor="#ffffff" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/fill_street_address"
-            android:textColor="#ffffff"
-            android:layout_above="@+id/address_linetwo"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/address_linetwo"
-            android:layout_toEndOf="@+id/address_linetwo" />
+            <TextView
+                android:id="@+id/street_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/fill_last_name"
+                android:paddingBottom="10dp"
+                android:text="@string/street_address_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/address_linetwo_str"
-            android:id="@+id/address_linetwo"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:layout_below="@+id/street_address"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp" />
+            <EditText
+                android:id="@+id/fill_street_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/address_linetwo"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_toEndOf="@+id/address_linetwo"
+                android:layout_toRightOf="@+id/address_linetwo"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:textColor="#ffffff" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/fill_address_linetwo"
-            android:textColor="#ffffff"
-            android:paddingTop="0dp"
-            android:layout_alignBottom="@+id/address_linetwo"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/address_linetwo"
-            android:layout_toEndOf="@+id/address_linetwo" />
+            <TextView
+                android:id="@+id/address_linetwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/street_address"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+                android:text="@string/address_linetwo_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/city_str"
-            android:id="@+id/city"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:layout_below="@+id/fill_address_linetwo"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:paddingTop="10dp" />
+            <EditText
+                android:id="@+id/fill_address_linetwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/address_linetwo"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_toEndOf="@+id/address_linetwo"
+                android:layout_toRightOf="@+id/address_linetwo"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:paddingTop="0dp"
+                android:textColor="#ffffff" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/fill_city"
-            android:textColor="#ffffff"
-            android:layout_below="@+id/fill_address_linetwo"
-            android:layout_alignRight="@+id/fill_street_address"
-            android:layout_alignEnd="@+id/fill_street_address"
-            android:layout_toRightOf="@+id/email"
-            android:layout_toEndOf="@+id/email" />
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/fill_address_linetwo"
+                android:paddingTop="10dp"
+                android:text="@string/city_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/state_str"
-            android:id="@+id/state"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:paddingTop="10dp"
-            android:layout_below="@+id/fill_city"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <EditText
+                android:id="@+id/fill_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/fill_street_address"
+                android:layout_alignRight="@+id/fill_street_address"
+                android:layout_below="@+id/fill_address_linetwo"
+                android:layout_toEndOf="@+id/email"
+                android:layout_toRightOf="@+id/email"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:textColor="#ffffff" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/zip_str"
-            android:id="@+id/zip"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:paddingTop="0dp"
-            android:layout_alignBottom="@+id/fill_zip"
-            android:layout_toRightOf="@+id/state_spinner"
-            android:layout_toEndOf="@+id/state_spinner" />
+            <TextView
+                android:id="@+id/state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/fill_city"
+                android:paddingTop="10dp"
+                android:text="@string/state_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/fill_zip"
-            android:textColor="#ffffff"
-            android:paddingTop="0dp"
-            android:layout_above="@+id/phone"
-            android:layout_toRightOf="@+id/zip"
-            android:layout_toEndOf="@+id/zip" />
+            <TextView
+                android:id="@+id/zip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/fill_zip"
+                android:layout_toEndOf="@+id/state_spinner"
+                android:layout_toRightOf="@+id/state_spinner"
+                android:paddingTop="0dp"
+                android:text="@string/zip_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/phone_str"
-            android:id="@+id/phone"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:paddingTop="10dp"
-            android:layout_below="@+id/state_spinner"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="29dp" />
+            <EditText
+                android:id="@+id/fill_zip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/phone"
+                android:layout_toEndOf="@+id/zip"
+                android:layout_toRightOf="@+id/zip"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:paddingTop="0dp"
+                android:textColor="#ffffff" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/fill_phone"
-            android:textColor="#ffffff"
-            android:layout_alignTop="@+id/phone"
-            android:layout_toRightOf="@+id/street_address"
-            android:layout_toEndOf="@+id/street_address" />
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/state_spinner"
+                android:layout_marginTop="29dp"
+                android:paddingTop="10dp"
+                android:text="@string/phone_str"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/editText"
-            android:textColor="#ffffff"
-            android:layout_below="@+id/fill_first_name"
-            android:layout_alignLeft="@+id/submit_button"
-            android:layout_alignStart="@+id/submit_button" />
+            <EditText
+                android:id="@+id/fill_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/phone"
+                android:layout_toEndOf="@+id/street_address"
+                android:layout_toRightOf="@+id/street_address"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:textColor="#ffffff" />
 
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/submit_button"
+                android:layout_alignStart="@+id/submit_button"
+                android:layout_below="@+id/fill_first_name"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="* Indicates required field"
+                android:id="@+id/required_field_label"
+                android:layout_below="@+id/register_title"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="#fe0101"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+    </ScrollView>
 </FrameLayout>
