@@ -12,29 +12,22 @@
 
     <!-- Login progress -->
 
-    <android.gesture.GestureOverlayView
-        android:layout_width="102dp"
-        android:layout_height="70dp"
-        android:id="@+id/gestureOverlayView"
-        android:layout_gravity="right"></android.gesture.GestureOverlayView>
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_progress"
+        android:indeterminate="false" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Rentit"
+        android:text="@string/Rentit"
         android:id="@+id/textView_Rentit"
-        android:textSize="78dp"
+        android:textSize="78sp"
         android:textColor="#40c1b8"
         android:elegantTextHeight="true" />
-
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="53dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
 
     <ScrollView
         android:id="@+id/login_form"
@@ -62,7 +55,6 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:id="@+id/email"
-                    android:text="Email"
                     android:textColor="#008279" />
 
             </android.support.design.widget.TextInputLayout>
@@ -83,7 +75,6 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:text="password"
                     android:textColor="#008279" />
 
             </android.support.design.widget.TextInputLayout>
@@ -94,7 +85,7 @@
                 android:layout_width="204dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Sign In"
+                android:text="@string/signin"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:shadowColor="#e4bd4b"
@@ -112,7 +103,7 @@
                 android:layout_width="150dp"
                 android:layout_height="29dp"
                 android:layout_marginTop="16dp"
-                android:text="Register"
+                android:text="@string/register"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:shadowColor="#e4bd4b"
@@ -132,7 +123,4 @@
         android:id="@+id/horizontalScrollView"
         android:layout_gravity="right" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></TableRow>
 </RadioGroup>
