@@ -2,21 +2,30 @@ package sdgkteam10.rent_it;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,14 +39,37 @@ import com.google.android.gms.common.api.GoogleApiClient;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
+    Button button_send = (Button)findViewById(R.id.submit_button);
+
+
+
     /**
      * Create Spinner item for "State" option.
      */
     private Spinner stateSpinner;
+    private TextView emailTextView;
+    private TextView nameTextView;
+    private TextView passwordTextView;
+    private TextView zipTextView;
     /**
      * Create adapter for stateSpinner
      */
     private ArrayAdapter<CharSequence> stateAdapter;
+
+    private void addRedAsterisk(TextView t) {
+        CharSequence text = t.getText();
+        CharSequence redAsterisk = "*";
+        SpannableStringBuilder b = new SpannableStringBuilder();
+
+        b.append(text);
+        int start = b.length();
+        b.append(redAsterisk);
+        int end = b.length();
+
+        b.setSpan(new ForegroundColorSpan(Color.RED), start, end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        t.setText(b);
+    }
 
     private void createStateSpinner() {
         stateSpinner = (Spinner)findViewById(R.id.state_spinner);
@@ -147,6 +179,9 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_registration);
+
+        Firebase.setAndroidContext(this);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -155,6 +190,17 @@ public class RegistrationActivity extends AppCompatActivity {
         mVisible = false;
         //mControlsView = findViewById(R.id.fullscreen_content_controls);
        // mContentView = findViewById(R.id.fullscreen_content);
+
+        // Add red asterisks to some of the labels
+        emailTextView = (TextView)findViewById(R.id.email);
+        addRedAsterisk(emailTextView);
+        nameTextView = (TextView)findViewById(R.id.name);
+        addRedAsterisk(nameTextView);
+        passwordTextView = (TextView)findViewById(R.id.password);
+        addRedAsterisk(passwordTextView);
+        zipTextView = (TextView)findViewById(R.id.zip);
+        addRedAsterisk(zipTextView);
+
 
         // Set up state spinner
         createStateSpinner();
@@ -176,7 +222,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //initialize database reference so that we can store user data
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+
     }
 
 
@@ -262,6 +308,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
         );
         AppIndex.AppIndexApi.start(client, viewAction);
+        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+        myFirebaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String newCondition = (String)dataSnapshot.getValue();
+                mTextCondition.setText(newCondition);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        })
     }
 
     @Override

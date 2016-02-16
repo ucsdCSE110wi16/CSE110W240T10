@@ -26,8 +26,8 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="email_str">Email:</string>
-    <string name="first_name_str">First Name:</string>
-    <string name="last_name_str">Last Name:</string>
+    <string name="name_str">Name:</string>
+    <string name="password_str">Password\n(Input twice):</string>
     <string name="street_address_str">Street\nAddress:</string>
     <string name="register_title_str">Register For Rent-It!</string>
     <string name="address_linetwo_str">Apt/Ste/Unit\nNumber:</string>
@@ -36,6 +36,10 @@
     <string name="phone_str">Phone:</string>
     <string name="zip_str">Zip:</string>
     <string name="submit_button_str">Submit</string>
+    <string name="Rentit">Rentit</string>
+    <string name="signin">Sign In</string>
+    <string name="register">Register</string>
+    <string name="password">password</string>
 
     <string-array name="rentLength_arrays">
          <item>Per Hour</item>
