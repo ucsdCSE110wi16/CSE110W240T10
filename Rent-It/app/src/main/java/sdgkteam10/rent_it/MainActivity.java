@@ -20,8 +20,6 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-//TODO: move user profile page to lop right settings button, NOT as a tab
-
 //TODO from meeting: When creating listing, ideally use camera to take picture, but initially just
 //TODO: accessing gallery
 

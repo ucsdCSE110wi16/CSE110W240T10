@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -40,20 +42,53 @@ import com.google.android.gms.common.api.GoogleApiClient;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
+    //UI elements
+    TextView fillName;
+    TextView fillEmail;
+    TextView fillPW1;
+    TextView fillPW2;
+    TextView fillAddress;
+    TextView fillAddress2;
+    TextView fillCity;
+    Spinner fillState;
+    TextView fillZip;
+    TextView fillPhone;
 
+    //user to be created
+    User user = null;
 
+    /**
+     * Firebase database reference
+     */
+    private Firebase myFirebaseRef;
 
+    /**
+     * Whether or not the system UI should be auto-hidden after
+     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
+     */
+    private static final boolean AUTO_HIDE = true;
 
-    public RegistrationActivity() {
+    /**
+     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
+     * user interaction before hiding the system UI.
+     */
+    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
-  //      button_send.setOnClickListener(new View.OnClickListener(){
-  //          public void onClick(View v){
-               // User newUser;
-                //newUser = new User();
-            //}
-       // });
-    }
+    /**
+     * Some older devices needs a small delay between UI widget updates
+     * and a change of the status and navigation bar.
+     */
+    private static final int UI_ANIMATION_DELAY = 300;
+    private final Handler mHideHandler = new Handler();
+    private View mContentView;
+    private View mControlsView;
+    private boolean mVisible;
 
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 //    private void addRedAsterisk(TextView t) {
 //        CharSequence text = t.getText();
@@ -99,25 +134,6 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Whether or not the system UI should be auto-hidden after
-     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
-     */
-    private static final boolean AUTO_HIDE = true;
-
-    /**
-     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
-     * user interaction before hiding the system UI.
-     */
-    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
-
-    /**
-     * Some older devices needs a small delay between UI widget updates
-     * and a change of the status and navigation bar.
-     */
-    private static final int UI_ANIMATION_DELAY = 300;
-    private final Handler mHideHandler = new Handler();
-    private View mContentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -135,7 +151,7 @@ public class RegistrationActivity extends AppCompatActivity {
           //          | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         }
     };
-    private View mControlsView;
+
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
         public void run() {
@@ -147,7 +163,7 @@ public class RegistrationActivity extends AppCompatActivity {
             mControlsView.setVisibility(View.VISIBLE);
         }
     };
-    private boolean mVisible;
+
     private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
@@ -168,25 +184,14 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
     };
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
-    /**
-     * Firebase database reference
-     */
-    private Firebase myFirebaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_registration);
-        Button button_send = (Button)findViewById(R.id.submit_button);
         Firebase.setAndroidContext(this);
-        final  User user = new User();
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -196,38 +201,37 @@ public class RegistrationActivity extends AppCompatActivity {
         //mControlsView = findViewById(R.id.fullscreen_content_controls);
        // mContentView = findViewById(R.id.fullscreen_content);
 
-        // Add red asterisks to some of the labels
-//        TextView emailTextView = (TextView) findViewById(R.id.email);
-//        addRedAsterisk(emailTextView);
-//        TextView nameTextView = (TextView) findViewById(R.id.name);
-//        addRedAsterisk(nameTextView);
-//        TextView passwordTextView = (TextView) findViewById(R.id.password);
-//        addRedAsterisk(passwordTextView);
-//        TextView zipTextView = (TextView) findViewById(R.id.zip);
-//        addRedAsterisk(zipTextView);
+        //initialize Firebase
+        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+        myFirebaseRef.unauth(); //log out any currently logged in user
+        myFirebaseRef.addAuthStateListener(new Firebase.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(AuthData authData) {
+                //registration successful -> a new user logged in
+                if (authData != null)
+                {
+                    Log.d("My Logging", "successful login!");
 
-        final TextView fillName;
+                    //load the main page
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        //initialize the UI elements
+        Button button_send = (Button)findViewById(R.id.submit_button);
         fillName = (TextView)findViewById(R.id.fill_name);
-        final TextView fillEmail;
         fillEmail = (TextView)findViewById(R.id.fill_email);
-        final TextView fillPW1;
         fillPW1 = (TextView)findViewById(R.id.fill_pw1);
-        final TextView fillPW2;
         fillPW2 = (TextView)findViewById(R.id.fill_pw2);
-        final TextView fillStreet;
-        fillStreet = (TextView)findViewById(R.id.fill_address1);
-        final TextView fillStreet2;
-        fillStreet2 = (TextView)findViewById(R.id.fill_address2);
-
-        final TextView fillCity;
+        fillAddress = (TextView)findViewById(R.id.fill_address1);
+        fillAddress2 = (TextView)findViewById(R.id.fill_address2);
         fillCity = (TextView)findViewById(R.id.fill_city);
-
-        final TextView fillZip;
+        fillState = (Spinner) findViewById(R.id.fill_state);
         fillZip = (TextView)findViewById(R.id.fill_zip);
-
-        final TextView fillPhone;
         fillPhone = (TextView)findViewById(R.id.fill_phone);
-
 
         fillName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -253,16 +257,16 @@ public class RegistrationActivity extends AppCompatActivity {
                 fillPW2.setText("");
             }
         });
-        fillStreet.setOnClickListener(new View.OnClickListener() {
+        fillAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fillStreet.setText("");
+                fillAddress.setText("");
             }
         });
-        fillStreet2.setOnClickListener(new View.OnClickListener() {
+        fillAddress2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fillStreet2.setText("");
+                fillAddress2.setText("");
             }
         });
         fillCity.setOnClickListener(new View.OnClickListener() {
@@ -284,18 +288,63 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+        //TODO: add a loading spinner
         button_send.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   user.setName((String)fillName.getText());
-                   user.setEmail((String)fillEmail.getText());
-                   user.setPw1((String)fillPW1.getText());
-                   user.setPw2((String)fillPW2.getText());
-                   user.setAddress1((String)fillStreet.getText());
-                   user.setAddress2((String)fillStreet2.getText());
-                   user.setCity((String)fill.getText());
-                   user.setZipcode((String)fillName.getText());
-                   user.setName((String)fillName.getText());
+                   boolean validated = validateInput();
+
+                   if (validated) {
+                       //create a new user from input
+                       user = new User(
+                               fillName.getText().toString(),
+                               fillEmail.getText().toString(),
+                               fillPW1.getText().toString(),
+                               fillAddress.getText().toString(),
+                               fillAddress2.getText().toString(),
+                               fillCity.getText().toString(),
+                               fillState.getSelectedItem().toString(),
+                               Integer.parseInt(fillZip.getText().toString()),
+                               fillPhone.getText().toString(),
+                               getApplicationContext()
+                       );
+
+                       //check for errors in creating the user
+                       FirebaseError createError = user.getUserCreateError();
+                       if (createError != null)
+                       {
+                           //TODO: handle errors
+                           fillPW2.setText("creation fail");
+                       }
+                       else {
+                           //onAuthStateChanged listener will load the home page if successful login
+                           user.login();
+                       }
+
+                       //TODO: temporary solution -- add waiting and spinny wheel functionality
+                       try {
+                           // Simulate network access.
+                           Thread.sleep(3000);
+                       } catch (InterruptedException e) {
+
+                       }
+
+                       //if the home page did not load, then there were login errors
+                       FirebaseError loginError = user.getLoginError();
+                       if (loginError != null)
+                       {
+                           //TODO: handle login errors
+                           fillPW2.setText("login fail");
+                       }
+                       else
+                       {
+                           //something horrible has gone wrong
+                           //fillPW2.setText("something horrible");
+                       }
+                   } else {
+                       //TODO: handle improper input
+                       fillPW2.setText("bad input");
+                   }
                }
            }
         );
@@ -317,12 +366,22 @@ public class RegistrationActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
-        //initialize database reference so that we can store user data
-        Firebase.setAndroidContext(this);
-
     }
 
+    //TODO -- validate the user fields
+    private boolean validateInput()
+    {
+        if (!fillPW1.getText().toString().equals(fillPW2.getText().toString()))
+        {
+            //TODO: error -- passwords don't match!!
+            return false;
+        }
+
+        //TODO: other user input validation and proper handling
+
+        //input is good
+        return true;
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -406,19 +465,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
         );
         AppIndex.AppIndexApi.start(client, viewAction);
-        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
-        myFirebaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String newCondition = (String)dataSnapshot.getValue();
-                //mTextCondition.setText(newCondition);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
     }
 
     @Override
