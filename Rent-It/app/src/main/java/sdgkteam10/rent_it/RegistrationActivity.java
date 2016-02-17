@@ -186,7 +186,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         Button button_send = (Button)findViewById(R.id.submit_button);
         Firebase.setAndroidContext(this);
-
+        final  User user = new User();
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -283,6 +283,22 @@ public class RegistrationActivity extends AppCompatActivity {
                 fillPhone.setText("");
             }
         });
+
+        button_send.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   user.setName((String)fillName.getText());
+                   user.setEmail((String)fillEmail.getText());
+                   user.setPw1((String)fillPW1.getText());
+                   user.setPw2((String)fillPW2.getText());
+                   user.setAddress1((String)fillStreet.getText());
+                   user.setAddress2((String)fillStreet2.getText());
+                   user.setCity((String)fillCity.getText());
+                   user.setZipcode((String)fillZip.getText());
+                   user.setPhone((String)fillPhone.getText());
+               }
+           }
+        );
 
         // Set up state spinner
         createStateSpinner();
