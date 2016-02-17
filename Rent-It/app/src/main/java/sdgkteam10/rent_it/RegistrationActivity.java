@@ -31,7 +31,6 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 
-
 //TODO: add Firebase authorization, persistence, user account creation
 //TODO: add event listeners to buttons, storing data from datafiezlds
 
@@ -41,17 +40,18 @@ import com.google.android.gms.common.api.GoogleApiClient;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
-    public Button button_send;
+
+
+
 
     public RegistrationActivity() {
-        button_send = (Button)findViewById(R.id.submit_button);
 
-        button_send.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                User newUser;
-                newUser = new User();
-            }
-        });
+  //      button_send.setOnClickListener(new View.OnClickListener(){
+  //          public void onClick(View v){
+               // User newUser;
+                //newUser = new User();
+            //}
+       // });
     }
 
 
@@ -74,13 +74,13 @@ public class RegistrationActivity extends AppCompatActivity {
         /*
       Create Spinner item for "State" option.
      */
-        Spinner stateSpinner = (Spinner) findViewById(R.id.state_spinner);
+        Spinner stateSpinner = (Spinner) findViewById(R.id.fill_state);
         /*
       Create adapter for stateSpinner
      */
         ArrayAdapter<CharSequence> stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
                 R.layout.white_spinner_item);
-        stateSpinner = (Spinner)findViewById(R.id.state_spinner);
+        stateSpinner = (Spinner)findViewById(R.id.fill_state);
         stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
                 R.layout.white_spinner_item);
         stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -184,7 +184,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_registration);
-
+        Button button_send = (Button)findViewById(R.id.submit_button);
         Firebase.setAndroidContext(this);
 
         ActionBar actionBar = getSupportActionBar();
