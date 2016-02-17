@@ -50,7 +50,8 @@
             android:textColor="#63dfb2"
             android:text="@string/name"
             android:editable="true"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:ellipsize="none" />
 
         <EditText
             android:id="@+id/fill_email"

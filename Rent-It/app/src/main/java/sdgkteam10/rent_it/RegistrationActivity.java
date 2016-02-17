@@ -293,9 +293,9 @@ public class RegistrationActivity extends AppCompatActivity {
                    user.setPw2((String)fillPW2.getText());
                    user.setAddress1((String)fillStreet.getText());
                    user.setAddress2((String)fillStreet2.getText());
-                   user.setCity((String)fillCity.getText());
-                   user.setZipcode((String)fillZip.getText());
-                   user.setPhone((String)fillPhone.getText());
+                   user.setCity((String)fill.getText());
+                   user.setZipcode((String)fillName.getText());
+                   user.setName((String)fillName.getText());
                }
            }
         );
