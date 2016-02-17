@@ -29,13 +29,13 @@
     <string name="name_str">Name:</string>
     <string name="password_str">Password\n(Input twice):</string>
     <string name="street_address_str">Street\nAddress:</string>
-    <string name="register_title_str">Registering is Free!</string>
+    <string name="register_title_str">Register For Rent-It!</string>
     <string name="address_linetwo_str">Apt/Ste/Unit\nNumber:</string>
     <string name="city_str">City:</string>
     <string name="state_str">State:</string>
     <string name="phone_str">Phone:</string>
     <string name="zip_str">Zip:</string>
-    <string name="submit_button">Submit</string>
+    <string name="submit_button_str">Submit</string>
     <string name="Rentit">Rentit</string>
     <string name="signin">Sign In</string>
     <string name="register">Register</string>
@@ -48,13 +48,22 @@
     <string name="address2">Address 2</string>
     <string name="city">City</string>
     <string name="state">State</string>
+    <string name="required_field">* Indicates required field</string>
+    <string name="zip">Zipcode</string>
+    <string name="phone">Phone</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="user_name">Super Mario</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="email">Email:</string>
+    <string name="emailatemail">email@email.com</string>
+    <string name="phone_">Phone:</string>
 
     <string-array name="rentLength_arrays">
          <item>Per Hour</item>
          <item>Per Day</item>
          <item>Per Month</item>
     </string-array>
- 
+
     <string-array name="itemCategories_arrays">
          <item>Arts</item>
          <item>Baby</item>
