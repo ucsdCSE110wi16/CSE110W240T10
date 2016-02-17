@@ -18,6 +18,7 @@ import android.support.v4.app.NavUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,13 +44,23 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public Button button_send;
 
+    //UI elements
+    EditText nameField;
+    EditText emailField;
+    EditText pw1Field;
+    EditText pw2Field;
+    EditText address1Field;
+    EditText address2Field;
+    EditText cityField;
+    EditText zipField;
+    EditText phoneField;
+
     public RegistrationActivity() {
         button_send = (Button)findViewById(R.id.submit_button);
 
         button_send.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                User newUser;
-                newUser = new User();
+                attemptUserCreate();
             }
         });
     }
@@ -197,13 +208,13 @@ public class RegistrationActivity extends AppCompatActivity {
        // mContentView = findViewById(R.id.fullscreen_content);
 
         // Add red asterisks to some of the labels
-//        TextView emailTextView = (TextView) findViewById(R.id.email);
+        TextView emailTextView = (TextView) findViewById(R.id.email);
 //        addRedAsterisk(emailTextView);
-//        TextView nameTextView = (TextView) findViewById(R.id.name);
+        TextView nameTextView = (TextView) findViewById(R.id.name);
 //        addRedAsterisk(nameTextView);
-//        TextView passwordTextView = (TextView) findViewById(R.id.password);
+        TextView passwordTextView = (TextView) findViewById(R.id.password);
 //        addRedAsterisk(passwordTextView);
-//        TextView zipTextView = (TextView) findViewById(R.id.zip);
+        TextView zipTextView = (TextView) findViewById(R.id.zip);
 //        addRedAsterisk(zipTextView);
 
 
