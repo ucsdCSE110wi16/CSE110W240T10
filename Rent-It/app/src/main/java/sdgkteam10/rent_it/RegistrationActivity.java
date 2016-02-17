@@ -43,19 +43,19 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class RegistrationActivity extends AppCompatActivity {
 
     //UI elements
-    TextView fillName;
-    TextView fillEmail;
-    TextView fillPW1;
-    TextView fillPW2;
-    TextView fillAddress;
-    TextView fillAddress2;
-    TextView fillCity;
-    Spinner fillState;
-    TextView fillZip;
-    TextView fillPhone;
+    private TextView fillName;
+    private TextView fillEmail;
+    private TextView fillPW1;
+    private TextView fillPW2;
+    private TextView fillAddress;
+    private TextView fillAddress2;
+    private TextView fillCity;
+    private Spinner fillState;
+    private TextView fillZip;
+    private TextView fillPhone;
 
     //user to be created
-    User user = null;
+    private User user = null;
 
     /**
      * Firebase database reference
