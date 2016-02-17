@@ -17,7 +17,6 @@ import java.util.Map;
  * Updated by David Ruble
  */
 public class User {
-
     private String name;
     private String email;
     private String pw;
@@ -25,7 +24,7 @@ public class User {
     private String address2;
     private String city;
     private String state;
-    private int zip;
+    private String zip;  // we use INT for math, a zip code is a string, better if we need to use it in a search!
     private String phone;
 
     private Context appContext; //for accessing strings in strings.xml
@@ -42,7 +41,7 @@ public class User {
 
     //new user -- for use with registering new users
     User(String name, String email, String pw, String a1, String a2,
-         String city, String state, int zip, String phone, Context context){
+         String city, String state, String zip, String phone, Context context){
         this.name = name;
         this.email = email;
         this.pw = pw;
@@ -84,7 +83,7 @@ public class User {
         this.address2 = (String) this.userData.getProviderData().get("address2");
         this.city = (String) this.userData.getProviderData().get("city");
         this.state = (String) this.userData.getProviderData().get("state");
-        this.zip = (int) this.userData.getProviderData().get("zip");
+        this.zip = (String) this.userData.getProviderData().get("zip");
         this.phone = (String) this.userData.getProviderData().get("phone");
     }
 
@@ -129,7 +128,7 @@ public class User {
     public void setAddress2(String a2) {this.address2 = a2;}
     public void setCity(String city) {this.city = city;}
     public void setState(String state) {this.state = state;}
-    public void setZip(int zip) {this.zip = zip;}
+    public void setZip(String zip) {this.zip = zip;}
     public void setPhone(String phone) {this.phone = phone;}
 
     //getters
@@ -140,7 +139,7 @@ public class User {
     public String getAddress2() {return this.address2;}
     public String getCity() {return this.city;}
     public String getState() {return this.state;}
-    public int getZip() {return this.zip;}
+    public String getZip() {return this.zip;}
     public String getPhone() {return this.phone;}
     public String getUid() {return this.m_uid;}
 }
