@@ -29,17 +29,25 @@
     <string name="name_str">Name:</string>
     <string name="password_str">Password\n(Input twice):</string>
     <string name="street_address_str">Street\nAddress:</string>
-    <string name="register_title_str">Register For Rent-It!</string>
+    <string name="register_title_str">Registering is Free!</string>
     <string name="address_linetwo_str">Apt/Ste/Unit\nNumber:</string>
     <string name="city_str">City:</string>
     <string name="state_str">State:</string>
     <string name="phone_str">Phone:</string>
     <string name="zip_str">Zip:</string>
-    <string name="submit_button_str">Submit</string>
+    <string name="submit_button">Submit</string>
     <string name="Rentit">Rentit</string>
     <string name="signin">Sign In</string>
     <string name="register">Register</string>
     <string name="password">password</string>
+    <string name="fill_email">Email</string>
+    <string name="name">Name</string>
+    <string name="pw1">Password</string>
+    <string name="pw2">Password again</string>
+    <string name="address1">Street Address</string>
+    <string name="address2">Address 2</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
 
     <string-array name="rentLength_arrays">
          <item>Per Hour</item>

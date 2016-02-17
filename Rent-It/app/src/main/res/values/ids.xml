@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="name" type="id">name</item>
+    <item name="zip" type="id">zipcode</item>
+</resources>

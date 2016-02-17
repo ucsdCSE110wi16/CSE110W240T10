@@ -30,8 +30,10 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+
+
 //TODO: add Firebase authorization, persistence, user account creation
-//TODO: add event listeners to buttons, storing data from datafields
+//TODO: add event listeners to buttons, storing data from datafiezlds
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -39,41 +41,44 @@ import com.google.android.gms.common.api.GoogleApiClient;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
-    Button button_send = (Button)findViewById(R.id.submit_button);
+    public Button button_send;
 
+    public RegistrationActivity() {
+        button_send = (Button)findViewById(R.id.submit_button);
 
-
-    /**
-     * Create Spinner item for "State" option.
-     */
-    private Spinner stateSpinner;
-    private TextView emailTextView;
-    private TextView nameTextView;
-    private TextView passwordTextView;
-    private TextView zipTextView;
-    /**
-     * Create adapter for stateSpinner
-     */
-    private ArrayAdapter<CharSequence> stateAdapter;
-
-    private void addRedAsterisk(TextView t) {
-        CharSequence text = t.getText();
-        CharSequence redAsterisk = "*";
-        SpannableStringBuilder b = new SpannableStringBuilder();
-
-        b.append(text);
-        int start = b.length();
-        b.append(redAsterisk);
-        int end = b.length();
-
-        b.setSpan(new ForegroundColorSpan(Color.RED), start, end,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        t.setText(b);
+        button_send.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                User newUser;
+                newUser = new User();
+            }
+        });
     }
 
+
+//    private void addRedAsterisk(TextView t) {
+//        CharSequence text = t.getText();
+//        CharSequence redAsterisk = "*";
+//        SpannableStringBuilder b = new SpannableStringBuilder();
+//
+//        b.append(text);
+//        int start = b.length();
+//        b.append(redAsterisk);
+//        int end = b.length();
+//
+//        b.setSpan(new ForegroundColorSpan(Color.RED), start, end,
+//                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        t.setText(b);
+//    }
+
     private void createStateSpinner() {
-        stateSpinner = (Spinner)findViewById(R.id.state_spinner);
-        stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
+        /*
+      Create Spinner item for "State" option.
+     */
+        Spinner stateSpinner = (Spinner) findViewById(R.id.state_spinner);
+        /*
+      Create adapter for stateSpinner
+     */
+        ArrayAdapter<CharSequence> stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
                 R.layout.white_spinner_item);
         stateSpinner = (Spinner)findViewById(R.id.state_spinner);
         stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
@@ -192,14 +197,14 @@ public class RegistrationActivity extends AppCompatActivity {
        // mContentView = findViewById(R.id.fullscreen_content);
 
         // Add red asterisks to some of the labels
-        emailTextView = (TextView)findViewById(R.id.email);
-        addRedAsterisk(emailTextView);
-        nameTextView = (TextView)findViewById(R.id.name);
-        addRedAsterisk(nameTextView);
-        passwordTextView = (TextView)findViewById(R.id.password);
-        addRedAsterisk(passwordTextView);
-        zipTextView = (TextView)findViewById(R.id.zip);
-        addRedAsterisk(zipTextView);
+//        TextView emailTextView = (TextView) findViewById(R.id.email);
+//        addRedAsterisk(emailTextView);
+//        TextView nameTextView = (TextView) findViewById(R.id.name);
+//        addRedAsterisk(nameTextView);
+//        TextView passwordTextView = (TextView) findViewById(R.id.password);
+//        addRedAsterisk(passwordTextView);
+//        TextView zipTextView = (TextView) findViewById(R.id.zip);
+//        addRedAsterisk(zipTextView);
 
 
         // Set up state spinner
@@ -313,14 +318,14 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String newCondition = (String)dataSnapshot.getValue();
-                mTextCondition.setText(newCondition);
+                //mTextCondition.setText(newCondition);
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
             }
-        })
+        });
     }
 
     @Override
