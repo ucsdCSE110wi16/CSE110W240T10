@@ -45,7 +45,7 @@ public class CreateListingActivity extends AppCompatActivity {
             }
         });
     }
-
+    
 
     /*
      * gather all widget ids that will be used in this file

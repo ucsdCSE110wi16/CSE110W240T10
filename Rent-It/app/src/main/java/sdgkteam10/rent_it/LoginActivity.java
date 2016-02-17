@@ -82,6 +82,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private Firebase myFirebaseRef;
 
+    private User user;
+
     //TODO: go directly to home page if still logged in
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -433,12 +435,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 @Override
                 public void onAuthenticated(AuthData authData) {
                     //store user state in Firebase -- used for login persistence
-                    Map<String, String> map = new HashMap<String, String>();
-                    map.put(getResources().getString(R.string.firebase_provider), authData.getProvider());
-                    map.put(getResources().getString(R.string.firebase_email),
-                            authData.getProviderData().get(getResources().getString(R.string.firebase_email)).toString());
+                     //user = new User(authData, getApplicationContext());
 
-                    myFirebaseRef.child("users").child(authData.getUid()).setValue(map);
+                    //Map<String, String> map = new HashMap<String, String>();
+                    //map.put(getResources().getString(R.string.firebase_provider), authData.getProvider());
+                    //map.put(getResources().getString(R.string.firebase_email),
+                    //        authData.getProviderData().get(getResources().getString(R.string.firebase_email)).toString());
+
+                    //myFirebaseRef.child("users").child(authData.getUid()).setValue(map);
+
 
                    // mLoginError = null;
                 }
@@ -456,7 +461,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             //authenticate user login info with the database
-            myFirebaseRef.authWithPassword(mEmail, mPassword, mHandler);
+            //myFirebaseRef.authWithPassword(mEmail, mPassword, mHandler);
+            user = new User(mEmail, mPassword, getApplicationContext());
 
             try {
                 // Simulate network access.
@@ -465,6 +471,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
+            //TODO: change to user.isLoggedIn();
             AuthData userData = myFirebaseRef.getAuth();
 
             //user successfully logged in
