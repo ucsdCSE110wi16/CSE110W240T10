@@ -113,11 +113,10 @@ public class RegistrationActivity extends AppCompatActivity {
         /*
       Create adapter for stateSpinner
      */
-        ArrayAdapter<CharSequence> stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
-                R.layout.white_spinner_item);
+        ArrayAdapter<CharSequence> stateAdapter;
         stateSpinner = (Spinner)findViewById(R.id.fill_state);
         stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
-                R.layout.white_spinner_item);
+                R.layout.special_spinner_item);
         stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         stateSpinner.setAdapter(stateAdapter);
