@@ -51,6 +51,12 @@
     <string name="required_field">* Indicates required field</string>
     <string name="zip">Zipcode</string>
     <string name="phone">Phone</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="user_name">Super Mario</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="email">Email:</string>
+    <string name="emailatemail">email@email.com</string>
+    <string name="phone_">Phone:</string>
 
     <string-array name="rentLength_arrays">
          <item>Per Hour</item>

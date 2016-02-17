@@ -206,6 +206,83 @@ public class RegistrationActivity extends AppCompatActivity {
 //        TextView zipTextView = (TextView) findViewById(R.id.zip);
 //        addRedAsterisk(zipTextView);
 
+        final TextView fillName;
+        fillName = (TextView)findViewById(R.id.fill_name);
+        final TextView fillEmail;
+        fillEmail = (TextView)findViewById(R.id.fill_email);
+        final TextView fillPW1;
+        fillPW1 = (TextView)findViewById(R.id.fill_pw1);
+        final TextView fillPW2;
+        fillPW2 = (TextView)findViewById(R.id.fill_pw2);
+        final TextView fillStreet;
+        fillStreet = (TextView)findViewById(R.id.fill_address1);
+        final TextView fillStreet2;
+        fillStreet2 = (TextView)findViewById(R.id.fill_address2);
+
+        final TextView fillCity;
+        fillCity = (TextView)findViewById(R.id.fill_city);
+
+        final TextView fillZip;
+        fillZip = (TextView)findViewById(R.id.fill_zip);
+
+        final TextView fillPhone;
+        fillPhone = (TextView)findViewById(R.id.fill_phone);
+
+
+        fillName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillName.setText("");
+            }
+        });
+        fillEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillEmail.setText("");
+            }
+        });
+        fillPW1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillPW1.setText("");
+            }
+        });
+        fillPW2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillPW2.setText("");
+            }
+        });
+        fillStreet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillStreet.setText("");
+            }
+        });
+        fillStreet2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillStreet2.setText("");
+            }
+        });
+        fillCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillCity.setText("");
+            }
+        });
+        fillZip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillZip.setText("");
+            }
+        });
+        fillPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillPhone.setText("");
+            }
+        });
 
         // Set up state spinner
         createStateSpinner();
