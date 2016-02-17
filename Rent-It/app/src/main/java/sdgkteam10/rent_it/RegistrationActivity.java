@@ -310,7 +310,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                fillAddress2.getText().toString(),
                                fillCity.getText().toString(),
                                fillState.getSelectedItem().toString(),
-                               fillZip.getText().toString()),
+                               fillZip.getText().toString(),
                                fillPhone.getText().toString(),
                                getApplicationContext()
                        );

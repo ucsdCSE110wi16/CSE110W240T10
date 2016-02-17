@@ -47,7 +47,7 @@ public class User {
     User(){}
 
     //new user -- for use with registering new users
-    User(String name, String email, String pw, String a1, String a2,
+    public User(String name, String email, String pw, String a1, String a2,
          String city, String state, String zip, String phone, Context context){
         this.name = name;
         this.email = email;
@@ -78,7 +78,7 @@ public class User {
     }
 
     //"getter" ctor that pulls an existing user from the database
-    User(AuthData data, Context context)
+    public User(AuthData data, Context context)
     {
         this.appContext = context;
         this.m_ref = new Firebase(this.appContext.getString(R.string.firebase_url));
@@ -114,7 +114,7 @@ public class User {
     }
 
     //login ctor
-    User(String email, String password, Context context)
+    public User(String email, String password, Context context)
     {
         this.email = email;
         this.pw = password;
