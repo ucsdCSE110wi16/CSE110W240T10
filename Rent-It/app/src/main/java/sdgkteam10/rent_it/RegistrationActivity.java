@@ -19,6 +19,7 @@ import android.support.v4.app.NavUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,16 +44,16 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class RegistrationActivity extends AppCompatActivity {
 
     //UI elements
-    private TextView fillName;
-    private TextView fillEmail;
-    private TextView fillPW1;
-    private TextView fillPW2;
-    private TextView fillAddress;
-    private TextView fillAddress2;
-    private TextView fillCity;
+    private EditText fillName;
+    private EditText fillEmail;
+    private EditText fillPW1;
+    private EditText fillPW2;
+    private EditText fillAddress;
+    private EditText fillAddress2;
+    private EditText fillCity;
     private Spinner fillState;
-    private TextView fillZip;
-    private TextView fillPhone;
+    private EditText fillZip;
+    private EditText fillPhone;
 
     //user to be created
     private User user = null;
@@ -90,20 +91,20 @@ public class RegistrationActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
 
-//    private void addRedAsterisk(TextView t) {
-//        CharSequence text = t.getText();
-//        CharSequence redAsterisk = "*";
-//        SpannableStringBuilder b = new SpannableStringBuilder();
-//
-//        b.append(text);
-//        int start = b.length();
-//        b.append(redAsterisk);
-//        int end = b.length();
-//
-//        b.setSpan(new ForegroundColorSpan(Color.RED), start, end,
-//                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        t.setText(b);
-//    }
+    private void addRedAsterisk(EditText t) {
+        CharSequence text = t.getText();
+        CharSequence redAsterisk = "*";
+        SpannableStringBuilder b = new SpannableStringBuilder();
+
+        b.append(text);
+        int start = b.length();
+        b.append(redAsterisk);
+        int end = b.length();
+
+        b.setSpan(new ForegroundColorSpan(Color.parseColor("#e1a7a7")), start, end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        t.setText(b);
+    }
 
     private void createStateSpinner() {
         /*
@@ -221,16 +222,21 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //initialize the UI elements
         Button button_send = (Button)findViewById(R.id.submit_button);
-        fillName = (TextView)findViewById(R.id.fill_name);
-        fillEmail = (TextView)findViewById(R.id.fill_email);
-        fillPW1 = (TextView)findViewById(R.id.fill_pw1);
-        fillPW2 = (TextView)findViewById(R.id.fill_pw2);
-        fillAddress = (TextView)findViewById(R.id.fill_address1);
-        fillAddress2 = (TextView)findViewById(R.id.fill_address2);
-        fillCity = (TextView)findViewById(R.id.fill_city);
+        fillName = (EditText)findViewById(R.id.fill_name);
+        addRedAsterisk(fillName);
+        fillEmail = (EditText)findViewById(R.id.fill_email);
+        addRedAsterisk(fillEmail);
+        fillPW1 = (EditText)findViewById(R.id.fill_pw1);
+        addRedAsterisk(fillPW1);
+        fillPW2 = (EditText)findViewById(R.id.fill_pw2);
+        addRedAsterisk(fillPW2);
+        fillAddress = (EditText)findViewById(R.id.fill_address1);
+        fillAddress2 = (EditText)findViewById(R.id.fill_address2);
+        fillCity = (EditText)findViewById(R.id.fill_city);
         fillState = (Spinner) findViewById(R.id.fill_state);
-        fillZip = (TextView)findViewById(R.id.fill_zip);
-        fillPhone = (TextView)findViewById(R.id.fill_phone);
+        fillZip = (EditText)findViewById(R.id.fill_zip);
+        addRedAsterisk(fillZip);
+        fillPhone = (EditText)findViewById(R.id.fill_phone);
 
         fillName.setOnClickListener(new View.OnClickListener() {
             @Override
