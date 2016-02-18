@@ -34,6 +34,8 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import static android.graphics.Color.parseColor;
+
 
 //TODO: add Firebase authorization, persistence, user account creation
 //TODO: add event listeners to buttons, storing data from datafiezlds
@@ -102,7 +104,7 @@ public class RegistrationActivity extends AppCompatActivity {
         int start = 0;
         int end = 1;
 
-        b.setSpan(new ForegroundColorSpan(Color.parseColor("#e1a7a7")), start, end,
+        b.setSpan(new ForegroundColorSpan(parseColor("#e1a7a7")), start, end,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         t.setHint(b);
     }
@@ -224,29 +226,29 @@ public class RegistrationActivity extends AppCompatActivity {
         //initialize the UI elements
         Button button_send = (Button)findViewById(R.id.submit_button);
         fillName = (EditText)findViewById(R.id.fill_name);
-        fillName.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillName.setHintTextColor(parseColor("#63dfb2"));
         addRedAsterisk(fillName);
         fillEmail = (EditText)findViewById(R.id.fill_email);
-        fillEmail.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillEmail.setHintTextColor(parseColor("#63dfb2"));
         addRedAsterisk(fillEmail);
         fillPW1 = (EditText)findViewById(R.id.fill_pw1);
-        fillPW1.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillPW1.setHintTextColor(parseColor("#63dfb2"));
         addRedAsterisk(fillPW1);
         fillPW2 = (EditText)findViewById(R.id.fill_pw2);
-        fillPW2.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillPW2.setHintTextColor(parseColor("#63dfb2"));
         addRedAsterisk(fillPW2);
         fillAddress = (EditText)findViewById(R.id.fill_address1);
-        fillAddress.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillAddress.setHintTextColor(parseColor("#63dfb2"));
         fillAddress2 = (EditText)findViewById(R.id.fill_address2);
-        fillAddress2.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillAddress2.setHintTextColor(parseColor("#63dfb2"));
         fillCity = (EditText)findViewById(R.id.fill_city);
-        fillCity.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillCity.setHintTextColor(parseColor("#63dfb2"));
         fillState = (Spinner) findViewById(R.id.fill_state);
         fillZip = (EditText)findViewById(R.id.fill_zip);
-        fillZip.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillZip.setHintTextColor(parseColor("#63dfb2"));
         addRedAsterisk(fillZip);
         fillPhone = (EditText)findViewById(R.id.fill_phone);
-        fillPhone.setHintTextColor(Color.parseColor("#e1a7a7"));
+        fillPhone.setHintTextColor(parseColor("#63dfb2"));
 
         fillName.setOnClickListener(new View.OnClickListener() {
             @Override
