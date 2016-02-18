@@ -124,7 +124,7 @@
                 android:layout_width="301dp"
                 android:layout_height="46dp"
                 android:layout_gravity="center_horizontal"
-                android:spinnerMode="dialog" />
+                android:spinnerMode="dropdown" />
 
             <EditText
                 android:id="@+id/fill_zip"

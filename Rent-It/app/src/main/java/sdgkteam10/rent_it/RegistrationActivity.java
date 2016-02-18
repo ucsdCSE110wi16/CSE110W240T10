@@ -224,20 +224,29 @@ public class RegistrationActivity extends AppCompatActivity {
         //initialize the UI elements
         Button button_send = (Button)findViewById(R.id.submit_button);
         fillName = (EditText)findViewById(R.id.fill_name);
+        fillName.setHintTextColor(Color.parseColor("#e1a7a7"));
         addRedAsterisk(fillName);
         fillEmail = (EditText)findViewById(R.id.fill_email);
+        fillEmail.setHintTextColor(Color.parseColor("#e1a7a7"));
         addRedAsterisk(fillEmail);
         fillPW1 = (EditText)findViewById(R.id.fill_pw1);
+        fillPW1.setHintTextColor(Color.parseColor("#e1a7a7"));
         addRedAsterisk(fillPW1);
         fillPW2 = (EditText)findViewById(R.id.fill_pw2);
+        fillPW2.setHintTextColor(Color.parseColor("#e1a7a7"));
         addRedAsterisk(fillPW2);
         fillAddress = (EditText)findViewById(R.id.fill_address1);
+        fillAddress.setHintTextColor(Color.parseColor("#e1a7a7"));
         fillAddress2 = (EditText)findViewById(R.id.fill_address2);
+        fillAddress2.setHintTextColor(Color.parseColor("#e1a7a7"));
         fillCity = (EditText)findViewById(R.id.fill_city);
+        fillCity.setHintTextColor(Color.parseColor("#e1a7a7"));
         fillState = (Spinner) findViewById(R.id.fill_state);
         fillZip = (EditText)findViewById(R.id.fill_zip);
+        fillZip.setHintTextColor(Color.parseColor("#e1a7a7"));
         addRedAsterisk(fillZip);
         fillPhone = (EditText)findViewById(R.id.fill_phone);
+        fillPhone.setHintTextColor(Color.parseColor("#e1a7a7"));
 
         fillName.setOnClickListener(new View.OnClickListener() {
             @Override
