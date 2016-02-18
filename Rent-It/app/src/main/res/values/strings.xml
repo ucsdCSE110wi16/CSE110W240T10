@@ -57,6 +57,15 @@
     <string name="email">Email:</string>
     <string name="emailatemail">email@email.com</string>
     <string name="phone_">Phone:</string>
+    <string name="fill_name_hint">Name</string>
+    <string name="fill_email_str">Email</string>
+    <string name="fill_pw1_str">Password</string>
+    <string name="fill_pw2_str">Password again</string>
+    <string name="fill_address1_str">Street Address</string>
+    <string name="fill_address2_str">Address 2</string>
+    <string name="fill_city_str">City</string>
+    <string name="fill_zip_str">Zipcode</string>
+    <string name="fill_phone_str">Phone</string>
 
     <string-array name="rentLength_arrays">
          <item>Per Hour</item>

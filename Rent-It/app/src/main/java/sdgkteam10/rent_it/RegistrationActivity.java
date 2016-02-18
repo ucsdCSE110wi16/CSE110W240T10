@@ -93,18 +93,18 @@ public class RegistrationActivity extends AppCompatActivity {
     private GoogleApiClient client;
 
     private void addRedAsterisk(EditText t) {
-        CharSequence text = t.getText();
+        CharSequence text = t.getHint();
         CharSequence redAsterisk = "*";
         SpannableStringBuilder b = new SpannableStringBuilder();
 
-        b.append(text);
-        int start = b.length();
         b.append(redAsterisk);
-        int end = b.length();
+        b.append(text);
+        int start = 0;
+        int end = 1;
 
         b.setSpan(new ForegroundColorSpan(Color.parseColor("#e1a7a7")), start, end,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        t.setText(b);
+        t.setHint(b);
     }
 
     private void createStateSpinner() {
