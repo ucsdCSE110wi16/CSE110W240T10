@@ -28,15 +28,22 @@ public class ProfileActivity extends AppCompatActivity {
 
         Firebase.setAndroidContext(this);
         myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+    }
+
+    protected void onResume() {
+        super.onResume();
 
         //get the currently logged in user
         //TODO: change to user.isLoggedIn()?
         AuthData userData = myFirebaseRef.getAuth();
 
         //user is logged in
+        //TODO: waitForUpdate() causes black screen, but need to wait for database to update
+        //TODO:     solution: turn this into an AsyncTask
         if (userData != null)
         {
             user = new User(userData, getApplicationContext());
+            //user.waitForUpdate();
             populateProfileFields();
         }
         //user is not logged in
@@ -48,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void populateProfileFields()
     {
+        userName.setText(user.getName());
         userEmail.setText(user.getEmail());
     }
 }
