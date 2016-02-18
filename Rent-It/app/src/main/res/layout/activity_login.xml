@@ -19,16 +19,6 @@
         android:id="@+id/login_progress"
         android:indeterminate="false" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/Rentit"
-        android:id="@+id/textView_Rentit"
-        android:textSize="78sp"
-        android:textColor="#40c1b8"
-        android:elegantTextHeight="true" />
-
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
@@ -41,6 +31,17 @@
             android:weightSum="1"
             android:orientation="vertical"
             android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/Rentit"
+                android:id="@+id/textView_Rentit"
+                android:textSize="78sp"
+                android:textColor="#40c1b8"
+                android:elegantTextHeight="true"
+                android:layout_gravity="center" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
