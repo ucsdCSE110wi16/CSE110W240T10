@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--TODO: shrink the size of the item price field so that the Per Hour thing is readable -->
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
@@ -20,6 +18,8 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             tools:context="sdgkteam10.rent_it.CreateListingActivity"
             android:background="#0e2a28">
 
@@ -29,7 +29,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/title_CL"
                 android:layout_gravity="center_horizontal"
-                android:text="Post an Item"
+                android:text="@string/postAnItem_string"
                 android:textSize="30sp"
                 android:textColor="#40c1b8"
                 android:layout_alignParentTop="true"
@@ -39,7 +39,7 @@
                 android:layout_width="273dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/itemNameField_CL"
-                android:hint="Bicycle"
+                android:hint="@string/bicycle_string"
                 android:singleLine="true"
                 android:textColorHint="#008279"
                 android:textColor="#008279"
@@ -54,26 +54,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:ems="10"
                 android:id="@+id/itemPriceField_CL"
                 android:textColorHint="#008279"
-                android:hint="$20.00"
+                android:hint="@string/examplePrice_string"
                 android:textIsSelectable="false"
                 android:textColor="#008279"
+                android:ems="7"
+                android:maxEms="7"
                 android:layout_alignLeft="@+id/itemNameField_CL"
                 android:layout_alignStart="@+id/itemNameField_CL"
                 android:layout_below="@+id/itemNameField_CL"
-                android:layout_toLeftOf="@+id/itemPriceSpinner_CL" />
+                android:layout_toLeftOf="@+id/itemPriceSpinner_CL"
+                android:layout_toStartOf="@+id/itemPriceSpinner_CL" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Rent Duration:"
+                android:text="Min Rent Duration:"
                 android:id="@+id/rentDuration_CL"
                 android:textSize="22sp"
-                android:textColor="#008279"
-                android:layout_marginTop="42dp"
+                android:textColor="#40c1b8"
+                android:layout_marginTop="37dp"
                 android:layout_below="@+id/categorySpinner_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -82,7 +84,7 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Photos"
+                android:text="@string/addPhotos_cl"
                 android:id="@+id/addPhotosButton_CL"
                 android:layout_marginTop="34dp"
                 android:layout_below="@+id/itemDescriptionField_CL"
@@ -93,37 +95,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Item Name:"
+                android:text="@string/itemName_string"
                 android:id="@+id/itemName_CL"
                 android:layout_alignBaseline="@+id/itemNameField_CL"
                 android:layout_alignBottom="@+id/itemNameField_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:textColor="#008279" />
+                android:textColor="#40c1b8" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Item Price:"
+                android:text="@string/itemPrice_string"
                 android:id="@+id/itemPrice_CL"
                 android:layout_alignBaseline="@+id/itemPriceField_CL"
                 android:layout_alignBottom="@+id/itemPriceField_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_toStartOf="@+id/title_CL"
-                android:textColor="#008279"
+                android:textColor="#40c1b8"
                 android:layout_toLeftOf="@+id/title_CL" />
 
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/itemPriceSpinner_CL"
-                android:entries="@array/rentLength_arrays"
+                android:entries="@array/rentLength_array"
                 android:layout_below="@+id/itemNameField_CL"
-                android:layout_toRightOf="@+id/title_CL"
                 android:layout_alignBottom="@+id/itemPrice_CL"
-                android:textColor="#008279" />
+                android:textColor="#008279"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/rentDuration_CL"
+                android:layout_toRightOf="@+id/rentDuration_CL" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -133,7 +138,7 @@
                 android:ems="10"
                 android:id="@+id/itemDescriptionField_CL"
                 android:textColorHint="#008279"
-                android:hint="Describe item in 150 characters or less"
+                android:hint="@string/charLimit_string"
                 android:textColor="#008279"
                 android:layout_below="@+id/itemDescription_CL"
                 android:layout_alignParentLeft="true"
@@ -143,9 +148,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Description:"
+                android:text="@string/desc_string"
                 android:id="@+id/itemDescription_CL"
-                android:textColor="#008279"
+                android:textColor="#40c1b8"
                 android:layout_marginTop="31dp"
                 android:layout_below="@+id/itemPriceField_CL"
                 android:layout_alignParentLeft="true"
@@ -155,9 +160,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Select Category:"
+                android:text="@string/category_string"
                 android:id="@+id/category_CL"
-                android:textColor="#008279"
+                android:textColor="#40c1b8"
                 android:layout_marginTop="40dp"
                 android:layout_below="@+id/addPhotosButton_CL"
                 android:layout_alignParentLeft="true"
@@ -167,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/categorySpinner_CL"
-                android:entries="@array/itemCategories_arrays"
+                android:entries="@array/itemCategories_array"
                 android:layout_toRightOf="@+id/rentDuration_CL"
                 android:layout_alignTop="@+id/category_CL"
                 android:textColor="#008279"
@@ -175,40 +180,25 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/startDateField_CL"
-                android:layout_below="@+id/rentDuration_CL"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:hint="Starting Date"
-                android:layout_alignRight="@+id/rentDuration_CL"
-                android:layout_alignEnd="@+id/rentDuration_CL" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/endDateField_CL"
-                android:layout_alignTop="@+id/startDateField_CL"
-                android:layout_toRightOf="@+id/rentDuration_CL"
-                android:layout_toEndOf="@+id/rentDuration_CL"
-                android:layout_marginLeft="44dp"
-                android:layout_marginStart="44dp"
-                android:hint="Ending Date" />
-
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finish"
+                android:text="@string/finish_string"
                 android:id="@+id/finishButton_CL"
+                android:layout_marginBottom="25dp"
                 android:layout_alignParentBottom="true"
-                android:layout_alignRight="@+id/endDateField_CL"
-                android:layout_alignEnd="@+id/endDateField_CL" />
+                android:layout_toRightOf="@+id/title_CL"
+                android:layout_toEndOf="@+id/title_CL" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivImage_CL"
+                android:layout_alignTop="@+id/addPhotosButton_CL"
+                android:layout_toRightOf="@+id/addPhotosButton_CL"
+                android:layout_above="@+id/categorySpinner_CL"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
     </LinearLayout>

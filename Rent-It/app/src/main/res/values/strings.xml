@@ -19,7 +19,6 @@
     <string name="profile_activity">My Profile</string>
 
     <string name="title_activity_registration">RegistrationActivity</string>
-    <string name="title_activity_createListing">New Posting</string> 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main">Rent-It</string>
@@ -67,28 +66,46 @@
     <string name="fill_zip_str">Zipcode</string>
     <string name="fill_phone_str">Phone</string>
 
-    <string-array name="rentLength_arrays">
-         <item>Per Hour</item>
-         <item>Per Day</item>
-         <item>Per Month</item>
+
+    <!-- createListingActivity Strings-->
+    <string name="title_activity_createListing">New Posting</string>
+    <string name="selectImageLoc">Select Image Location</string>
+    <string name="itemName_string">Item Name:</string>
+    <string name="postAnItem_string">Post an Item</string>
+    <string name="bicycle_string">Bicycle</string>
+    <string name="examplePrice_string">$20.00</string>
+    <string name="addPhotos_cl">Add Photos</string>
+    <string name="itemPrice_string">Item Price:</string>
+    <string name="charLimit_string">Describe item in 150 characters or less</string>
+    <string name="desc_string">Description:</string>
+    <string name="category_string">Select Category:</string>
+    <string name="finish_string">Finish</string>
+
+    <string-array name="rentLength_array">
+        <item>Select</item>
+        <item>Per Hour</item>
+        <item>Per Day</item>
+        <item>Per Month</item>
     </string-array>
 
-    <string-array name="itemCategories_arrays">
-         <item>Arts</item>
-         <item>Baby</item>
-         <item>Books</item>
-         <item>Business</item>
-         <item>Clothes/Acc</item>
-         <item>Electronics</item>
-         <item>Equipment</item>
-         <item>Furniture</item>
-         <item>Health/Beauty</item>
-         <item>Photography</item>
-         <item>Sporting</item>
-         <item>Toys/Games</item>
-         <item>Vehicles</item>
-         <item>Other</item>
+    <string-array name="itemCategories_array">
+        <item>Select</item>
+        <item>Arts</item>
+        <item>Baby</item>
+        <item>Books</item>
+        <item>Business</item>
+        <item>Clothes/Acc</item>
+        <item>Electronics</item>
+        <item>Equipment</item>
+        <item>Furniture</item>
+        <item>Health/Beauty</item>
+        <item>Photography</item>
+        <item>Sporting</item>
+        <item>Toys/Games</item>
+        <item>Vehicles</item>
+        <item>Other</item>
     </string-array>
+    <!-- End of createListingActivity Strings-->
 
     <string-array name="states_array">
         <item>Select State</item>
