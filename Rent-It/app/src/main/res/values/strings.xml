@@ -80,12 +80,20 @@
     <string name="desc_string">Description:</string>
     <string name="category_string">Select Category:</string>
     <string name="finish_string">Finish</string>
+    <string name="minRentDuration">10</string>
 
     <string-array name="rentLength_array">
         <item>Select</item>
         <item>Per Hour</item>
         <item>Per Day</item>
         <item>Per Month</item>
+    </string-array>
+
+    <string-array name="minRentDur_array">
+        <item>Select</item>
+        <item>Hour(s)</item>
+        <item>Day(s)</item>
+        <item>Month(s)</item>
     </string-array>
 
     <string-array name="itemCategories_array">

@@ -200,6 +200,36 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minRentSpinner_CL"
+                android:entries="@array/minRentDur_array"
+                android:textColor="#008279"
+                android:layout_below="@+id/rentDuration_CL"
+                android:layout_alignRight="@+id/finishButton_CL"
+                android:layout_alignEnd="@+id/finishButton_CL"
+                android:layout_above="@+id/finishButton_CL"
+                android:layout_toRightOf="@+id/rentDuration_CL"
+                android:layout_toEndOf="@+id/rentDuration_CL" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:id="@+id/minRentDuration_CL"
+                android:textColorHint="#008279"
+                android:hint="10"
+                android:textIsSelectable="false"
+                android:textColor="#008279"
+                android:ems="7"
+                android:maxEms="7"
+                android:layout_below="@+id/rentDuration_CL"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/minRentSpinner_CL"
+                android:layout_toStartOf="@+id/minRentSpinner_CL" />
+
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

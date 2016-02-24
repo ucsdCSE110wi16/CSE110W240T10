@@ -35,8 +35,6 @@ import java.util.ArrayList;
 //To Do: Make money field only 2 decimal length
 
 
-
-
 public class CreateListingActivity extends AppCompatActivity {
     static final int IMAGE_CAMERA = 1;
     static final int IMAGE_PICK = 2;
@@ -46,17 +44,17 @@ public class CreateListingActivity extends AppCompatActivity {
     private EditText itemNameField_CL;
     private EditText itemPriceField_CL;
     private EditText itemDescriptionField_CL;
+    private EditText minRentDuration_CL;
 
     private Button finishButton_CL;
     private Button addPhotosButton_CL;
 
     private Spinner itemPriceSpinner_CL;
     private Spinner categorySpinner_CL;
+    private Spinner minRentSpinner_CL;
 
     private ArrayList<Bitmap> bitmapArray = new ArrayList<Bitmap>();
     private ImageView ivImage_CL;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,33 +79,36 @@ public class CreateListingActivity extends AppCompatActivity {
 
         //when the finish button is pressed call check form method
         finishButton_CL.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 checkForm();
             }
         });
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-
 
 
     /*
      * gather all widget ids that will be used in this file
      */
-    private void getIds(){
+    private void getIds() {
 
-        itemNameField_CL = (EditText)findViewById(R.id.itemNameField_CL);
-        itemPriceField_CL = (EditText)findViewById(R.id.itemPriceField_CL);
-        itemDescriptionField_CL = (EditText)findViewById(R.id.itemDescriptionField_CL);
+        itemNameField_CL = (EditText) findViewById(R.id.itemNameField_CL);
+        itemPriceField_CL = (EditText) findViewById(R.id.itemPriceField_CL);
+        itemDescriptionField_CL = (EditText) findViewById(R.id.itemDescriptionField_CL);
+        minRentDuration_CL = (EditText) findViewById(R.id.minRentDuration_CL);
 
-        addPhotosButton_CL = (Button)findViewById(R.id.addPhotosButton_CL);
-        finishButton_CL = (Button)findViewById(R.id.finishButton_CL);
+        addPhotosButton_CL = (Button) findViewById(R.id.addPhotosButton_CL);
+        finishButton_CL = (Button) findViewById(R.id.finishButton_CL);
 
-        itemPriceSpinner_CL = (Spinner)findViewById(R.id.itemPriceSpinner_CL);
-        categorySpinner_CL = (Spinner)findViewById(R.id.categorySpinner_CL);
+        itemPriceSpinner_CL = (Spinner) findViewById(R.id.itemPriceSpinner_CL);
+        categorySpinner_CL = (Spinner) findViewById(R.id.categorySpinner_CL);
+        minRentSpinner_CL = (Spinner) findViewById(R.id.minRentSpinner_CL);
 
-        ivImage_CL = (ImageView)findViewById(R.id.ivImage_CL);
+        ivImage_CL = (ImageView) findViewById(R.id.ivImage_CL);
         parentLayout = findViewById(R.id.ScrollView01);
     }
-
 
 
     /*
@@ -115,7 +116,7 @@ public class CreateListingActivity extends AppCompatActivity {
      * the user to select an image from the camera or gallery.
      * call the respective intent accordingly
      */
-    private void selectImages(){
+    private void selectImages() {
 
         final CharSequence[] items = {"From Camera", "From Gallery", "Exit"};
 
@@ -129,28 +130,25 @@ public class CreateListingActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int index) {
 
                 //if from camera is selected open the camera
-                if (items[index].equals("From Camera"))
-                {
+                if (items[index].equals("From Camera")) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, IMAGE_CAMERA);
                 }
 
                 //if from gallery is selected open the gallery
-                else if (items[index].equals("From Gallery"))
-                {
+                else if (items[index].equals("From Gallery")) {
                     Intent intent = new Intent(Intent.ACTION_PICK,
                             MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                     //can only select multiple images with api 18+
-                   // intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    // intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
 
                     intent.setType("image/*");
                     startActivityForResult(intent, IMAGE_PICK);
                 }
 
                 //if exit is selected close the dialog box
-                else if (items[index].equals("Exit"))
-                {
+                else if (items[index].equals("Exit")) {
                     dialog.dismiss();
                 }
             }
@@ -160,22 +158,19 @@ public class CreateListingActivity extends AppCompatActivity {
     }
 
 
-
     /*
      * Handles data returned from camera and gallery intent
      * saves images into bitmap array list
      */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
 
         //check if operation was successful before proceeding
-        if(resultCode == Activity.RESULT_OK )
-        {
+        if (resultCode == Activity.RESULT_OK) {
             //handle data from camera
-            if(requestCode == IMAGE_CAMERA)
-            {
+            if (requestCode == IMAGE_CAMERA) {
                 //getting data from camera and cast into image
                 Bitmap bmp = (Bitmap) data.getExtras().get("data");
 
@@ -187,14 +182,13 @@ public class CreateListingActivity extends AppCompatActivity {
             }
 
             //handle data from gallery
-            else if(requestCode == IMAGE_PICK)
-            {
+            else if (requestCode == IMAGE_PICK) {
                 Uri selectedImageUri = data.getData();
-                String[] projection = { MediaStore.MediaColumns.DATA };
+                String[] projection = {MediaStore.MediaColumns.DATA};
 
-                CursorLoader cursorLoader = new CursorLoader(this,selectedImageUri, projection, null, null,
+                CursorLoader cursorLoader = new CursorLoader(this, selectedImageUri, projection, null, null,
                         null);
-                Cursor cursor =cursorLoader.loadInBackground();
+                Cursor cursor = cursorLoader.loadInBackground();
 
                 int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
                 cursor.moveToFirst();
@@ -225,7 +219,6 @@ public class CreateListingActivity extends AppCompatActivity {
     }
 
 
-
     /*
      * will check to see if all input fields are completed
      * if they are not error messages are displayed accordingly
@@ -238,40 +231,45 @@ public class CreateListingActivity extends AppCompatActivity {
         itemNameField_CL.setError(null);
         itemPriceField_CL.setError(null);
         itemDescriptionField_CL.setError(null);
+        minRentDuration_CL.setError(null);
 
         //check all fields and set error message
-        if( itemNameField_CL.getText().toString().trim().equals(""))
-        {
-            itemNameField_CL.setError("Item name is required!" );
+        if (itemNameField_CL.getText().toString().trim().equals("")) {
+            itemNameField_CL.setError("Item name is required!");
             moveOn = false;
         }
 
-        if( itemPriceField_CL.getText().toString().trim().equals(""))
-        {
-            itemPriceField_CL.setError("Item price is required!" );
+        if (itemPriceField_CL.getText().toString().trim().equals("")) {
+            itemPriceField_CL.setError("Item price is required!");
             moveOn = false;
         }
 
-        if( itemDescriptionField_CL.getText().toString().trim().equals(""))
-        {
-            itemDescriptionField_CL.setError("Item description is required!" );
+        if (itemDescriptionField_CL.getText().toString().trim().equals("")) {
+            itemDescriptionField_CL.setError("Item description is required!");
             moveOn = false;
         }
 
-        if( itemPriceSpinner_CL.getSelectedItem().toString().trim().equals("Select"))
-        {
-            ((TextView)itemPriceSpinner_CL.getSelectedView()).setError("");
+        if (minRentDuration_CL.getText().toString().trim().equals("")) {
+            minRentDuration_CL.setError("Minimum rent duration is required!");
             moveOn = false;
         }
 
-        if( categorySpinner_CL.getSelectedItem().toString().trim().equals("Select"))
-        {
-            ((TextView)categorySpinner_CL.getSelectedView()).setError("");
+        if (itemPriceSpinner_CL.getSelectedItem().toString().trim().equals("Select")) {
+            ((TextView) itemPriceSpinner_CL.getSelectedView()).setError("");
             moveOn = false;
         }
 
-        if(bitmapArray.isEmpty())
-        {
+        if (categorySpinner_CL.getSelectedItem().toString().trim().equals("Select")) {
+            ((TextView) categorySpinner_CL.getSelectedView()).setError("");
+            moveOn = false;
+        }
+
+        if (minRentSpinner_CL.getSelectedItem().toString().trim().equals("Select")) {
+            ((TextView) minRentSpinner_CL.getSelectedView()).setError("");
+            moveOn = false;
+        }
+
+        if (bitmapArray.isEmpty()) {
             Snackbar snackbar = Snackbar
                     .make(parentLayout, "Error: Please add some Photos", Snackbar.LENGTH_LONG);
             snackbar.show();
@@ -279,8 +277,7 @@ public class CreateListingActivity extends AppCompatActivity {
         }
 
         //if all fields are set than upload to fire base
-        if(moveOn)
-        {
+        if (moveOn) {
             uploadInfo();
         }
 
@@ -293,14 +290,12 @@ public class CreateListingActivity extends AppCompatActivity {
      * gather all info from text fields and drop down boxes
      * upload all info to fire base
      */
-    private void uploadInfo()
-    {
+    private void uploadInfo() {
         bitmapArray.trimToSize();
         String[] stringImgArray = new String[bitmapArray.size()];
 
         //convert bitmap images to base 64 string
-        for(int i = 0; i < bitmapArray.size(); i++)
-        {
+        for (int i = 0; i < bitmapArray.size(); i++) {
             Bitmap bmp = bitmapArray.get(i);
 
             //stream to write compressed data
@@ -331,7 +326,7 @@ public class CreateListingActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 //done with this activity
                 finish();
-        }
+            }
 
         });
 
@@ -347,19 +342,24 @@ public class CreateListingActivity extends AppCompatActivity {
 
         ArrayAdapter<CharSequence> priceAdapter;
         ArrayAdapter<CharSequence> categoryAdapter;
+        ArrayAdapter<CharSequence> minRent;
 
         //adds adapter to specified spinner
         priceAdapter = ArrayAdapter.createFromResource(this, R.array.rentLength_array,
                 R.layout.special_spinner_cl);
         categoryAdapter = ArrayAdapter.createFromResource(this, R.array.itemCategories_array,
                 R.layout.special_spinner_cl);
+        minRent = ArrayAdapter.createFromResource(this, R.array.minRentDur_array,
+                R.layout.special_spinner_cl);
 
         //changes the layout
         priceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        minRent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         itemPriceSpinner_CL.setAdapter(priceAdapter);
         categorySpinner_CL.setAdapter(categoryAdapter);
+        minRentSpinner_CL.setAdapter(minRent);
 
         itemPriceSpinner_CL.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -373,6 +373,46 @@ public class CreateListingActivity extends AppCompatActivity {
             }
         });
     }
+/* more junk
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "CreateListing Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "CreateListing Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }*/
 }
 
 

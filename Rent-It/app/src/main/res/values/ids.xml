@@ -2,4 +2,5 @@
 <resources>
     <item name="name" type="id">name</item>
     <item name="zip" type="id">zipcode</item>
+    <item name="minRentDuration_CL" type="id" />
 </resources>
