@@ -48,14 +48,8 @@
     <string name="city">City</string>
     <string name="state">State</string>
     <string name="required_field">* Indicates required field</string>
-    <string name="zip">Zipcode</string>
+    <string name="zip">Zip Code</string>
     <string name="phone">Phone</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="user_name">Super Mario</string>
-    <string name="contact_info">Contact Info</string>
-    <string name="email">Email:</string>
-    <string name="emailatemail">email@email.com</string>
-    <string name="phone_">Phone:</string>
     <string name="fill_name_hint">Name</string>
     <string name="fill_email_str">Email</string>
     <string name="fill_pw1_str">Password</string>
@@ -63,8 +57,16 @@
     <string name="fill_address1_str">Street Address</string>
     <string name="fill_address2_str">Address 2</string>
     <string name="fill_city_str">City</string>
-    <string name="fill_zip_str">Zipcode</string>
+    <string name="fill_zip_str">Zip Code</string>
     <string name="fill_phone_str">Phone</string>
+
+    <!-- profileActivity Strings-->
+    <string name="edit_profile">Edit Profile</string>
+    <string name="load">loading...</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="email">Email:</string>
+    <string name="phone_">Phone:</string>
+
 
 
     <!-- createListingActivity Strings-->

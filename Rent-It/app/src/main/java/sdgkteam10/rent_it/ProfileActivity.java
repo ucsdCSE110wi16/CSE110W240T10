@@ -13,6 +13,11 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userName;
     private TextView userEmail;
     private TextView userPhone;
+    private TextView address1;
+    private TextView address2;
+    private TextView city;
+    private TextView state;
+    private TextView zip;
 
     private Firebase myFirebaseRef;
 
