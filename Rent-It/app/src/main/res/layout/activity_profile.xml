@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="@string/user_name"
+                android:text="@string/load"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#ffffff"
@@ -87,7 +87,7 @@
                 android:layout_alignTop="@+id/email_label"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                android:text="@string/emailatemail"
+                android:text="@string/load"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -116,7 +116,7 @@
                 android:ems="10"
                 android:inputType="phone"
                 android:phoneNumber="false"
-                android:text="5551234567"
+                android:text="@string/load"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -156,7 +156,7 @@
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:maxLines="5"
-                android:text="Any other contact information a user might want to put in here"
+                android:text="@string/load"
                 android:textColor="#ffffff"
                 android:layout_below="@+id/profile_state"
                 android:layout_alignParentRight="true"
@@ -176,7 +176,7 @@
                 android:ems="10"
                 android:maxLines="4"
                 android:singleLine="true"
-                android:text="1234 Rainbow Rd"
+                android:text="@string/load"
                 android:textColor="#ffffff" />
 
             <EditText
@@ -186,7 +186,7 @@
                 android:ems="10"
                 android:maxLines="4"
                 android:singleLine="true"
-                android:text="Apt 23"
+                android:text="@string/load"
                 android:textColor="#ffffff"
                 android:layout_below="@+id/profile_address1"
                 android:layout_toRightOf="@+id/address_label"
@@ -200,7 +200,7 @@
                 android:ems="10"
                 android:maxLines="4"
                 android:singleLine="true"
-                android:text="San Diego"
+                android:text="@string/load"
                 android:textColor="#ffffff"
                 android:layout_below="@+id/profile_address2"
                 android:layout_alignRight="@+id/profile_other"
@@ -215,7 +215,7 @@
                 android:ems="10"
                 android:maxLines="4"
                 android:singleLine="true"
-                android:text="California"
+                android:text="@string/load"
                 android:textColor="#ffffff"
                 android:layout_below="@+id/profile_city"
                 android:layout_alignLeft="@+id/profile_city"
@@ -230,7 +230,7 @@
                 android:ems="10"
                 android:maxLines="4"
                 android:singleLine="true"
-                android:text="92118"
+                android:text="@string/load"
                 android:textColor="#ffffff"
                 android:layout_below="@+id/profile_city"
                 android:layout_alignRight="@+id/profile_city"
