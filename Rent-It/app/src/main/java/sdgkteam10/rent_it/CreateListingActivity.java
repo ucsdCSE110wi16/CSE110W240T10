@@ -45,9 +45,12 @@ public class CreateListingActivity extends AppCompatActivity {
     private EditText itemPriceField_CL;
     private EditText itemDescriptionField_CL;
     private EditText minRentDuration_CL;
+    private EditText amountOfDeposit_CL;
 
     private Button finishButton_CL;
     private Button addPhotosButton_CL;
+    private Button depositReq_YES_CL;
+    private Button depositReq_NO_CL;
 
     private Spinner itemPriceSpinner_CL;
     private Spinner categorySpinner_CL;

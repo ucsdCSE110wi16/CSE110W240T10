@@ -83,6 +83,8 @@
     <string name="category_string">Select Category:</string>
     <string name="finish_string">Finish</string>
     <string name="minRentDuration">10</string>
+    <string name="depositQues_string">Is there a required deposit for this item?</string>
+    <string name="ifDepIsReq_string">If yes, please enter the amount. Ex: $10</string>
 
     <string-array name="rentLength_array">
         <item>Select</item>
