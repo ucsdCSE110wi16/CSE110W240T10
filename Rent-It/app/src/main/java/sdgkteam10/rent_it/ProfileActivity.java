@@ -77,18 +77,6 @@ public class ProfileActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        /*
-        db.getRef().child("users").addAuthStateListener(new Firebase.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(AuthData authData) {
-                if (authData != null) {
-                    //user logged in -- populate the fields
-                    userName.setText((String) authData.getProviderData().get("name"));
-                    populateProfileFields();
-                }
-            }
-        });*/
-
         //populate the fields when the user data is all loaded
         db.getRef().child("users").addValueEventListener(new ValueEventListener() {
             @Override

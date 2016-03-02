@@ -34,9 +34,10 @@
             <Button
                 android:id="@+id/button"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="75dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentRight="false"
+                android:layout_centerHorizontal="true"
                 android:layout_alignTop="@+id/imageView"
                 android:text="@string/edit_profile" />
 

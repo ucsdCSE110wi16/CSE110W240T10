@@ -96,7 +96,7 @@
                 <Button
                     style="?android:textAppearanceSmall"
                     android:id="@+id/button_register"
-                    android:layout_width="0dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/register"

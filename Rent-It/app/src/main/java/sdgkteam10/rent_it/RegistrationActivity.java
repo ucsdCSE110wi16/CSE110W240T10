@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.AuthData;
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -306,62 +307,81 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //TODO: add a loading spinner
         button_send.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   boolean validated = validateInput();
+           @Override
+           public void onClick(View v) {
+               boolean validated = validateInput();
 
-                   if (validated) {
-                       //create a new user from input
-                       user = new User(
-                               fillName.getText().toString(),
-                               fillEmail.getText().toString(),
-                               fillPW1.getText().toString(),
-                               fillAddress.getText().toString(),
-                               fillAddress2.getText().toString(),
-                               fillCity.getText().toString(),
-                               fillState.getSelectedItem().toString(),
-                               fillZip.getText().toString(),
-                               fillPhone.getText().toString()
-                       );
+               if (validated) {
+                   //create a new user from input
+                   user = new User(
+                           fillName.getText().toString(),
+                           fillEmail.getText().toString(),
+                           fillPW1.getText().toString(),
+                           fillAddress.getText().toString(),
+                           fillAddress2.getText().toString(),
+                           fillCity.getText().toString(),
+                           fillState.getSelectedItem().toString(),
+                           fillZip.getText().toString(),
+                           fillPhone.getText().toString()
+                   );
 
-                       //check for errors in creating the user
-                       FirebaseError createError = db.getUserCreateError();
-                       if (createError != null)
-                       {
-                           //TODO: handle errors
-                           fillPW2.setText("creation fail");
-                       }
-                       else {
-                           //onAuthStateChanged listener will load the home page if successful login
+                   //attempt to login once the user has been created
+                   db.getRef().child("users").addChildEventListener(new ChildEventListener() {
+                       @Override
+                       public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                            db.requestLogin(user.getEmail(), user.getPw(), user);
                        }
 
-                       //TODO: temporary solution -- add waiting and spinny wheel functionality
-                       try {
-                           // Simulate network access.
-                           Thread.sleep(3000);
-                       } catch (InterruptedException e) {
-
+                       //TODO: add error handling for creating user
+                       @Override
+                       public void onCancelled(FirebaseError firebaseError) {
+                           Log.e("My Logging", "creation fail: " + firebaseError.getMessage());
                        }
 
-                       //if the home page did not load, then there were login errors
-                       FirebaseError loginError = db.getLoginError();
-                       if (loginError != null)
-                       {
-                           //TODO: handle login errors
-                           fillPW2.setText("login fail");
+                       //the following are required and ignored
+                       @Override
+                       public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                        }
-                       else
-                       {
-                           //something horrible has gone wrong
-                           //fillPW2.setText("something horrible");
+
+                       @Override
+                       public void onChildRemoved(DataSnapshot dataSnapshot) {
                        }
-                   } else {
-                       //TODO: handle improper input
-                       fillPW2.setText("bad input");
-                   }
+
+                       @Override
+                       public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                       }
+                   });
+
+                   //make sure the user successfully logged in
+                   db.getRef().addAuthStateListener(new Firebase.AuthStateListener() {
+                       @Override
+                       public void onAuthStateChanged(AuthData authData) {
+                           //successful login
+                           if (authData != null) {
+                               //load the main page
+                               Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                               startActivity(intent);
+                               finish();
+                           }
+                           //something went wrong in login
+                           else {
+                               //TODO: handle login errors
+                               FirebaseError error = db.getLoginError();
+                               if (error != null)
+                                   Log.e("My Logging", "login fail: " + error.getMessage());
+                               else
+                                   Log.e("My Logging", "login fail");
+                           }
+                       }
+                   });
+
+               } else {
+                   //TODO: handle improper input
+                   Log.e("My Logging", "bad input");
                }
            }
+       }
         );
 
         // Set up state spinner
