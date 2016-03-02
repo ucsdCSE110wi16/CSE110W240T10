@@ -89,6 +89,8 @@
     <string name="num10">10</string>
     <string name="exclaimYes">Yes!</string>
     <string name="wordNo">No.</string>
+    <string name="priceNegotiable">Price negotiable.</string>
+    <string name="buyOutright">Item is buy-able.</string>
     <string name="wordAddress">Address:</string>
     <string name="wordOther">Other:</string>
     <string name="sayHelloWorld">Hello World</string>

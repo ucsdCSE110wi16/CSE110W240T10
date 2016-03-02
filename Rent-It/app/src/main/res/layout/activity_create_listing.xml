@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:fillViewport="false">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="728dp"
+            android:layout_height="1000dp"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
@@ -76,9 +77,10 @@
                 android:id="@+id/rentDuration_CL"
                 android:textSize="22sp"
                 android:textColor="#40c1b8"
-                android:layout_below="@+id/categorySpinner_CL"
+                android:layout_below="@+id/category_CL"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="33dp" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -86,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/addPhotos_cl"
                 android:id="@+id/addPhotosButton_CL"
-                android:layout_marginTop="34dp"
+                android:layout_marginTop="33dp"
                 android:layout_below="@+id/itemDescriptionField_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -163,10 +165,10 @@
                 android:text="@string/category_string"
                 android:id="@+id/category_CL"
                 android:textColor="#40c1b8"
-                android:layout_marginTop="40dp"
                 android:layout_below="@+id/addPhotosButton_CL"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="37dp" />
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -174,32 +176,31 @@
                 android:id="@+id/categorySpinner_CL"
                 android:entries="@array/itemCategories_array"
                 android:layout_toRightOf="@+id/rentDuration_CL"
-                android:layout_alignTop="@+id/category_CL"
                 android:textColor="#008279"
                 android:layout_toLeftOf="@+id/itemPriceSpinner_CL"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/category_CL" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/finish_string"
                 android:id="@+id/finishButton_CL"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@+id/title_CL"
-                android:layout_toEndOf="@+id/title_CL" />
+                android:layout_below="@+id/checkBox4"
+                android:layout_toRightOf="@+id/checkBox3"
+                android:layout_toEndOf="@+id/checkBox3"
+                android:layout_marginTop="37dp" />
 
             <ImageView
                 android:contentDescription="Fill In My Content Description!"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ivImage_CL"
+                tools:ignore="HardcodedText"
                 android:layout_alignTop="@+id/addPhotosButton_CL"
-                android:layout_toRightOf="@+id/addPhotosButton_CL"
-                android:layout_above="@+id/categorySpinner_CL"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                tools:ignore="HardcodedText" />
+                android:layout_alignParentEnd="true" />
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -226,8 +227,8 @@
                 android:layout_below="@+id/rentDuration_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignRight="@+id/itemPriceField_CL"
-                android:layout_alignEnd="@+id/itemPriceField_CL" />
+                android:layout_toLeftOf="@+id/minRentSpinner_CL"
+                android:layout_toStartOf="@+id/minRentSpinner_CL" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -239,7 +240,7 @@
                 android:layout_below="@+id/minRentSpinner_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="46dp" />
+                android:layout_marginTop="29dp" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -277,7 +278,36 @@
                 android:layout_below="@+id/checkBox"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_above="@+id/finishButton_CL" />
+                android:layout_alignRight="@+id/finishButton_CL"
+                android:layout_alignEnd="@+id/finishButton_CL" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox3"
+                android:layout_marginTop="38dp"
+                android:checked="false"
+                android:text="@string/priceNegotiable"
+                android:layout_below="@+id/editText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/minRentSpinner_CL"
+                android:layout_alignRight="@+id/title_CL"
+                android:layout_alignEnd="@+id/title_CL"
+                android:textColor="#40c1b8" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buyOutright"
+                android:id="@+id/checkBox4"
+                android:layout_below="@+id/checkBox3"
+                android:layout_alignLeft="@+id/checkBox3"
+                android:layout_alignStart="@+id/checkBox3"
+                android:layout_toLeftOf="@+id/finishButton_CL"
+                android:layout_toStartOf="@+id/finishButton_CL"
+                android:checked="false"
+                android:textColor="#40c1b8" />
 
         </RelativeLayout>
     </LinearLayout>
