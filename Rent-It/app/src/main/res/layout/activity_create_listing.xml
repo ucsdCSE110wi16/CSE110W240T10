@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
@@ -71,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Min Rent Duration:"
+                android:text="@string/minRentDuration"
                 android:id="@+id/rentDuration_CL"
                 android:textSize="22sp"
                 android:textColor="#40c1b8"
@@ -189,6 +190,7 @@
                 android:layout_toEndOf="@+id/title_CL" />
 
             <ImageView
+                android:contentDescription="Fill In My Content Description!"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ivImage_CL"
@@ -196,7 +198,8 @@
                 android:layout_toRightOf="@+id/addPhotosButton_CL"
                 android:layout_above="@+id/categorySpinner_CL"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                tools:ignore="HardcodedText" />
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -215,7 +218,7 @@
                 android:inputType="numberDecimal"
                 android:id="@+id/minRentDuration_CL"
                 android:textColorHint="#008279"
-                android:hint="10"
+                android:hint="@string/num10"
                 android:textIsSelectable="false"
                 android:textColor="#008279"
                 android:ems="7"
@@ -241,7 +244,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes!"
+                android:text="@string/exclaimYes"
                 android:id="@+id/checkBox"
                 android:layout_below="@+id/textView2"
                 android:layout_alignParentLeft="true"
@@ -252,7 +255,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No."
+                android:text="@string/wordNo"
                 android:id="@+id/checkBox2"
                 android:checked="false"
                 android:layout_alignTop="@+id/checkBox"

@@ -47,6 +47,7 @@ import java.util.List;                                      //  https://docs.ora
 import java.util.Map;                                       //  https://docs.oracle.com/javase/7/docs/api/java/util/Map.html
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static android.graphics.Color.parseColor;
 import static sdgkteam10.rent_it.R.id.button_signin;
 
 /**

@@ -62,7 +62,7 @@
 
     <!-- profileActivity Strings-->
     <string name="edit_profile">Edit Profile</string>
-    <string name="load">loading...</string>
+    <string name="load">loading…</string>
     <string name="contact_info">Contact Info</string>
     <string name="email">Email:</string>
     <string name="phone_">Phone:</string>
@@ -82,9 +82,16 @@
     <string name="desc_string">Description:</string>
     <string name="category_string">Select Category:</string>
     <string name="finish_string">Finish</string>
-    <string name="minRentDuration">10</string>
+    <string name="word10">10</string>
     <string name="depositQues_string">Is there a required deposit for this item?</string>
     <string name="ifDepIsReq_string">If yes, please enter the amount. Ex: $10</string>
+    <string name="num10">10</string>
+    <string name="exclaimYes">Yes!</string>
+    <string name="wordNo">No.</string>
+    <string name="wordAddress">Address:</string>
+    <string name="wordOther">Other:</string>
+    <string name="sayHelloWorld">Hello World</string>
+    <string name="minRentDuration">Min Rent Duration:</string>
 
     <string-array name="rentLength_array">
         <item>Select</item>

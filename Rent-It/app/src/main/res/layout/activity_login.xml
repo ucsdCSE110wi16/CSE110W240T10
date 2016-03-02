@@ -1,4 +1,4 @@
-<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="sdgkteam10.rent_it.LoginActivity"
-    android:background="#0e2a28">
+    android:orientation="vertical"
+    android:baselineAligned="true"
+    android:background="@drawable/background">
 
     <!-- Login progress -->
 
@@ -39,7 +41,7 @@
                 android:text="@string/Rentit"
                 android:id="@+id/textView_Rentit"
                 android:textSize="78sp"
-                android:textColor="#40c1b8"
+                android:textColor="#6d99f5"
                 android:elegantTextHeight="true"
                 android:layout_gravity="center" />
 
@@ -56,7 +58,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:id="@+id/email"
-                    android:textColor="#008279" />
+                    android:textColor="#008279"
+                    android:textColorHint="#40c1b8"
+                    android:background="#9e9c43c2" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -76,44 +80,55 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="#008279" />
+                    android:textColor="#008279"
+                    android:textColorHint="#40c1b8"
+                    android:autoText="false"
+                    android:background="#9e9c43c2" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/button_signin"
-                style="?android:textAppearanceSmall"
-                android:layout_width="204dp"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="322dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/signin"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal"
-                android:shadowColor="#e4bd4b"
-                android:foregroundTint="#4c1b1b"
-                android:foregroundGravity="top"
-                android:foreground="#0e2a28"
-                android:textColor="#0e2a28"
-                android:background="#a1e4dc"
-                android:textColorHighlight="#50e4d9"
-                 />
+                android:weightSum="1">
 
-            <Button
-                style="?android:textAppearanceSmall"
-                android:id="@+id/button_register"
-                android:layout_width="150dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/register"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal"
-                android:shadowColor="#e4bd4b"
-                android:foregroundTint="#4c1b1b"
-                android:foregroundGravity="top"
-                android:foreground="#381e1e"
-                android:textColor="#0e2a28"
-                android:background="#a1e4dc"
-                android:onClick="goRegister"/>
+                <Button
+                    style="?android:textAppearanceSmall"
+                    android:id="@+id/button_register"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/register"
+                    android:textStyle="bold"
+                    android:shadowColor="#e4bd4b"
+                    android:foregroundTint="#4c1b1b"
+                    android:foregroundGravity="top"
+                    android:foreground="#381e1e"
+                    android:textColor="#0e2a28"
+                    android:background="#6d99f5"
+                    android:onClick="goRegister"
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="0.05" />
+
+                <Button
+                    android:id="@+id/button_signin"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/signin"
+                    android:textStyle="bold"
+                    android:shadowColor="#e4bd4b"
+                    android:foregroundTint="#4c1b1b"
+                    android:foregroundGravity="top"
+                    android:foreground="#0e2a28"
+                    android:textColor="#0e2a28"
+                    android:background="#6d99f5"
+                    android:textColorHighlight="#6d99f5"
+                    android:layout_marginLeft="35dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
@@ -124,4 +139,4 @@
         android:id="@+id/horizontalScrollView"
         android:layout_gravity="right" />
 
-</RadioGroup>
+</LinearLayout>
