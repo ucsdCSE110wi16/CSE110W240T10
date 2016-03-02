@@ -4,10 +4,14 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -42,6 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        //initialize all the UI elements
         userName = (TextView) findViewById(R.id.profile_name);
         userEmail = (TextView) findViewById(R.id.profile_email);
         userPhone = (TextView) findViewById(R.id.profile_phone);
@@ -52,22 +57,48 @@ public class ProfileActivity extends AppCompatActivity {
         userZip = (TextView) findViewById(R.id.profile_zip);
         userOther = (TextView) findViewById(R.id.profile_other);
 
+        //make the text views uneditable (for now)
+        userEmail.setKeyListener(null);
+        userPhone.setKeyListener(null);
+        userAddress1.setKeyListener(null);
+        userAddress2.setKeyListener(null);
+        userCity.setKeyListener(null);
+        userState.setKeyListener(null);
+        userZip.setKeyListener(null);
+        userOther.setKeyListener(null);
+
         Database.setContext(this);
         db = Database.getInstance();
+
+        user = new User();
+        user.requestDatabaseData();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        db.getRef().addAuthStateListener(new Firebase.AuthStateListener() {
+        /*
+        db.getRef().child("users").addAuthStateListener(new Firebase.AuthStateListener() {
             @Override
             public void onAuthStateChanged(AuthData authData) {
                 if (authData != null) {
                     //user logged in -- populate the fields
-                    user = new User();
-                    user.requestDatabaseData();
+                    userName.setText((String) authData.getProviderData().get("name"));
                     populateProfileFields();
                 }
+            }
+        });*/
+
+        //populate the fields when the user data is all loaded
+        db.getRef().child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                populateProfileFields();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
             }
         });
     }
@@ -75,6 +106,12 @@ public class ProfileActivity extends AppCompatActivity {
     private void populateProfileFields() {
         userName.setText(user.getName());
         userEmail.setText(user.getEmail());
+        userPhone.setText(user.getPhone());
+        userAddress1.setText(user.getAddress());
+        userAddress2.setText(user.getAddress2());
+        userCity.setText(user.getCity());
+        userState.setText(user.getState());
+        userZip.setText(user.getZip());
     }
 
     @Override

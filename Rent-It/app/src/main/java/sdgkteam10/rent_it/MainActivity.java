@@ -1,6 +1,7 @@
 package sdgkteam10.rent_it;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,9 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
-
-//TODO from meeting: When creating listing, ideally use camera to take picture, but initially just
-//TODO: accessing gallery
 
 //TODO: users have zipcodes, option to filter by zipcode
 
@@ -91,9 +89,18 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        //view user profile
         if (id == R.id.action_profile) {
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        //logout current user
+        if (id == R.id.action_logout) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Database.getInstance().logoutUser();
             startActivity(intent);
             return true;
         }

@@ -10,7 +10,6 @@ public class User {
     private String state;
     private String zip;
     private String phone;
-    private String m_uid;
 
     //default ctor (required by Firebase)
     User(){}
@@ -56,7 +55,6 @@ public class User {
     public void setState(String state) {this.state = state;}
     public void setZip(String zip) {this.zip = zip;}
     public void setPhone(String phone) {this.phone = phone;}
-   // public void setUid(String uid) {this.m_uid = uid;}
 
     //getters
     public String getName() {return this.name;}
@@ -68,5 +66,4 @@ public class User {
     public String getState() {return this.state;}
     public String getZip() {return this.zip;}
     public String getPhone() {return this.phone;}
-   // public String getUid() {return this.m_uid;}
 }

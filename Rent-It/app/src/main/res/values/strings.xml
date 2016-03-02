@@ -17,6 +17,7 @@
     <string name="search_tab">Search</string>
     <string name="favorites_tab">Favorites</string>
     <string name="profile_activity">My Profile</string>
+    <string name="logout_activity">Logout</string>
 
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="dummy_button">Dummy Button</string>
