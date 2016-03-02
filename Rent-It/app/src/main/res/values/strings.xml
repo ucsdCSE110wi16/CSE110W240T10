@@ -130,7 +130,7 @@
     <!-- End of createListingActivity Strings-->
 
     <string-array name="states_array">
-        <item>Select State</item>
+        <item>Select:</item>
         <item>Alabama</item>
         <item>Alaska</item>
         <item>American Samoa</item>

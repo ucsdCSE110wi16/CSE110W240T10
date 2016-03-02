@@ -14,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,6 +23,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.firebase.client.Firebase;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ import java.util.ArrayList;
 //To Do: deposit Required
 //To Do: Make money field only 2 decimal length
 
+//TODO: change to production database
 
 public class CreateListingActivity extends AppCompatActivity {
     static final int IMAGE_CAMERA = 1;
@@ -59,11 +63,19 @@ public class CreateListingActivity extends AppCompatActivity {
     private ArrayList<Bitmap> bitmapArray = new ArrayList<Bitmap>();
     private ImageView ivImage_CL;
 
+    private Firebase ref;
+    private String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing);
+
+        Firebase.setAndroidContext(this);
+        ref = new Firebase("https://rentit.firebaseio.com/");
+        //ref = new Firebase("https://boiling-heat-3337.firebaseio.com");
+        userID = ref.getAuth().getUid();
 
         //gather ids of widgets
         getIds();
@@ -308,6 +320,24 @@ public class CreateListingActivity extends AppCompatActivity {
             byte[] byteArray = stream.toByteArray();
             stringImgArray[i] = Base64.encodeToString(byteArray, Base64.DEFAULT);
         }
+
+        Item item = new Item();
+        item.setItemName(itemNameField_CL.getText().toString().trim().toLowerCase());
+        item.setPrice(itemPriceField_CL.getText().toString().trim());
+        item.setPriceRate(itemPriceSpinner_CL.getSelectedItem().toString().trim());
+        item.setDescription(itemDescriptionField_CL.getText().toString().trim());
+        item.setImageArray(stringImgArray);
+        item.setCategory(categorySpinner_CL.getSelectedItem().toString().trim());
+
+        Log.d("createlisting", "the item name to be posted is " + item.getItemName());
+        //Log.d("createlisting", "the first element in string is " + stringImgArray[0]);
+
+
+        //Firebase locPath = ref.child("users").child(userID).child("items");
+        Firebase locPath = ref.child("items");
+        //locPath.child(item.getItemName()).setValue(item);
+        locPath.child(item.getItemName()).push().setValue(item);
+
 
         /*
         itemNameField_CL.getText().toString().trim()
