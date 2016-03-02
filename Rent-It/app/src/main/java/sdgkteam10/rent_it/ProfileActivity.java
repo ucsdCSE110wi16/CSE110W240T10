@@ -4,7 +4,11 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.KeyListener;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.client.AuthData;
@@ -27,6 +31,9 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userCity;
     private TextView userState;
     private TextView userZip;
+    //Edit profile button
+    private Button editProfile;
+    boolean edit;
 
     private User user;
     private Database db;
@@ -54,8 +61,17 @@ public class ProfileActivity extends AppCompatActivity {
         userCity = (TextView) findViewById(R.id.profile_city);
         userState = (TextView) findViewById(R.id.profile_state);
         userZip = (TextView) findViewById(R.id.profile_zip);
+        //editProfile button
+        editProfile = (Button) findViewById(R.id.edit_button);
 
-        //make the text views uneditable (for now)
+        //make the text view listeners, but make them uneditable (for now)
+        final KeyListener userEmailKeyListener = userEmail.getKeyListener();
+        final KeyListener userPhoneKeyListener = userPhone.getKeyListener();
+        final KeyListener userAddress1KeyListener = userAddress1.getKeyListener();
+        final KeyListener userAddress2KeyListener = userAddress2.getKeyListener();
+        final KeyListener userCityKeyListener = userCity.getKeyListener();
+        final KeyListener userStateKeyListener = userState.getKeyListener();
+        final KeyListener userZipKeyListener = userZip.getKeyListener();
         userEmail.setKeyListener(null);
         userPhone.setKeyListener(null);
         userAddress1.setKeyListener(null);
@@ -63,6 +79,38 @@ public class ProfileActivity extends AppCompatActivity {
         userCity.setKeyListener(null);
         userState.setKeyListener(null);
         userZip.setKeyListener(null);
+
+        //Set boolean value for when button has been clicked
+        edit = false;
+        //Add listener for button
+        editProfile.setOnClickListener(new OnClickListener() {
+           public void onClick(View v) {
+               if (!edit) {
+                   edit = true;
+                   editProfile.setText("Update");
+                   //make the text views editable
+                   userEmail.setKeyListener(userEmailKeyListener);
+                   userPhone.setKeyListener(userPhoneKeyListener);
+                   userAddress1.setKeyListener(userAddress1KeyListener);
+                   userAddress2.setKeyListener(userAddress2KeyListener);
+                   userCity.setKeyListener(userCityKeyListener);
+                   userState.setKeyListener(userStateKeyListener);
+                   userZip.setKeyListener(userZipKeyListener);
+               }
+               else {
+                   edit = false;
+                   editProfile.setText("Edit Profile");
+                   //make the text views uneditable
+                   userEmail.setKeyListener(null);
+                   userPhone.setKeyListener(null);
+                   userAddress1.setKeyListener(null);
+                   userAddress2.setKeyListener(null);
+                   userCity.setKeyListener(null);
+                   userState.setKeyListener(null);
+                   userZip.setKeyListener(null);
+               }
+           }
+        });
 
         Database.setContext(this);
         db = Database.getInstance();

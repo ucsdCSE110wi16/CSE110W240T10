@@ -186,7 +186,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/edit_button"
         android:layout_width="100dp"
         android:layout_height="75dp"
         android:text="@string/edit_profile"
