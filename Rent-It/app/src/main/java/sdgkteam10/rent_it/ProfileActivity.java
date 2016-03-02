@@ -1,6 +1,7 @@
 package sdgkteam10.rent_it;
 
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -24,9 +25,9 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userZip;
     private TextView userOther;
 
-    private Firebase myFirebaseRef;
-
     private User user;
+    private Database db;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -51,32 +52,24 @@ public class ProfileActivity extends AppCompatActivity {
         userZip = (TextView) findViewById(R.id.profile_zip);
         userOther = (TextView) findViewById(R.id.profile_other);
 
-        Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+        Database.setContext(this);
+        db = Database.getInstance();
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-    }
 
-    protected void onResume() {
-        super.onResume();
-
-        //get the currently logged in user
-        //TODO: change to user.isLoggedIn()?
-        AuthData userData = myFirebaseRef.getAuth();
-
-        //user is logged in
-        //TODO: waitForUpdate() causes black screen, but need to wait for database to update
-        //TODO:     solution: turn this into an AsyncTask
-        if (userData != null) {
-            user = new User(userData, getApplicationContext());
-            //user.waitForUpdate();
-            populateProfileFields();
-        }
-        //user is not logged in
-        else {
-            //TODO: handle not logged in error?
-        }
+        db.getRef().addAuthStateListener(new Firebase.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(AuthData authData) {
+                if (authData != null) {
+                    //user logged in -- populate the fields
+                    user = new User();
+                    user.requestDatabaseData();
+                    populateProfileFields();
+                }
+            }
+        });
     }
 
     private void populateProfileFields() {

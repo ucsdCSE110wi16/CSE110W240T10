@@ -78,15 +78,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private GoogleApiClient client;
 
-    /**
-     * Firebase database reference
-     */
-    private Firebase myFirebaseRef;
-
     private User user;
+    private Database db;
 
-    //TODO: go directly to home page if still logged in
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -130,8 +124,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
+        Database.setContext(this);
+        db = Database.getInstance();
     }
 
     private void populateAutoComplete() {
@@ -194,9 +188,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (mAuthTask != null) {
             return;
         }
-
-        //log out anyone previously logged in
-        //myFirebaseRef.unauth();
 
         // Reset errors.
         mEmailView.setError(null);
@@ -416,7 +407,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    //TODO: delegate most login tasks to the User class
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
@@ -431,30 +421,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mLoginError = null;
 
             //log out anyone previously logged in
-            myFirebaseRef.unauth();
-
-            mHandler = new Firebase.AuthResultHandler() {
-                @Override
-                public void onAuthenticated(AuthData authData) {
-                    //store user state in Firebase -- used for login persistence
-                     //user = new User(authData, getApplicationContext());
-
-                    //Map<String, String> map = new HashMap<String, String>();
-                    //map.put(getResources().getString(R.string.firebase_provider), authData.getProvider());
-                    //map.put(getResources().getString(R.string.firebase_email),
-                    //        authData.getProviderData().get(getResources().getString(R.string.firebase_email)).toString());
-
-                    //myFirebaseRef.child("users").child(authData.getUid()).setValue(map);
-
-
-                   // mLoginError = null;
-                }
-
-                @Override
-                public void onAuthenticationError(FirebaseError error) {
-                    mLoginError = error;
-                }
-            };
+            db.logoutUser();
         }
 
         /**
@@ -463,25 +430,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             //authenticate user login info with the database
-            //myFirebaseRef.authWithPassword(mEmail, mPassword, mHandler);
-            user = new User(mEmail, mPassword, getApplicationContext());
+            user = new User(mEmail, mPassword);
 
-            try {
-                // Simulate network access.
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
+            //workaround for anonymous classes unable to edit local data
+            final boolean[] success = new boolean[1];
+            success[0] = false;
+
+            //listen for successful login
+            db.getRef().addAuthStateListener(new Firebase.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(AuthData authData) {
+                    if (authData != null) {
+                        //successful login
+                        success[0] = true;
+                    }
+                    else
+                        success[0] = false;
+                }
+            });
+
+            //wait for login to complete
+            while (!success[0] && db.getLoginError() == null);
+
+            //unsuccessful login
+            if (db.getLoginError() != null) {
+                mLoginError = db.getLoginError();
                 return false;
             }
 
-            //TODO: change to user.isLoggedIn();
-            AuthData userData = myFirebaseRef.getAuth();
+            //successful login
+            return true;
 
-            //user successfully logged in
-            //userData.getProviderData().get(getResources().getString(R.string.firebase_email)).toString() == mEmail)
-            if (userData != null) //&& mLoginError == null)
-                return true;
-            else
-                return false;
         }
 
         /**
@@ -532,7 +511,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 else
                 {
                     //TODO: only for debugging
-                    mEmailView.setText("Something went wrong");
+                    new AlertDialog.Builder(LoginActivity.this)
+                            .setTitle("Error")
+                            .setMessage("An error occurred when attempting to login.\n\n" +
+                                    "Please try again.")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setCancelable(true)
+                            .show();
                 }
                 mAuthTask = null;
             }

@@ -61,10 +61,8 @@ public class RegistrationActivity extends AppCompatActivity {
     //user to be created
     private User user = null;
 
-    /**
-     * Firebase database reference
-     */
-    private Firebase myFirebaseRef;
+    //database reference
+    Database db;
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -192,9 +190,12 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Database.setContext(this);
+        db = Database.getInstance();
+
         Intent intent = getIntent();
         setContentView(R.layout.activity_registration);
-        Firebase.setAndroidContext(this);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -204,10 +205,8 @@ public class RegistrationActivity extends AppCompatActivity {
         //mControlsView = findViewById(R.id.fullscreen_content_controls);
        // mContentView = findViewById(R.id.fullscreen_content);
 
-        //initialize Firebase
-        myFirebaseRef = new Firebase(getResources().getString(R.string.firebase_url));
-        myFirebaseRef.unauth(); //log out any currently logged in user
-        myFirebaseRef.addAuthStateListener(new Firebase.AuthStateListener() {
+        db.logoutUser(); //log out any currently logged in user
+        db.getRef().addAuthStateListener(new Firebase.AuthStateListener() {
             @Override
             public void onAuthStateChanged(AuthData authData) {
                 //registration successful -> a new user logged in
@@ -322,12 +321,11 @@ public class RegistrationActivity extends AppCompatActivity {
                                fillCity.getText().toString(),
                                fillState.getSelectedItem().toString(),
                                fillZip.getText().toString(),
-                               fillPhone.getText().toString(),
-                               getApplicationContext()
+                               fillPhone.getText().toString()
                        );
 
                        //check for errors in creating the user
-                       FirebaseError createError = user.getUserCreateError();
+                       FirebaseError createError = db.getUserCreateError();
                        if (createError != null)
                        {
                            //TODO: handle errors
@@ -335,7 +333,7 @@ public class RegistrationActivity extends AppCompatActivity {
                        }
                        else {
                            //onAuthStateChanged listener will load the home page if successful login
-                           user.login();
+                           db.requestLogin(user.getEmail(), user.getPw(), user);
                        }
 
                        //TODO: temporary solution -- add waiting and spinny wheel functionality
@@ -347,7 +345,7 @@ public class RegistrationActivity extends AppCompatActivity {
                        }
 
                        //if the home page did not load, then there were login errors
-                       FirebaseError loginError = user.getLoginError();
+                       FirebaseError loginError = db.getLoginError();
                        if (loginError != null)
                        {
                            //TODO: handle login errors
