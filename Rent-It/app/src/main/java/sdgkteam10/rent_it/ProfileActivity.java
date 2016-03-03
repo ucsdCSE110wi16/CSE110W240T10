@@ -27,7 +27,6 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userCity;
     private TextView userState;
     private TextView userZip;
-    private TextView userOther;
 
     private User user;
     private Database db;
@@ -55,7 +54,6 @@ public class ProfileActivity extends AppCompatActivity {
         userCity = (TextView) findViewById(R.id.profile_city);
         userState = (TextView) findViewById(R.id.profile_state);
         userZip = (TextView) findViewById(R.id.profile_zip);
-        userOther = (TextView) findViewById(R.id.profile_other);
 
         //make the text views uneditable (for now)
         userEmail.setKeyListener(null);
@@ -65,7 +63,6 @@ public class ProfileActivity extends AppCompatActivity {
         userCity.setKeyListener(null);
         userState.setKeyListener(null);
         userZip.setKeyListener(null);
-        userOther.setKeyListener(null);
 
         Database.setContext(this);
         db = Database.getInstance();
