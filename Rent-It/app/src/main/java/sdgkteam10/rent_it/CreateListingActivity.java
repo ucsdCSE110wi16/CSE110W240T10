@@ -64,7 +64,6 @@ public class CreateListingActivity extends AppCompatActivity {
     private ImageView ivImage_CL;
 
     private Firebase ref;
-    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +74,7 @@ public class CreateListingActivity extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         ref = new Firebase("https://rentit.firebaseio.com/");
         //ref = new Firebase("https://boiling-heat-3337.firebaseio.com");
-        userID = ref.getAuth().getUid();
+        String userID = ref.getAuth().getUid();
 
         //gather ids of widgets
         getIds();

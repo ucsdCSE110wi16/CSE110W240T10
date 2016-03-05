@@ -36,7 +36,6 @@ public class ProfileActivity extends AppCompatActivity {
     boolean edit;
 
     private User user;
-    private Database db;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -113,7 +112,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         Database.setContext(this);
-        db = Database.getInstance();
+        Database db = Database.getInstance();
 
         user = new User();
         user.requestDatabaseData();

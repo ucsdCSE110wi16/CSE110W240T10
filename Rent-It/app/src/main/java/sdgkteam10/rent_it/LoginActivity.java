@@ -72,7 +72,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
 
 
-    private User user;
     private Database db;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -365,7 +364,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             //authenticate user login info with the database
-            user = new User(mEmail, mPassword);
+            User user = new User(mEmail, mPassword);
 
             //workaround for anonymous classes unable to edit local data
             final boolean[] success = new boolean[1];

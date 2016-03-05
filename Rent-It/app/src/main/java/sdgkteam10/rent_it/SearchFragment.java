@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-    private ListView listView_S;
     private ArrayList<String> arr = new ArrayList<>(10);
 
     private String queryString = "mu";
@@ -90,7 +89,7 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        listView_S = (ListView) rootView.findViewById(R.id.listView_S);
+        ListView listView_S = (ListView) rootView.findViewById(R.id.listView_S);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.fragment_search, arr);
         arrayAdapter.notifyDataSetChanged();
