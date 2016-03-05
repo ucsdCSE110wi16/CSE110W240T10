@@ -82,7 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
            public void onClick(View v) {
                if (!edit) {
                    edit = true;
-                   editProfile.setText("Update");
+                   editProfile.setText(R.string.edit_update);
                    //make the text views editable
                    userEmail.setKeyListener(userEmailKeyListener);
                    userPhone.setKeyListener(userPhoneKeyListener);
@@ -94,7 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
                }
                else {
                    edit = false;
-                   editProfile.setText("Edit Profile");
+                   editProfile.setText(R.string.edit_profile_ef);
                    //make the text views uneditable
                    userEmail.setKeyListener(null);
                    userPhone.setKeyListener(null);

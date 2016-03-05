@@ -23,7 +23,7 @@
     <!--<string name="dummy_button">Dummy Button</string>-->
     <!--<string name="dummy_content">DUMMY\nCONTENT</string>-->
     <string name="title_activity_main">Rent-It</string>
-    <string name="action_settings">Settings</string>
+    <!--<string name="action_settings">Settings</string>-->
     <string name="section_format">Hello World from section: %1$d</string>
     <!--<string name="email_str">Email:</string>-->
     <!--<string name="name_str">Name:</string>-->
@@ -95,6 +95,9 @@
     <!--<string name="wordOther">Other:</string>-->
     <string name="sayHelloWorld">Hello World</string>
     <string name="minRentDuration">Min Rent Duration:</string>
+    <string name="edit_update">Update</string>
+    <string name="edit_profile_ef">Edit Profile</string>
+    <string name="im_faves">Hello, I\'m the favorites tab!</string>
     <!--<string name="loginFail">loginFail</string>-->
     <!--<string name="badInput">Bad Input</string>-->
     <!--<string name="creationFail">Creation Fail</string>-->
