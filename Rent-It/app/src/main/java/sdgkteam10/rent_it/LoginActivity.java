@@ -37,9 +37,7 @@ import com.firebase.client.AuthData;                //  https://www.firebase.com
 
 import com.firebase.client.Firebase;                        //  https://www.firebase.com/docs/java-api/javadoc/com/firebase/client/Firebase.html
 import com.firebase.client.FirebaseError;                   //  https://www.firebase.com/docs/java-api/javadoc/com/firebase/client/FirebaseError.html
-import com.google.android.gms.appindexing.Action;           //  https://developers.google.com/android/reference/com/google/android/gms/appindexing/Action
-import com.google.android.gms.appindexing.AppIndex;         //  https://developers.google.com/android/reference/com/google/android/gms/appindexing/AppIndex
-import com.google.android.gms.common.api.GoogleApiClient;   //  https://developers.google.com/android/reference/com/google/android/gms/common/api/GoogleApiClient
+
 
 import java.util.ArrayList;                                 //  https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
 import java.util.HashMap;                                   //  https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html
@@ -72,11 +70,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     private User user;
     private Database db;
@@ -120,9 +114,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
 
         Database.setContext(this);
         db = Database.getInstance();
@@ -321,75 +313,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     public void onStart() {
         super.onStart();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        /*client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Login Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);*/
 
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Login Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Login Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        /*Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Login Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();*/
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.disconnect();
+
     }
 
 

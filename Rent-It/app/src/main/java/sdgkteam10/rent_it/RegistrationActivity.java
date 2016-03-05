@@ -31,9 +31,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 
 import static android.graphics.Color.parseColor;
 
@@ -55,7 +53,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText fillAddress;
     private EditText fillAddress2;
     private EditText fillCity;
-    private Spinner fillState;
+    private Spinner  fillState;
     private EditText fillZip;
     private EditText fillPhone;
 
@@ -87,11 +85,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private View mControlsView;
     private boolean mVisible;
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     private void addRedAsterisk(EditText t) {
         CharSequence text = t.getHint();
@@ -109,15 +103,9 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void createStateSpinner() {
-        /*
-      Create Spinner item for "State" option.
-     */
-        Spinner stateSpinner = (Spinner) findViewById(R.id.fill_state);
-        /*
-      Create adapter for stateSpinner
-     */
+
         ArrayAdapter<CharSequence> stateAdapter;
-        stateSpinner = (Spinner)findViewById(R.id.fill_state);
+        Spinner stateSpinner = (Spinner)findViewById(R.id.fill_state);
         stateAdapter = ArrayAdapter.createFromResource(this, R.array.states_array,
                 R.layout.special_spinner_item);
         stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -386,21 +374,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         createStateSpinner();
-        // Set up the user interaction to manually show or hide the system UI.
-        //mContentView.setOnClickListener(new View.OnClickListener() {
-          //  @Override
-        //    public void onClick(View view) {
-        //        toggle();
-         //   }
-       // });
 
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-        // findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     //TODO -- validate the user fields
@@ -485,40 +459,10 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Registration Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Registration Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
     }
 }

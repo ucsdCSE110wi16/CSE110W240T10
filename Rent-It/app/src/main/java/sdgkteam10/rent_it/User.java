@@ -11,7 +11,7 @@ public class User {
     private String zip;
     private String phone;
 
-    //default ctor (required by Firebase)
+    //default constructor
     User(){}
 
     //new user -- for use with registering new users
@@ -31,7 +31,7 @@ public class User {
         Database.getInstance().createUser(this.getEmail(), this.getPw(), this);
     }
 
-    //login ctor
+    //login constructor
     public User(String email, String password)
     {
         this.email = email;

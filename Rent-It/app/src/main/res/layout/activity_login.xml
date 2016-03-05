@@ -41,10 +41,11 @@
                 android:text="@string/Rentit"
                 android:id="@+id/textView_Rentit"
                 android:textSize="78sp"
-                android:textColor="#6d99f5"
+                android:textColor="@color/colorForeground"
                 android:elegantTextHeight="true"
                 android:layout_gravity="center"
-                tools:ignore="UnusedAttribute" />
+                tools:ignore="UnusedAttribute"
+                />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
