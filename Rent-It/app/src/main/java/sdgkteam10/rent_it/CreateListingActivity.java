@@ -63,6 +63,7 @@ public class CreateListingActivity extends AppCompatActivity {
     private final ArrayList<Bitmap> bitmapArray = new ArrayList<>();
     private ImageView ivImage_CL;
 
+    private String userID;
     private Firebase ref;
 
     @Override
@@ -74,7 +75,7 @@ public class CreateListingActivity extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         ref = new Firebase("https://rentit.firebaseio.com/");
         //ref = new Firebase("https://boiling-heat-3337.firebaseio.com");
-        String userID = ref.getAuth().getUid();
+        userID = ref.getAuth().getUid();
 
         //gather ids of widgets
         getIds();
@@ -327,6 +328,7 @@ public class CreateListingActivity extends AppCompatActivity {
         item.setDescription(itemDescriptionField_CL.getText().toString().trim());
         item.setImageArray(stringImgArray);
         item.setCategory(categorySpinner_CL.getSelectedItem().toString().trim());
+        item.setItemUserID(userID);
 
         Log.d("createlisting", "the item name to be posted is " + item.getItemName());
         //Log.d("createlisting", "the first element in string is " + stringImgArray[0]);
@@ -336,16 +338,6 @@ public class CreateListingActivity extends AppCompatActivity {
         Firebase locPath = ref.child("items");
         //locPath.child(item.getItemName()).setValue(item);
         locPath.child(item.getItemName()).push().setValue(item);
-
-
-        /*
-        itemNameField_CL.getText().toString().trim()
-        itemPriceField_CL.getText().toString().trim()
-        itemDescriptionField_CL.getText().toString().trim()
-
-        itemPriceSpinner_CL.getSelectedItem().toString().trim()
-        categorySpinner_CL.getSelectedItem().toString().trim()
-         */
 
 
         //dialog box: item was uploaded
@@ -405,46 +397,6 @@ public class CreateListingActivity extends AppCompatActivity {
             }
         });
     }
-/* more junk
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "CreateListing Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "CreateListing Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://sdgkteam10.rent_it/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }*/
 }
 
 
@@ -483,4 +435,14 @@ public class CreateListingActivity extends AppCompatActivity {
 
                 Bitmap bmp = BitmapFactory.decodeFile(filePath);
 
- */
+
+
+    //item parameter fields
+    itemNameField_CL.getText().toString().trim()
+        itemPriceField_CL.getText().toString().trim()
+        itemDescriptionField_CL.getText().toString().trim()
+
+        itemPriceSpinner_CL.getSelectedItem().toString().trim()
+        categorySpinner_CL.getSelectedItem().toString().trim()
+
+*/

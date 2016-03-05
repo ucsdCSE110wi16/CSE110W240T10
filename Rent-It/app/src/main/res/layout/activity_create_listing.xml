@@ -200,9 +200,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ivImage_CL"
                 tools:ignore="HardcodedText"
-                android:layout_alignTop="@+id/addPhotosButton_CL"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/category_CL"
+                android:layout_toEndOf="@+id/category_CL"
+                android:layout_above="@+id/categorySpinner_CL"
+                android:layout_below="@+id/itemDescriptionField_CL" />
 
             <Spinner
                 android:layout_width="wrap_content"

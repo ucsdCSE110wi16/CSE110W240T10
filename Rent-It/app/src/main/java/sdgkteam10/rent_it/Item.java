@@ -8,6 +8,7 @@ class Item {
     private String description;
     private String[] imageArray;
     private String category;
+    private String itemUserID;
 
     public Item(){
 
@@ -59,14 +60,21 @@ class Item {
     public void setCategory(String category) {
         this.category = category;
     }
+
+
+    public String getItemUserID() {
+        return itemUserID;
+    }
+    public void setItemUserID(String itemUserID) {
+        this.itemUserID = itemUserID;
+    }
 }
 /*
 
 public String get() {
         return ;
     }
-
-  public void set(String ) {
+public void set(String ) {
         this. = ;
     }
 
