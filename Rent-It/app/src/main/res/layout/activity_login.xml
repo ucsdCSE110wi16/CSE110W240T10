@@ -36,7 +36,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="288dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Rentit"
                 android:id="@+id/textView_Rentit"
@@ -109,6 +109,7 @@
                     android:background="@color/colorBackground"
                     android:onClick="goRegister"
                     android:layout_marginLeft="50dp"
+                    android:layout_marginStart="50dp"
                     android:layout_weight="0.05"
                     tools:ignore="InefficientWeight,UnusedAttribute" />
 
@@ -125,6 +126,7 @@
                     android:textColor="@color/colorForeground"
                     android:background="@color/colorBackground"
                     android:layout_marginLeft="35dp"
+                    android:layout_marginStart="35dp"
                     tools:ignore="UnusedAttribute" />
 
             </LinearLayout>
@@ -136,6 +138,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/horizontalScrollView"
-        android:layout_gravity="right" />
+        android:layout_gravity="end" />
 
 </LinearLayout>
