@@ -214,29 +214,29 @@ public class RegistrationActivity extends AppCompatActivity {
         //initialize the UI elements
         Button button_send = (Button)findViewById(R.id.submit_button);
         fillName = (EditText)findViewById(R.id.fill_name);
-        fillName.setHintTextColor(parseColor("#63dfb2"));
+        fillName.setHintTextColor(parseColor("#A8CEEB"));
         addRedAsterisk(fillName);
         fillEmail = (EditText)findViewById(R.id.fill_email);
-        fillEmail.setHintTextColor(parseColor("#63dfb2"));
+        fillEmail.setHintTextColor(parseColor("#A8CEEB"));
         addRedAsterisk(fillEmail);
         fillPW1 = (EditText)findViewById(R.id.fill_pw1);
-        fillPW1.setHintTextColor(parseColor("#63dfb2"));
+        fillPW1.setHintTextColor(parseColor("#A8CEEB"));
         addRedAsterisk(fillPW1);
         fillPW2 = (EditText)findViewById(R.id.fill_pw2);
-        fillPW2.setHintTextColor(parseColor("#63dfb2"));
+        fillPW2.setHintTextColor(parseColor("#A8CEEB"));
         addRedAsterisk(fillPW2);
         fillAddress = (EditText)findViewById(R.id.fill_address1);
-        fillAddress.setHintTextColor(parseColor("#63dfb2"));
+        fillAddress.setHintTextColor(parseColor("#A8CEEB"));
         fillAddress2 = (EditText)findViewById(R.id.fill_address2);
-        fillAddress2.setHintTextColor(parseColor("#63dfb2"));
+        fillAddress2.setHintTextColor(parseColor("#A8CEEB"));
         fillCity = (EditText)findViewById(R.id.fill_city);
-        fillCity.setHintTextColor(parseColor("#63dfb2"));
+        fillCity.setHintTextColor(parseColor("#A8CEEB"));
         fillState = (Spinner) findViewById(R.id.fill_state);
         fillZip = (EditText)findViewById(R.id.fill_zip);
-        fillZip.setHintTextColor(parseColor("#63dfb2"));
+        fillZip.setHintTextColor(parseColor("#A8CEEB"));
         addRedAsterisk(fillZip);
         fillPhone = (EditText)findViewById(R.id.fill_phone);
-        fillPhone.setHintTextColor(parseColor("#63dfb2"));
+        fillPhone.setHintTextColor(parseColor("#A8CEEB"));
 
         fillName.setOnClickListener(new View.OnClickListener() {
             @Override

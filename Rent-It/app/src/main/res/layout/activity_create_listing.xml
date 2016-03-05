@@ -269,7 +269,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:id="@+id/editText"
-                android:textColorHint="#008279"
+                android:textColorHint="@color/colorMiddle"
                 android:hint="@string/ifDepIsReq_string"
                 android:textIsSelectable="false"
                 android:textColor="@color/colorForeground"
@@ -295,7 +295,7 @@
                 android:layout_alignRight="@+id/title_CL"
                 android:layout_alignEnd="@+id/title_CL"
                 android:layout_toLeftOf="@+id/title_CL"
-                android:textColor="#40c1b8" />
+                android:textColor="@color/colorForeground" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -308,7 +308,7 @@
                 android:layout_toLeftOf="@+id/finishButton_CL"
                 android:layout_toStartOf="@+id/finishButton_CL"
                 android:checked="false"
-                android:textColor="#40c1b8" />
+                android:textColor="@color/colorForeground" />
 
         </RelativeLayout>
     </LinearLayout>

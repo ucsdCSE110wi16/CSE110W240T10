@@ -288,7 +288,7 @@ public class CreateListingActivity extends AppCompatActivity {
             Snackbar snackbar = Snackbar
                     .make(parentLayout, "Error: Please add some Photos", Snackbar.LENGTH_LONG);
             snackbar.show();
-            moveOn = false;
+            //EmmoveOn = false;
         }
 
         //if all fields are set than upload to fire base
