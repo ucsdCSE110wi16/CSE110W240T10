@@ -99,7 +99,6 @@
                 android:layout_toRightOf="@+id/address_label"
                 android:ems="10"
                 android:inputType="phone"
-                android:phoneNumber="false"
                 android:text="@string/load"
                 android:textColor="@color/colorForeground" />
 
@@ -114,7 +113,7 @@
                 android:text="@string/wordAddress"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorForeground"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="italic" />
 
             <EditText
@@ -142,7 +141,8 @@
                 android:hint="@string/load"
                 android:textColor="@color/colorForeground"
                 android:layout_below="@+id/profile_address1"
-                android:layout_toRightOf="@+id/address_label" />
+                android:layout_toRightOf="@+id/address_label"
+                android:layout_toEndOf="@+id/address_label"/>
 
             <EditText
                 android:id="@+id/profile_city"

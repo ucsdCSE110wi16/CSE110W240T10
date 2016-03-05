@@ -177,7 +177,6 @@ public class RegistrationActivity extends AppCompatActivity {
         Database.setContext(this);
         db = Database.getInstance();
 
-        Intent intent = getIntent();
         setContentView(R.layout.activity_registration);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

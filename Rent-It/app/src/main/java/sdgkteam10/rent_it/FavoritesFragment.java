@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class FavoritesFragment extends Fragment {
-    private TextView text;
 
     public FavoritesFragment() {}
 
@@ -27,7 +26,7 @@ public class FavoritesFragment extends Fragment {
 
         //TODO: change this to the proper elements that will be in this tab
         //connect the TextView to that in the layout
-        text = (TextView) rootView.findViewById(R.id.textView);
+        TextView text = (TextView) rootView.findViewById(R.id.textView);
         text.setText("Hello, I'm the favorites tab!");
 
         return rootView;

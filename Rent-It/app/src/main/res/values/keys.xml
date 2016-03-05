@@ -2,6 +2,6 @@
 <resources>
     <!-- strings related to Firebase -->
     <string name="firebase_url">https://rentit.firebaseio.com</string>
-    <string name="firebase_email">email</string>
-    <string name="firebase_provider">provider</string>
+    <!--<string name="firebase_email">email</string>-->
+    <!--<string name="firebase_provider">provider</string>-->
 </resources>

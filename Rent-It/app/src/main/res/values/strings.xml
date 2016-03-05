@@ -4,7 +4,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <!--<string name="action_sign_in">Sign in or register</string>-->
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">Invalid email</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -20,37 +20,37 @@
     <string name="logout_activity">Logout</string>
 
     <string name="title_activity_registration">RegistrationActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!--<string name="dummy_button">Dummy Button</string>-->
+    <!--<string name="dummy_content">DUMMY\nCONTENT</string>-->
     <string name="title_activity_main">Rent-It</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="email_str">Email:</string>
-    <string name="name_str">Name:</string>
-    <string name="password_str">Password\n(Input twice):</string>
-    <string name="street_address_str">Street\nAddress:</string>
+    <!--<string name="email_str">Email:</string>-->
+    <!--<string name="name_str">Name:</string>-->
+    <!--<string name="password_str">Password\n(Input twice):</string>-->
+    <!--<string name="street_address_str">Street\nAddress:</string>-->
     <string name="register_title_str">Register For Rent-It!</string>
-    <string name="address_linetwo_str">Apt/Ste/Unit\nNumber:</string>
-    <string name="city_str">City:</string>
-    <string name="state_str">State:</string>
-    <string name="phone_str">Phone:</string>
-    <string name="zip_str">Zip:</string>
+    <!--<string name="address_linetwo_str">Apt/Ste/Unit\nNumber:</string>-->
+    <!--<string name="city_str">City:</string>-->
+    <!--<string name="state_str">State:</string>-->
+    <!--<string name="phone_str">Phone:</string>-->
+    <!--<string name="zip_str">Zip:</string>-->
     <string name="submit_button_str">Submit</string>
     <string name="Rentit">Rent-it!</string>
     <string name="signin">Sign In</string>
     <string name="register">Register</string>
-    <string name="password">password</string>
-    <string name="fill_email">Email</string>
-    <string name="name">Name</string>
-    <string name="pw1">Password</string>
-    <string name="pw2">Password again</string>
-    <string name="address1">Street Address</string>
-    <string name="address2">Address 2</string>
-    <string name="city">City</string>
-    <string name="state">State</string>
+    <!--<string name="password">password</string>-->
+    <!--<string name="fill_email">Email</string>-->
+    <!--<string name="name">Name</string>-->
+    <!--<string name="pw1">Password</string>-->
+    <!--<string name="pw2">Password again</string>-->
+    <!--<string name="address1">Street Address</string>-->
+    <!--<string name="address2">Address 2</string>-->
+    <!--<string name="city">City</string>-->
+    <!--<string name="state">State</string>-->
     <string name="required_field">* Indicates required field</string>
-    <string name="zip">Zip Code</string>
-    <string name="phone">Phone</string>
+    <!--<string name="zip">Zip Code</string>-->
+    <!--<string name="phone">Phone</string>-->
     <string name="fill_name_hint">Name</string>
     <string name="fill_email_str">Email</string>
     <string name="fill_pw1_str">Password</string>
@@ -83,7 +83,7 @@
     <string name="desc_string">Description:</string>
     <string name="category_string">Select Category:</string>
     <string name="finish_string">Finish</string>
-    <string name="word10">10</string>
+    <!--<string name="word10">10</string>-->
     <string name="depositQues_string">Is there a required deposit for this item?</string>
     <string name="ifDepIsReq_string">If yes, please enter the amount. Ex: $10</string>
     <string name="num10">10</string>
@@ -92,13 +92,13 @@
     <string name="priceNegotiable">Price negotiable.</string>
     <string name="buyOutright">Item is buy-able.</string>
     <string name="wordAddress">Address:</string>
-    <string name="wordOther">Other:</string>
+    <!--<string name="wordOther">Other:</string>-->
     <string name="sayHelloWorld">Hello World</string>
     <string name="minRentDuration">Min Rent Duration:</string>
-    <string name="loginFail">loginFail</string>
-    <string name="badInput">Bad Input</string>
-    <string name="creationFail">Creation Fail</string>
-
+    <!--<string name="loginFail">loginFail</string>-->
+    <!--<string name="badInput">Bad Input</string>-->
+    <!--<string name="creationFail">Creation Fail</string>-->
+E
     <string-array name="rentLength_array">
         <item>Select</item>
         <item>Per Hour</item>
