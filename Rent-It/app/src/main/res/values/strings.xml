@@ -101,7 +101,6 @@
     <!--<string name="loginFail">loginFail</string>-->
     <!--<string name="badInput">Bad Input</string>-->
     <!--<string name="creationFail">Creation Fail</string>-->
-
     <string-array name="rentLength_array">
         <item>Select</item>
         <item>Per Hour</item>
