@@ -12,7 +12,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.Map;
 
 public class Database {
-    private Firebase m_ref;
+    private final Firebase m_ref;
     private FirebaseError m_createError = null;
     private FirebaseError m_loginError = null;
 
@@ -38,10 +38,10 @@ public class Database {
         m_context = context;
     }
 
-    protected Firebase getRef() { return m_ref; }
+    Firebase getRef() { return m_ref; }
 
     //attempts to create a new user
-    protected void createUser(String email, String pw, final User user) {
+    void createUser(String email, String pw, final User user) {
         m_ref.createUser(email, pw, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
@@ -58,7 +58,7 @@ public class Database {
     }
 
     //attempts to login the desired user
-    protected void requestLogin(String email, String pw, final User user) {
+    void requestLogin(String email, String pw, final User user) {
         m_ref.authWithPassword(email, pw, new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
@@ -76,7 +76,7 @@ public class Database {
     }
 
     //logs out the user and returns a boolean on the success of the logout
-    protected boolean logoutUser()
+    boolean logoutUser()
     {
         AuthData authData = m_ref.getAuth();
 
@@ -92,7 +92,7 @@ public class Database {
     }
 
     //gets the current logged in user's information
-    protected void getUserData(final User user) {
+    void getUserData(final User user) {
         //retrieve data from database
         m_ref.child("users").child(m_ref.getAuth().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -118,7 +118,7 @@ public class Database {
     }
 
     protected FirebaseError getUserCreateError() {return m_createError;}
-    protected FirebaseError getLoginError() {return m_loginError;}
+    FirebaseError getLoginError() {return m_loginError;}
 
 
 

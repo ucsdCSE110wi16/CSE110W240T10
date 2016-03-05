@@ -1,19 +1,15 @@
 package sdgkteam10.rent_it;
 
 import android.net.Uri;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.KeyListener;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.google.android.gms.appindexing.Action;
@@ -33,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userZip;
     //Edit profile button
     private Button editProfile;
-    boolean edit;
+    private boolean edit;
 
     private User user;
 

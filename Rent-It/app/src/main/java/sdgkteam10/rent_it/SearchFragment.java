@@ -1,17 +1,13 @@
 package sdgkteam10.rent_it;
 
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -23,7 +19,7 @@ import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-    private ArrayList<String> arr = new ArrayList<>(10);
+    private final ArrayList<String> arr = new ArrayList<>(10);
 
     private String queryString = "mu";
 
@@ -35,8 +31,7 @@ public class SearchFragment extends Fragment {
 
     //returns a reference to this Fragment
     public static SearchFragment newInstance() {
-        SearchFragment fragment = new SearchFragment();
-        return fragment;
+        return new SearchFragment();
     }
 
 
@@ -91,7 +86,7 @@ public class SearchFragment extends Fragment {
 
         ListView listView_S = (ListView) rootView.findViewById(R.id.listView_S);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.fragment_search, arr);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.fragment_search, arr);
         arrayAdapter.notifyDataSetChanged();
         listView_S.setAdapter(arrayAdapter);
         //listView_S.setOnItemClickListener(getActivity());

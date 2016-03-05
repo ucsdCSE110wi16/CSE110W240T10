@@ -1,6 +1,6 @@
 package sdgkteam10.rent_it;
 
-public class User {
+class User {
     private String name;
     private String email;
     private String pw;

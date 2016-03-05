@@ -40,8 +40,8 @@ import java.util.ArrayList;
 //TODO: change to production database
 
 public class CreateListingActivity extends AppCompatActivity {
-    static final int IMAGE_CAMERA = 1;
-    static final int IMAGE_PICK = 2;
+    private static final int IMAGE_CAMERA = 1;
+    private static final int IMAGE_PICK = 2;
 
     private View parentLayout;
 
@@ -60,7 +60,7 @@ public class CreateListingActivity extends AppCompatActivity {
     private Spinner categorySpinner_CL;
     private Spinner minRentSpinner_CL;
 
-    private ArrayList<Bitmap> bitmapArray = new ArrayList<>();
+    private final ArrayList<Bitmap> bitmapArray = new ArrayList<>();
     private ImageView ivImage_CL;
 
     private Firebase ref;

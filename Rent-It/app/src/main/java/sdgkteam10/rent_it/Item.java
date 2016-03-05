@@ -1,17 +1,13 @@
 package sdgkteam10.rent_it;
 
 
-import android.graphics.Bitmap;
-
-import java.util.ArrayList;
-
-public class Item {
-    String itemName;
-    String price;
-    String priceRate;
-    String description;
-    String[] imageArray;
-    String category;
+class Item {
+    private String itemName;
+    private String price;
+    private String priceRate;
+    private String description;
+    private String[] imageArray;
+    private String category;
 
     public Item(){
 

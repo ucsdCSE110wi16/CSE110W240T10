@@ -1,6 +1,5 @@
 package sdgkteam10.rent_it;
 
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,15 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class FavoritesFragment extends Fragment {
-    TextView text;
+    private TextView text;
 
     public FavoritesFragment() {}
 
     //returns a reference to this Fragment
     public static FavoritesFragment newInstance()
     {
-        FavoritesFragment fragment = new FavoritesFragment();
-        return fragment;
+        return new FavoritesFragment();
     }
 
     @Override

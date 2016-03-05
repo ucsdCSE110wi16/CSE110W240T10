@@ -40,13 +40,9 @@ import com.firebase.client.FirebaseError;                   //  https://www.fire
 
 
 import java.util.ArrayList;                                 //  https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
-import java.util.HashMap;                                   //  https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html
 import java.util.List;                                      //  https://docs.oracle.com/javase/8/docs/api/java/util/List.html
-import java.util.Map;                                       //  https://docs.oracle.com/javase/7/docs/api/java/util/Map.html
 
 import static android.Manifest.permission.READ_CONTACTS;
-import static android.graphics.Color.parseColor;
-import static sdgkteam10.rent_it.R.id.button_signin;
 
 /**
  * A login screen that offers login via email/password.
@@ -149,7 +145,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
-    public void goRegister(View v) {
+    public void goRegister() {
         Intent intent;
         intent = new Intent(LoginActivity.this, RegistrationActivity.class);
         startActivity(intent);
@@ -378,8 +374,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         //successful login
                         success[0] = true;
                     }
-                    else
+                    else {
                         success[0] = false;
+                    }
                 }
             });
 

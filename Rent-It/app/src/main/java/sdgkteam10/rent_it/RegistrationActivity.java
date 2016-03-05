@@ -1,10 +1,7 @@
 package sdgkteam10.rent_it;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,15 +19,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 
 import static android.graphics.Color.parseColor;
@@ -61,7 +55,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private User user = null;
 
     //database reference
-    Database db;
+    private Database db;
 
     /**
      * Whether or not the system UI should be auto-hidden after
