@@ -60,7 +60,7 @@ public class CreateListingActivity extends AppCompatActivity {
     private Spinner categorySpinner_CL;
     private Spinner minRentSpinner_CL;
 
-    private ArrayList<Bitmap> bitmapArray = new ArrayList<Bitmap>();
+    private ArrayList<Bitmap> bitmapArray = new ArrayList<>();
     private ImageView ivImage_CL;
 
     private Firebase ref;

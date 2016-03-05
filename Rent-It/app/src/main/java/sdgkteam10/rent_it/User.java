@@ -40,7 +40,7 @@ public class User {
         Database.getInstance().requestLogin(email, password, this);
     }
 
-    public void requestDatabaseData() {
+    public void  requestDatabaseData() {
         Database.getInstance().getUserData(this);
     }
 

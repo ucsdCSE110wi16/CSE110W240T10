@@ -3,4 +3,6 @@
     <item name="name" type="id">name</item>
     <item name="zip" type="id">zipcode</item>
     <item name="minRentDuration_CL" type="id" />
+    <item name="loginFail" type="id">Login Fail</item>
+    <item name="creationFail" type="id">Creation Fail</item>
 </resources>

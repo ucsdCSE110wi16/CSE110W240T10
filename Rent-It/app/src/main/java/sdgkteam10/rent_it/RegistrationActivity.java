@@ -384,7 +384,7 @@ public class RegistrationActivity extends AppCompatActivity {
        }
         );
 
-        // Set up state spinner
+
         createStateSpinner();
         // Set up the user interaction to manually show or hide the system UI.
         //mContentView.setOnClickListener(new View.OnClickListener() {
