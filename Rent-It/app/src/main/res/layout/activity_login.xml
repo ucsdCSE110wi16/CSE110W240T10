@@ -43,7 +43,8 @@
                 android:textSize="78sp"
                 android:textColor="#6d99f5"
                 android:elegantTextHeight="true"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                tools:ignore="UnusedAttribute" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -58,9 +59,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:id="@+id/email"
-                    android:textColor="#008279"
-                    android:textColorHint="#40c1b8"
-                    android:background="#9e9c43c2" />
+                    android:textColor="@color/colorForeground"
+                    android:textColorHint="@color/colorMiddle"
+                    android:background="@color/colorBackground" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -80,10 +81,10 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="#008279"
-                    android:textColorHint="#40c1b8"
+                    android:textColor="@color/colorForeground"
+                    android:textColorHint="@color/colorMiddle"
                     android:autoText="false"
-                    android:background="#9e9c43c2" />
+                    android:background="@color/colorBackground" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -101,15 +102,14 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/register"
                     android:textStyle="bold"
-                    android:shadowColor="#e4bd4b"
-                    android:foregroundTint="#4c1b1b"
                     android:foregroundGravity="top"
                     android:foreground="#381e1e"
-                    android:textColor="#0e2a28"
-                    android:background="#6d99f5"
+                    android:textColor="@color/colorForeground"
+                    android:background="@color/colorBackground"
                     android:onClick="goRegister"
                     android:layout_marginLeft="50dp"
-                    android:layout_weight="0.05" />
+                    android:layout_weight="0.05"
+                    tools:ignore="InefficientWeight,UnusedAttribute" />
 
                 <Button
                     android:id="@+id/button_signin"
@@ -119,14 +119,12 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/signin"
                     android:textStyle="bold"
-                    android:shadowColor="#e4bd4b"
-                    android:foregroundTint="#4c1b1b"
                     android:foregroundGravity="top"
-                    android:foreground="#0e2a28"
-                    android:textColor="#0e2a28"
-                    android:background="#6d99f5"
-                    android:textColorHighlight="#6d99f5"
-                    android:layout_marginLeft="35dp" />
+                    android:foreground="@color/colorForeground"
+                    android:textColor="@color/colorForeground"
+                    android:background="@color/colorBackground"
+                    android:layout_marginLeft="35dp"
+                    tools:ignore="UnusedAttribute" />
 
             </LinearLayout>
 

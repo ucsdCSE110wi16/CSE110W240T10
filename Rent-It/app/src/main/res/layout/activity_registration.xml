@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0e2a28"
+    android:background="@color/colorBackground"
     tools:context="sdgkteam10.rent_it.RegistrationActivity">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -27,9 +27,10 @@
                 android:text="@string/register_title_str"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="UnusedAttribute" />
 
             <TextView
                 android:id="@+id/required_field_label"
@@ -37,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/required_field"
-                android:textColor="#e1a7a7"
+                android:textColor="@color/colorForeground"
                 android:textSize="15sp" />
 
             <EditText
@@ -49,7 +50,7 @@
                 android:ellipsize="none"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_name_hint" />
 
             <EditText
@@ -60,7 +61,7 @@
                 android:editable="true"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_email_str" />
 
             <EditText
@@ -71,7 +72,7 @@
                 android:editable="true"
                 android:ems="10"
                 android:inputType="textPostalAddress"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_pw1_str" />
 
             <EditText
@@ -82,7 +83,7 @@
                 android:editable="true"
                 android:ems="10"
                 android:inputType="textPostalAddress"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_pw2_str" />
 
             <EditText
@@ -93,7 +94,7 @@
                 android:editable="true"
                 android:ems="10"
                 android:inputType="textPostalAddress"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_address1_str" />
 
             <EditText
@@ -105,7 +106,7 @@
                 android:ems="10"
                 android:inputType="textPostalAddress"
                 android:paddingTop="0dp"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_address2_str" />
 
             <EditText
@@ -116,7 +117,7 @@
                 android:editable="true"
                 android:ems="10"
                 android:inputType="textPostalAddress"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_city_str" />
 
             <Spinner
@@ -135,17 +136,18 @@
                 android:ems="10"
                 android:inputType="textPostalAddress"
                 android:paddingTop="0dp"
-                android:textColor="#63dfb2"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_zip_str" />
 
             <EditText
+
                 android:id="@+id/fill_phone"
                 android:layout_width="276dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:ems="10"
-                android:inputType="textPostalAddress"
-                android:textColor="#63dfb2"
+                android:inputType="phone"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/fill_phone_str" />
 
             <Button

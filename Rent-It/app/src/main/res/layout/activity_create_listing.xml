@@ -23,7 +23,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             tools:context="sdgkteam10.rent_it.CreateListingActivity"
-            android:background="#0e2a28">
+            android:background="@color/colorBackground">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/postAnItem_string"
                 android:textSize="30sp"
-                android:textColor="#40c1b8"
+                android:textColor="@color/colorForeground"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 
@@ -43,8 +43,8 @@
                 android:id="@+id/itemNameField_CL"
                 android:hint="@string/bicycle_string"
                 android:singleLine="true"
-                android:textColorHint="#008279"
-                android:textColor="#008279"
+                android:textColorHint="@color/colorMiddle"
+                android:textColor="@color/colorForeground"
                 android:layout_marginTop="30dp"
                 android:layout_below="@+id/title_CL"
                 android:layout_alignParentRight="true"
@@ -57,10 +57,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:id="@+id/itemPriceField_CL"
-                android:textColorHint="#008279"
+                android:textColorHint="@color/colorMiddle"
+                android:textColor="@color/colorForeground"
                 android:hint="@string/examplePrice_string"
                 android:textIsSelectable="false"
-                android:textColor="#008279"
                 android:ems="7"
                 android:maxEms="7"
                 android:layout_alignLeft="@+id/itemNameField_CL"
@@ -76,7 +76,7 @@
                 android:text="@string/minRentDuration"
                 android:id="@+id/rentDuration_CL"
                 android:textSize="22sp"
-                android:textColor="#40c1b8"
+                android:textColor="@color/colorForeground"
                 android:layout_below="@+id/category_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -103,7 +103,7 @@
                 android:layout_alignBottom="@+id/itemNameField_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:textColor="#40c1b8" />
+                android:textColor="@color/colorForeground" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_toStartOf="@+id/title_CL"
-                android:textColor="#40c1b8"
+                android:textColor="@color/colorForeground"
                 android:layout_toLeftOf="@+id/title_CL" />
 
             <Spinner
@@ -126,7 +126,7 @@
                 android:entries="@array/rentLength_array"
                 android:layout_below="@+id/itemNameField_CL"
                 android:layout_alignBottom="@+id/itemPrice_CL"
-                android:textColor="#008279"
+                android:textColor="@color/colorForeground"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_toEndOf="@+id/rentDuration_CL"
@@ -139,9 +139,9 @@
                 android:maxLength="150"
                 android:ems="10"
                 android:id="@+id/itemDescriptionField_CL"
-                android:textColorHint="#008279"
+                android:textColorHint="@color/colorMiddle"
                 android:hint="@string/charLimit_string"
-                android:textColor="#008279"
+                android:textColor="@color/colorForeground"
                 android:layout_below="@+id/itemDescription_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -152,7 +152,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/desc_string"
                 android:id="@+id/itemDescription_CL"
-                android:textColor="#40c1b8"
+                android:textColor="@color/colorForeground"
                 android:layout_marginTop="31dp"
                 android:layout_below="@+id/itemPriceField_CL"
                 android:layout_alignParentLeft="true"
@@ -164,7 +164,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/category_string"
                 android:id="@+id/category_CL"
-                android:textColor="#40c1b8"
+                android:textColor="@color/colorForeground"
                 android:layout_below="@+id/addPhotosButton_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -176,7 +176,7 @@
                 android:id="@+id/categorySpinner_CL"
                 android:entries="@array/itemCategories_array"
                 android:layout_toRightOf="@+id/rentDuration_CL"
-                android:textColor="#008279"
+                android:textColor="@color/colorForeground"
                 android:layout_toLeftOf="@+id/itemPriceSpinner_CL"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
@@ -207,7 +207,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/minRentSpinner_CL"
                 android:entries="@array/minRentDur_array"
-                android:textColor="#008279"
+                android:textColor="@color/colorForeground"
                 android:layout_toEndOf="@+id/rentDuration_CL"
                 android:layout_toRightOf="@+id/rentDuration_CL"
                 android:layout_alignTop="@+id/minRentDuration_CL"
@@ -218,10 +218,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:id="@+id/minRentDuration_CL"
-                android:textColorHint="#008279"
+                android:textColorHint="@color/colorMiddle"
                 android:hint="@string/num10"
                 android:textIsSelectable="false"
-                android:textColor="#008279"
+                android:textColor="@color/colorForeground"
                 android:ems="7"
                 android:maxEms="7"
                 android:layout_below="@+id/rentDuration_CL"
@@ -236,7 +236,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/depositQues_string"
                 android:id="@+id/textView2"
-                android:textColor="#40c1b8"
+                android:textColor="@color/colorForeground"
                 android:layout_below="@+id/minRentSpinner_CL"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -251,7 +251,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:checked="false"
-                android:textColor="#40c1b8" />
+                android:textColor="@color/colorForeground" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -262,7 +262,7 @@
                 android:layout_alignTop="@+id/checkBox"
                 android:layout_alignRight="@+id/category_CL"
                 android:layout_alignEnd="@+id/category_CL"
-                android:textColor="#40c1b8" />
+                android:textColor="@color/colorForeground" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -272,7 +272,7 @@
                 android:textColorHint="#008279"
                 android:hint="@string/ifDepIsReq_string"
                 android:textIsSelectable="false"
-                android:textColor="#008279"
+                android:textColor="@color/colorForeground"
                 android:ems="7"
                 android:maxEms="7"
                 android:layout_below="@+id/checkBox"
@@ -294,6 +294,7 @@
                 android:layout_toStartOf="@+id/minRentSpinner_CL"
                 android:layout_alignRight="@+id/title_CL"
                 android:layout_alignEnd="@+id/title_CL"
+                android:layout_toLeftOf="@+id/title_CL"
                 android:textColor="#40c1b8" />
 
             <CheckBox

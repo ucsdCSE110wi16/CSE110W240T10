@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="sdgkteam10.rent_it.MainActivity$PlaceholderFragment"
-    android:background="#0e2a28">
+    android:background="@color/colorBackground">
 
     <TextView
         android:id="@+id/section_label"
