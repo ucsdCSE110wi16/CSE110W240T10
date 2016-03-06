@@ -11,26 +11,23 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SimpleAdapter;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.ui.FirebaseListAdapter;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.regex.Pattern;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SearchFragment extends Fragment {
 
     //stores items from Firebase query for faster searching
-    private final ArrayList<Item> items = new ArrayList<>(10);
+    private Set<Item> items;
+
+    //stores the items matching the search
+    private ArrayList<Item> results;
 
     //UI elements
     private ListView listView_S;
@@ -54,6 +51,9 @@ public class SearchFragment extends Fragment {
         //initialize database stuff
         Database.setContext(getActivity());
         db = Database.getInstance();
+
+        items = new HashSet<Item>();
+        results = new ArrayList<Item>();
 
         //initialize UI elements
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
@@ -81,6 +81,7 @@ public class SearchFragment extends Fragment {
                 //TODO: create custom layout and fill in all fields
                 ((TextView)view.findViewById(android.R.id.text1)).setText(item.getItemName());
                 ((TextView)view.findViewById(android.R.id.text2)).setText(item.getPrice());
+
                 //add the item to the list of searchable items
                 items.add(item);
             }
@@ -92,15 +93,13 @@ public class SearchFragment extends Fragment {
             @Override
             //called when the user submits a query
             public boolean onQueryTextSubmit(String query) {
+                query = query.toLowerCase();
+
                 //notify user that searching has begun
                 emptyView.setText(R.string.searching_items);
 
-                //iterate through items ArrayList and check different values of each item
-                //remove items from the listview that do not match the criteria
-                query = query.toLowerCase();
-
-                //stores the items matching the search
-                final ArrayList<Item> results = new ArrayList<Item>(0);
+                //empty the previous search results
+                results.clear();
 
                 //search the items for matching results
                 for (Item item: items) {
@@ -124,8 +123,19 @@ public class SearchFragment extends Fragment {
                     @Override
                     //fills in the result listView fields
                     public View getView(int position, View convertView, ViewGroup parent) {
+                        View view = null;
+
                         //TODO: create custom layout and fill in all fields
-                        View view = super.getView(position, convertView, parent);
+                        //prevent duplicate views
+                        if (convertView == null) {
+                            LayoutInflater inflater = getActivity().getLayoutInflater();
+                            view = inflater.inflate(android.R.layout.two_line_list_item, parent, false);
+                        }
+                        else {
+                            view = convertView;
+                        }
+
+                        //View view = super.getView(position, convertView, parent);
                         TextView nameText = (TextView) view.findViewById(android.R.id.text1);
                         TextView priceText = (TextView) view.findViewById(android.R.id.text2);
 
@@ -141,12 +151,12 @@ public class SearchFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //if string is empty, repopulate the original listview
+                //if string is empty, refresh everything and repopulate the original listview
                 if (newText.equals("")) {
-                    listView_S.setAdapter(mAdapter);
-                    mAdapter.notifyDataSetChanged();
-                    listView_S.invalidateViews();
+                    items.clear();
                     emptyView.setText(R.string.loading_items);
+                    listView_S.setAdapter(mAdapter);
+                    listView_S.invalidateViews();
                 }
                 return true;
             }
@@ -161,16 +171,6 @@ public class SearchFragment extends Fragment {
             }
         });
 
-            /*
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-           TextView text = (TextView) view;
-          Toast.makeText(this, text.getText().toString(), Toast.LENGTH_SHORT).show();
-         }
-
-        */
-
         return rootView;
-
-    }}
+    }
+}
