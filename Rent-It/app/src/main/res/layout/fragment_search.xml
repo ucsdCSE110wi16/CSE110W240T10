@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="#FFFFFF">
 
     <SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchView_S"
         android:queryHint="Search items"
-        android:background="@color/colorBackground" />
+        android:background="@color/colorForeground" />
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="526dp"
+        android:layout_height="10000dp"
         android:id="@+id/listView_S" />
 </LinearLayout>

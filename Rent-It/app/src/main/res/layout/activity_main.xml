@@ -48,7 +48,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:borderWidth="0dp"
         android:src="@drawable/ic_add_white_2x"
-        app:backgroundTint="#269c94"
+        app:backgroundTint="@color/colorForeground"
         />
 
 </android.support.design.widget.CoordinatorLayout>

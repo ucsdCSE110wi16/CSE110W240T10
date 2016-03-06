@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="5.0sp">
+
+    <ImageView
+        android:id="@+id/itemBoxImage"
+        android:layout_width="142dp"
+        android:layout_height="80dp"
+        android:src="@drawable/frodo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingTop="5sp"
+        android:paddingRight="5sp"
+        android:paddingLeft="5sp"
+        android:paddingBottom="5sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Sweg Shades"
+        android:id="@+id/itemBoxTitle"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/itemBoxImage"
+        android:layout_toEndOf="@+id/itemBoxImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="$15.99"
+        android:id="@+id/itemBoxPrice"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/itemBoxTitle"
+        android:layout_toRightOf="@+id/itemBoxImage"
+        android:layout_toEndOf="@+id/itemBoxImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Per Month(s)"
+        android:id="@+id/itemBoxRate"
+        android:layout_below="@+id/itemBoxPrice"
+        android:layout_alignLeft="@+id/itemBoxPrice"
+        android:layout_alignStart="@+id/itemBoxPrice" />
+</RelativeLayout>

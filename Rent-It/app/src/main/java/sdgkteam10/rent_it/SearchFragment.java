@@ -1,7 +1,11 @@
 package sdgkteam10.rent_it;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -9,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TableRow;
@@ -78,12 +83,20 @@ public class SearchFragment extends Fragment {
         final Query queryRef = db.getRef().child(getActivity().getString(R.string.firebase_items)).limitToLast(20);
 
         //display the items in the query
-        mAdapter = new FirebaseListAdapter<Item>(getActivity(), Item.class, android.R.layout.two_line_list_item, queryRef) {
+        mAdapter = new FirebaseListAdapter<Item>(getActivity(), Item.class, R.layout.list_item_box, queryRef) {
             @Override
             protected void populateView(View view, Item item, int i) {
                 //TODO: create custom layout and fill in all fields
-                ((TextView)view.findViewById(android.R.id.text1)).setText(item.getItemName());
-                ((TextView)view.findViewById(android.R.id.text2)).setText(item.getPrice());
+                ((TextView)view.findViewById(R.id.itemBoxTitle)).setText(item.getItemName());
+                ((TextView)view.findViewById(R.id.itemBoxPrice)).setText("$"+item.getPrice());
+                ((TextView)view.findViewById(R.id.itemBoxRate)).setText(item.getPriceRate());
+
+                //converting string saved in fire base to an image
+                String tmpImgArray[] = item.getImageArray();
+                byte[] imageAsBytes = Base64.decode(tmpImgArray[0], Base64.DEFAULT);
+                Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+
+                ((ImageView)view.findViewById(R.id.itemBoxImage)).setImageBitmap(bmp);
 
                 //add the item to the list of searchable items
                 items.add(item);
@@ -123,7 +136,7 @@ public class SearchFragment extends Fragment {
 
                 //create a new adapter to display the results of the search
                 ArrayAdapter<Item> resultsAdapter = new ArrayAdapter<Item>(
-                        getActivity(), android.R.layout.two_line_list_item, android.R.id.text1, results) {
+                        getActivity(), R.layout.list_item_box, results) {
                     @Override
                     //fills in the result listView fields
                     public View getView(int position, View convertView, ViewGroup parent) {
@@ -133,18 +146,29 @@ public class SearchFragment extends Fragment {
                         //prevent duplicate views
                         if (convertView == null) {
                             LayoutInflater inflater = getActivity().getLayoutInflater();
-                            view = inflater.inflate(android.R.layout.two_line_list_item, parent, false);
+                            view = inflater.inflate(R.layout.list_item_box, parent, false);
                         }
                         else {
                             view = convertView;
                         }
 
                         //View view = super.getView(position, convertView, parent);
-                        TextView nameText = (TextView) view.findViewById(android.R.id.text1);
-                        TextView priceText = (TextView) view.findViewById(android.R.id.text2);
+                        TextView nameText = (TextView) view.findViewById(R.id.itemBoxTitle);
+                        TextView priceText = (TextView) view.findViewById(R.id.itemBoxPrice);
+                        TextView RateText = (TextView) view.findViewById(R.id.itemBoxRate);
+                        ImageView itemImg = (ImageView)view.findViewById(R.id.itemBoxImage);
 
+
+                        //converting string saved in fire base to an image
+                        String tmpImgArray[] = results.get(position).getImageArray();
+                        byte[] imageAsBytes = Base64.decode(tmpImgArray[0], Base64.DEFAULT);
+                        Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+
+                        itemImg.setImageBitmap(bmp);
                         nameText.setText(results.get(position).getItemName());
-                        priceText.setText(results.get(position).getPrice());
+                        priceText.setText("$" + results.get(position).getPrice());
+                        RateText.setText(results.get(position).getPriceRate());
+
                         return view;
                     }
                 };
@@ -173,7 +197,8 @@ public class SearchFragment extends Fragment {
         listView_S.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(getActivity(), ViewListingActivity.class);
+                startActivity(intent);
             }
         });
 
