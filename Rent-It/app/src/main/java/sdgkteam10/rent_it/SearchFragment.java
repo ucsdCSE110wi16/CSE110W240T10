@@ -31,22 +31,23 @@ public class SearchFragment extends Fragment {
     private SearchView searchView_S;
     private FirebaseListAdapter<Item> mAdapter;
 
-    public SearchFragment() {
+    //database reference
+    Database db;
 
-    }
+    public SearchFragment() {}
 
     //returns a reference to this Fragment
     public static SearchFragment newInstance() {
         return new SearchFragment();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //TODO: change to production database
-        Firebase.setAndroidContext(getActivity());
-        Firebase ref = new Firebase("https://rentit.firebaseio.com");
+        //initialize database stuff
+        Database.setContext(getActivity());
+        db = Database.getInstance();
 
         //initialize UI elements
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
@@ -58,7 +59,7 @@ public class SearchFragment extends Fragment {
 
         //Query queryRef = ref.child("items").orderByChild("name").endAt("mustang").limitToLast(10);
         //TODO: change to query all items (after item storage restructring)
-        Firebase queryRef = ref.child("items").child("car");
+        Firebase queryRef = db.getRef().child("items").child("car");
 
         //display the items in the query
         mAdapter = new FirebaseListAdapter<Item>(getActivity(), Item.class, android.R.layout.two_line_list_item, queryRef) {

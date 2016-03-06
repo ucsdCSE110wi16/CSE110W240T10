@@ -29,12 +29,10 @@ import com.firebase.client.Firebase;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-//ToDo: upload data to fire base
 //ToDo: keep images even after phone has been rotated
 //Todo: deselect a text field
 //ToDo: deposit Required
 //ToDo: Make money field only 2 decimal length
-//TODO: change to production database
 
 public class CreateListingActivity extends AppCompatActivity {
     private static final int IMAGE_CAMERA = 1;
@@ -58,7 +56,7 @@ public class CreateListingActivity extends AppCompatActivity {
     private ImageView ivImage_CL;
 
     private String userID;
-    private Firebase ref;
+    private Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,17 +64,16 @@ public class CreateListingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing);
 
-        Firebase.setAndroidContext(this);
-        ref = new Firebase("https://rentit.firebaseio.com/");
-
-        userID = ref.getAuth().getUid();
+        //initialize database stuff
+        Database.setContext(this);
+        db = Database.getInstance();
+        userID = db.getLoggedInUser();
 
         //gather ids of widgets
         getIds();
 
         //using eric's spinner method to change text color of drop down box
         createStateSpinner();
-
 
         //when the Add Photos Button is pressed call selectImages method
         addPhotosButton_CL.setOnClickListener(new Button.OnClickListener() {
@@ -326,7 +323,7 @@ public class CreateListingActivity extends AppCompatActivity {
 
 
         //Firebase locPath = ref.child("users").child(userID).child("items");
-        Firebase locPath = ref.child("items");
+        Firebase locPath = db.getRef().child("items");
         //locPath.child(item.getItemName()).setValue(item);
         locPath.child(item.getItemName()).push().setValue(item);
 
