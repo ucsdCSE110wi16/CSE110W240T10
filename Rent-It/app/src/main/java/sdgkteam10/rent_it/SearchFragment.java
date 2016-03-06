@@ -8,26 +8,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
+import com.firebase.ui.FirebaseListAdapter;
 
 import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-    private final ArrayList<String> arr = new ArrayList<>(10);
+    //TODO: store items from Firebase query in here for faster searching
+    private final ArrayList<Item> items = new ArrayList<>(10);
 
-    private String queryString = "mu";
-
+    //UI elements
+    private ListView listView_S;
+    private SearchView searchView_S;
+    private FirebaseListAdapter<Item> mAdapter;
 
     public SearchFragment() {
 
     }
-
 
     //returns a reference to this Fragment
     public static SearchFragment newInstance() {
@@ -38,58 +44,31 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_search, container, false);
-
-        //TODO: change temporary testing code to reflect production database
+        //TODO: change to production database
         Firebase.setAndroidContext(getActivity());
-        Firebase myFirebaseRef = new Firebase("https://boiling-heat-3337.firebaseio.com/");
-        //Query queryRef = myFirebaseRef.child("items").orderByChild("name").equalTo("Mustang");
-        // /Query queryRef = ref.orderByKey().startAt("b").endAt("b\uf8ff");
-        //Query queryRef = myFirebaseRef.child("items").orderByChild("name").startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(5);
-        Log.d("search", "-----------------about to start new query----------------------");
-        //Query queryRef = myFirebaseRef.child("items").orderByChild("name").startAt("m").endAt("m\uf8ff").limitToFirst(5);
-        //Query queryRef = myFirebaseRef.orderByChild("name").startAt("m").endAt("m\uf8ff").limitToFirst(5);
-        //Query queryRef = myFirebaseRef.child("items").orderByChild("name").startAt("mustang").endAt("m\uf8ff").limitToFirst(5);
-        Query queryRef = myFirebaseRef.child("items").orderByChild("name").endAt("mustang").limitToLast(10);
+        Firebase ref = new Firebase("https://rentit.firebaseio.com");
 
+        //initialize UI elements
+        View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+        searchView_S = (SearchView) rootView.findViewById(R.id.searchView_S);
+        listView_S = (ListView) rootView.findViewById(R.id.listView_S);
 
-        queryRef.addChildEventListener(new ChildEventListener() {
+        listView_S.setTextFilterEnabled(true);
+        //searchView_S.setOnQueryTextListener(getActivity());
+
+        //Query queryRef = ref.child("items").orderByChild("name").endAt("mustang").limitToLast(10);
+        //TODO: change to query all items (after item storage restructring)
+        Firebase queryRef = ref.child("items").child("car");
+
+        //display the items in the query
+        mAdapter = new FirebaseListAdapter<Item>(getActivity(), Item.class, android.R.layout.two_line_list_item, queryRef) {
             @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChild) {
-
-                Log.d("search", "num of items found is " + snapshot.getChildrenCount());
-                Log.d("search", "this was found " + snapshot.getKey());
-
-                arr.add(snapshot.getKey());
+            protected void populateView(View view, Item item, int i) {
+                ((TextView)view.findViewById(android.R.id.text1)).setText(item.getItemName());
+                ((TextView)view.findViewById(android.R.id.text2)).setText(item.getPrice());
             }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
-        ListView listView_S = (ListView) rootView.findViewById(R.id.listView_S);
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.fragment_search, arr);
-        arrayAdapter.notifyDataSetChanged();
-        listView_S.setAdapter(arrayAdapter);
-        //listView_S.setOnItemClickListener(getActivity());
+        };
+        listView_S.setAdapter(mAdapter);
 
             /*
         @Override
