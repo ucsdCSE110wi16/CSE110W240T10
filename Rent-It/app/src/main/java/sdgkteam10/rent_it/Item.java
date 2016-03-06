@@ -10,6 +10,15 @@ class Item {
     private String category;
     private String itemUserID;
 
+    private String minRentDur;
+    private String minDurationSpinner;
+    private String depositAmount;
+    private String depositReqd;
+    private String depositNotReqd;
+    private String priceNeg;
+    private String item_Buyout;
+
+
     public Item(){
 
     }
@@ -67,6 +76,57 @@ class Item {
     }
     public void setItemUserID(String itemUserID) {
         this.itemUserID = itemUserID;
+    }
+
+    public String getMinRentDur() {
+        return minRentDur;
+    }
+    public void setMinRentDur (String minRentDur) {
+        this.minRentDur = minRentDur;
+    }
+
+    public String getMinDurationSpinner() {
+        return minDurationSpinner;
+    }
+    public void setMinDurationSpinner(String minDurationSpinner) {
+        this.minDurationSpinner = minDurationSpinner;
+    }
+
+    public String getDepositAmount() {
+        return depositAmount;
+    }
+    public void setDepositAmount(String depositAmount) {
+        this.depositAmount = depositAmount;
+    }
+
+    // this is for the "Yes!" check box
+    public String getDepositReqd() {
+        return depositReqd;
+    }
+    public void setDepositReqd(String depositReqd) {
+        this.depositReqd = depositReqd;
+    }
+
+    // this is for the "No." check box
+    public String getDepositNotReqd() {
+        return depositNotReqd;
+    }
+    public void setDepositNotReqd(String depositNotReqd) {
+        this.depositNotReqd = depositNotReqd;
+    }
+
+    public String getPriceNeg() {
+        return priceNeg;
+    }
+    public void setPriceNeg(String priceNeg) {
+        this.priceNeg = priceNeg;
+    }
+
+    public String getItemBuyout() {
+        return item_Buyout;
+    }
+    public void setItemBuyout(String item_Buyout) {
+        this.item_Buyout = item_Buyout;
     }
 }
 /*

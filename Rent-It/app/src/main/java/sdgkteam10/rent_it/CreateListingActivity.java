@@ -366,6 +366,15 @@ public class CreateListingActivity extends AppCompatActivity {
         item.setImageArray(stringImgArray);
         item.setCategory(categorySpinner_CL.getSelectedItem().toString().trim());
         item.setItemUserID(userID);
+        item.setMinRentDur(minRentDuration_CL.getText().toString().trim());
+        item.setMinDurationSpinner(minRentSpinner_CL.getSelectedItem().toString().trim());
+        item.setDepositAmount(amountOfDeposit_CL.getText().toString().trim());
+        // not sure about these because of getClass() I looked it up, and that is what I found
+        item.setPriceNeg(priceNegtble.getClass().toString().trim());
+        item.setItemBuyout(itemBuyout.getClass().toString().trim());
+        item.setDepositReqd(depositYes.getClass().toString().trim());
+        item.setDepositNotReqd(depositNo.getClass().toString().trim());
+
 
         Log.d("createlisting", "the item name to be posted is " + item.getItemName());
         //Log.d("createlisting", "the first element in string is " + stringImgArray[0]);
