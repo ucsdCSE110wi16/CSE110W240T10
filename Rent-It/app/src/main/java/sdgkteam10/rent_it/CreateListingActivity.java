@@ -18,6 +18,7 @@ import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.view.View;
 import android.widget.ImageView;
@@ -53,8 +54,6 @@ public class CreateListingActivity extends AppCompatActivity {
 
     private Button finishButton_CL;
     private Button addPhotosButton_CL;
-    private Button depositReq_YES_CL;
-    private Button depositReq_NO_CL;
 
     private Spinner itemPriceSpinner_CL;
     private Spinner categorySpinner_CL;
@@ -65,6 +64,12 @@ public class CreateListingActivity extends AppCompatActivity {
 
     private String userID;
     private Firebase ref;
+
+    private CheckBox depositYes;
+    private CheckBox depositNo;
+    private CheckBox priceNeg;
+    private CheckBox itemBuyout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +118,7 @@ public class CreateListingActivity extends AppCompatActivity {
         itemPriceField_CL = (EditText) findViewById(R.id.itemPriceField_CL);
         itemDescriptionField_CL = (EditText) findViewById(R.id.itemDescriptionField_CL);
         minRentDuration_CL = (EditText) findViewById(R.id.minRentDuration_CL);
+        amountOfDeposit_CL = (EditText) findViewById(R.id.amountOfDeposit_CL);
 
         addPhotosButton_CL = (Button) findViewById(R.id.addPhotosButton_CL);
         finishButton_CL = (Button) findViewById(R.id.finishButton_CL);
@@ -247,6 +253,7 @@ public class CreateListingActivity extends AppCompatActivity {
         itemPriceField_CL.setError(null);
         itemDescriptionField_CL.setError(null);
         minRentDuration_CL.setError(null);
+        amountOfDeposit_CL.setError(null);
 
         //check all fields and set error message
         if (itemNameField_CL.getText().toString().trim().equals("")) {
@@ -266,6 +273,18 @@ public class CreateListingActivity extends AppCompatActivity {
 
         if (minRentDuration_CL.getText().toString().trim().equals("")) {
             minRentDuration_CL.setError("Minimum rent duration is required!");
+            moveOn = false;
+        }
+
+        // in the case Yes! was selected but no deposit amount is entered
+        if ((depositYes.isChecked()) && (amountOfDeposit_CL.getText().toString().trim().equals(""))) {
+            amountOfDeposit_CL.setError("Amount of the deposit required since 'Yes!' was selected.");
+            moveOn = false;
+        }
+
+        // in the case No was selected and deposit amount is entered
+        if ((depositNo.isChecked()) && !(amountOfDeposit_CL.getText().toString().trim().equals(""))) {
+            amountOfDeposit_CL.setError("Amount of the deposit is entered even though 'No.' was selected.");
             moveOn = false;
         }
 
@@ -295,8 +314,6 @@ public class CreateListingActivity extends AppCompatActivity {
         if (moveOn) {
             uploadInfo();
         }
-
-
     }
 
 
