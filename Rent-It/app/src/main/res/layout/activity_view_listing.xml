@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:focusable="false">
+
+    <TableLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TitleAndPicture"
+            android:gravity="center"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_title"
+                android:id="@+id/viewListing_title"
+                android:textColor="@color/colorMiddle"
+                android:layout_gravity="center_horizontal"
+                android:textSize="30sp"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_height="244dp"
+                android:layout_width="match_parent"
+
+                android:layout_weight="4.28"></android.support.v4.view.ViewPager>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/viewListing_description"
+                android:id="@+id/viewListing_description"
+                android:textColor="@color/colorMiddle"
+                android:textSize="17sp"
+                android:padding="15sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="20sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="20sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_price"
+                android:id="@+id/viewListing_price"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_rentduration"
+                android:id="@+id/viewListing_rentduration"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/viewListing_price" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_category"
+                android:id="@+id/viewListing_category"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:layout_below="@+id/viewListing_rentduration"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_deposit"
+                android:id="@+id/viewListing_deposit"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:layout_below="@+id/viewListing_category"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_negotiable"
+                android:id="@+id/viewListing_priceNegotiable"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:layout_below="@+id/viewListing_deposit"
+                android:gravity="left|center_vertical|center_horizontal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/viewListing_rentduration"
+                android:layout_alignEnd="@+id/viewListing_rentduration"
+                android:paddingRight="10sp"
+                android:checked="false"
+                android:clickable="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_buyable"
+                android:id="@+id/viewListing_buyable"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:gravity="left|center_vertical|center_horizontal"
+                android:paddingRight="30sp"
+                android:clickable="false"
+                android:layout_below="@+id/viewListing_priceNegotiable"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_contact"
+                android:id="@+id/viewListing_contact"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:gravity="center_vertical|center|center_horizontal"
+                android:paddingRight="30sp"
+                android:clickable="false"
+                android:layout_below="@+id/viewListing_buyable"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_email"
+                android:id="@+id/viewListing_email"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:gravity="left|center_vertical|center_horizontal"
+                android:paddingRight="30sp"
+                android:clickable="false"
+                android:layout_below="@+id/viewListing_contact"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_phone"
+                android:id="@+id/viewListing_phone"
+                android:textColor="@color/colorForeground"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:gravity="left|center_vertical|center_horizontal"
+                android:paddingRight="30sp"
+                android:clickable="false"
+                android:layout_below="@+id/viewListing_email"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_priceVal"
+                android:id="@+id/viewListing_priceVal"
+                android:textColor="@color/colorMiddle"
+                android:layout_alignWithParentIfMissing="false"
+                android:textSize="20sp"
+                android:layout_above="@+id/viewListing_rentduration"
+                android:layout_toEndOf="@+id/viewListing_rentduration"
+                android:layout_alignParentTop="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_toRightOf="@+id/viewListing_rentduration"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="90sp"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_rentVal"
+                android:id="@+id/viewListing_rentVal"
+                android:textColor="@color/colorMiddle"
+                android:textSize="18sp"
+                android:layout_below="@+id/viewListing_priceVal"
+                android:gravity="center_vertical|center_horizontal|right"
+                android:layout_alignLeft="@+id/viewListing_cateogoryVal"
+                android:layout_above="@+id/viewListing_cateogoryVal"
+                android:paddingLeft="0dp"
+                android:paddingRight="10sp"
+                android:layout_toLeftOf="@+id/viewListing_rentTimeVal"
+                android:layout_toStartOf="@+id/viewListing_rentTimeVal" />
+
+            <TextView
+                android:layout_width="90sp"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_rentTimeVal"
+                android:id="@+id/viewListing_rentTimeVal"
+                android:layout_alignTop="@+id/viewListing_rentVal"
+                android:layout_above="@+id/viewListing_cateogoryVal"
+                android:textColor="@color/colorMiddle"
+                android:gravity="left|clip_horizontal|center_vertical"
+                android:textSize="18sp"
+                android:paddingRight="0dp"
+                android:paddingLeft="2sp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_categoryVal"
+                android:id="@+id/viewListing_cateogoryVal"
+                android:layout_below="@+id/viewListing_rentduration"
+                android:textColor="@color/colorMiddle"
+                android:layout_above="@+id/viewListing_deposit"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/viewListing_rentduration"
+                android:layout_toEndOf="@+id/viewListing_rentduration"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_depositVal"
+                android:id="@+id/viewListing_depositVal"
+                android:layout_below="@+id/viewListing_cateogoryVal"
+                android:layout_alignBottom="@+id/viewListing_deposit"
+                android:textColor="@color/colorMiddle"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/viewListing_rentduration"
+                android:layout_toEndOf="@+id/viewListing_rentduration"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_negotiableVal"
+                android:id="@+id/viewListing_negotiableVal"
+                android:textColor="@color/colorMiddle"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="18sp"
+                android:layout_below="@+id/viewListing_depositVal"
+                android:layout_toRightOf="@+id/viewListing_priceNegotiable"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_above="@+id/viewListing_buyableVal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_buyableVal"
+                android:id="@+id/viewListing_buyableVal"
+                android:textColor="@color/colorMiddle"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="18sp"
+                android:layout_alignLeft="@+id/viewListing_negotiableVal"
+                android:layout_alignStart="@+id/viewListing_negotiableVal"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@+id/viewListing_buyable"
+                android:layout_below="@+id/viewListing_priceNegotiable" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_emailVal"
+                android:id="@+id/viewListing_emailVal"
+                android:textColor="@color/colorMiddle"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:gravity="left|center_vertical|center_horizontal"
+                android:paddingRight="30sp"
+                android:clickable="false"
+                android:layout_alignBottom="@+id/viewListing_email"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/viewListing_category"
+                android:layout_toRightOf="@+id/viewListing_category" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viewListing_phoneVal"
+                android:id="@+id/viewListing_phoneVal"
+                android:textColor="@color/colorMiddle"
+                android:textSize="18sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:gravity="left|center_vertical|center_horizontal"
+                android:paddingRight="30sp"
+                android:clickable="false"
+                android:layout_alignBottom="@+id/viewListing_phone"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/viewListing_deposit"
+                android:layout_toEndOf="@+id/viewListing_deposit" />
+
+        </RelativeLayout>
+    </TableLayout>
+</ScrollView>

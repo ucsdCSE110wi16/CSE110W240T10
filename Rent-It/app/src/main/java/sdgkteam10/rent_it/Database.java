@@ -123,5 +123,5 @@ public class Database {
     }
 
     protected FirebaseError getUserCreateError() {return m_createError;}
-    FirebaseError getLoginError() {return m_loginError;}
+    protected FirebaseError getLoginError() {return m_loginError;}
 }

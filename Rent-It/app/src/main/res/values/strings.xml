@@ -69,7 +69,6 @@
     <string name="phone_">Phone:</string>
 
 
-
     <!-- createListingActivity Strings-->
     <string name="title_activity_createListing">New Posting</string>
     <string name="selectImageLoc">Select Image Location</string>
@@ -193,5 +192,33 @@
         <item>Wisconsin</item>
         <item>Wyoming</item>
     </string-array>
+
+    <!-- ViewListingActivity Strings -->
+    <string name="viewListing_title">MY HOMIES WOODEN STAFF</string>
+    <string name="viewListing_description">Ancient and really powerful, does not include gandalf</string>
+    <string name="viewListing_price">Price: </string>
+    <string name="viewListing_rentduration">Minimum Rent Duration: </string>
+    <string name="viewListing_category">Category: </string>
+    <string name="viewListing_deposit">Deposit Required: </string>
+    <string name="viewListing_buyable">Buyable:</string>
+    <string name="viewListing_negotiable">Price Negotiable:</string>
+    <string name="viewListing_contact">Contact</string>
+    <string name="viewListing_email">Email:</string>
+    <string name="viewListing_phone">Phone Number:</string>
+
+    <!-- ViewListingActivity Values to be updated -->
+    <string name="viewListing_priceVal">$20</string>
+    <string name="viewListing_rentVal">12</string>
+    <string name="viewListing_rentTimeVal">Years</string>
+    <string name="viewListing_categoryVal">Shit</string>
+    <string name="viewListing_depositVal">N/A</string>
+    <string name="viewListing_buyableVal">Yes</string>
+    <string name="viewListing_negotiableVal">Yes</string>
+    <string name="viewListing_emailVal">wheremyring@gmail.com</string>
+    <string name="viewListing_phoneVal">666-666-6666</string>
+    <string name="numOfImages">Image %1$d of %2$d</string>
+
+
+
 
 </resources>
