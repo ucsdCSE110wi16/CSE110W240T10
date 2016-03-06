@@ -107,13 +107,13 @@ class Item {
         this.depositReqd = depositReqd;
     }
 
-    // this is for the "No." check box
+    /* this is for the "No." check box
     public String getDepositNotReqd() {
         return depositNotReqd;
     }
     public void setDepositNotReqd(String depositNotReqd) {
         this.depositNotReqd = depositNotReqd;
-    }
+    }*/
 
     public String getPriceNeg() {
         return priceNeg;

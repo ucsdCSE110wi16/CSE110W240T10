@@ -359,26 +359,49 @@ public class CreateListingActivity extends AppCompatActivity {
         }
 
         Item item = new Item();
+
+        item.setItemUserID(userID);
         item.setItemName(itemNameField_CL.getText().toString().trim().toLowerCase());
+
         item.setPrice(itemPriceField_CL.getText().toString().trim());
         item.setPriceRate(itemPriceSpinner_CL.getSelectedItem().toString().trim());
+
         item.setDescription(itemDescriptionField_CL.getText().toString().trim());
         item.setImageArray(stringImgArray);
         item.setCategory(categorySpinner_CL.getSelectedItem().toString().trim());
-        item.setItemUserID(userID);
+
         item.setMinRentDur(minRentDuration_CL.getText().toString().trim());
         item.setMinDurationSpinner(minRentSpinner_CL.getSelectedItem().toString().trim());
-        item.setDepositAmount(amountOfDeposit_CL.getText().toString().trim());
-        // not sure about these because of getClass() I looked it up, and that is what I found
-        item.setPriceNeg(priceNegtble.getClass().toString().trim());
-        item.setItemBuyout(itemBuyout.getClass().toString().trim());
-        item.setDepositReqd(depositYes.getClass().toString().trim());
-        item.setDepositNotReqd(depositNo.getClass().toString().trim());
+
+
+        //getString(R.string.yesString)
+
+        if(priceNegtble.isChecked()){
+            item.setPriceNeg("yes");
+        }
+        else{
+            item.setPriceNeg("no");
+        }
+
+        if(itemBuyout.isChecked()){
+            item.setItemBuyout("yes");
+        }
+        else{
+            item.setItemBuyout("no");
+        }
+
+        if(depositYes.isChecked()){
+            item.setDepositReqd("yes");
+            item.setDepositAmount(amountOfDeposit_CL.getText().toString().trim());
+        }
+        else
+        {
+            item.setDepositReqd("no");
+            item.setDepositAmount("N/A");
+        }
 
 
         Log.d("createlisting", "the item name to be posted is " + item.getItemName());
-        //Log.d("createlisting", "the first element in string is " + stringImgArray[0]);
-
 
         //Firebase locPath = ref.child("users").child(userID).child("items");
         Firebase locPath = db.getRef().child("items");
