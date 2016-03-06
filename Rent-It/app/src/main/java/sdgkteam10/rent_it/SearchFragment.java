@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-    //TODO: store items from Firebase query in here for faster searching
+    //stores items from Firebase query for faster searching
     private final ArrayList<Item> items = new ArrayList<>(10);
 
     //UI elements
@@ -44,7 +45,6 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //TODO: change to production database
         //initialize database stuff
         Database.setContext(getActivity());
         db = Database.getInstance();
@@ -53,23 +53,49 @@ public class SearchFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         searchView_S = (SearchView) rootView.findViewById(R.id.searchView_S);
         listView_S = (ListView) rootView.findViewById(R.id.listView_S);
-
         listView_S.setTextFilterEnabled(true);
-        //searchView_S.setOnQueryTextListener(getActivity());
+
 
         //Query queryRef = ref.child("items").orderByChild("name").endAt("mustang").limitToLast(10);
-        //TODO: change to query all items (after item storage restructring)
-        Firebase queryRef = db.getRef().child("items").child("car");
+        Query queryRef = db.getRef().child("items").limitToLast(20);
 
         //display the items in the query
+        //TODO: create custom layout
         mAdapter = new FirebaseListAdapter<Item>(getActivity(), Item.class, android.R.layout.two_line_list_item, queryRef) {
             @Override
             protected void populateView(View view, Item item, int i) {
                 ((TextView)view.findViewById(android.R.id.text1)).setText(item.getItemName());
                 ((TextView)view.findViewById(android.R.id.text2)).setText(item.getPrice());
+
+                //add the item to the list of searchable items
+                items.add(item);
             }
         };
         listView_S.setAdapter(mAdapter);
+
+        //search functionality
+        searchView_S.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            //called when the user submits a query
+            public boolean onQueryTextSubmit(String query) {
+                //TODO: implement search functionality
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        //TODO: when an item is clicked on, go to the view listing activity
+        listView_S.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
 
             /*
         @Override

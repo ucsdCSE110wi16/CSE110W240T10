@@ -325,7 +325,7 @@ public class CreateListingActivity extends AppCompatActivity {
         //Firebase locPath = ref.child("users").child(userID).child("items");
         Firebase locPath = db.getRef().child("items");
         //locPath.child(item.getItemName()).setValue(item);
-        locPath.child(item.getItemName()).push().setValue(item);
+        locPath.push().setValue(item);
 
 
         //dialog box: item was uploaded
