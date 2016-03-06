@@ -98,8 +98,9 @@ public class CreateListingActivity extends AppCompatActivity {
         depositYes.setOnClickListener(new CheckBox.OnClickListener() {
             public void onClick(View v) {
                 if(depositNo.isChecked()){
-                    depositYes.toggle();
+                    depositNo.toggle();
                 }
+                depositNo.setError(null);
             }
         });
 
@@ -107,8 +108,9 @@ public class CreateListingActivity extends AppCompatActivity {
         depositNo.setOnClickListener(new CheckBox.OnClickListener() {
             public void onClick(View v) {
                 if(depositYes.isChecked()){
-                    depositNo.toggle();
+                    depositYes.toggle();
                 }
+                depositNo.setError(null);
             }
         });
     }
@@ -265,6 +267,7 @@ public class CreateListingActivity extends AppCompatActivity {
         itemDescriptionField_CL.setError(null);
         minRentDuration_CL.setError(null);
         amountOfDeposit_CL.setError(null);
+        depositYes.setError(null);
 
         //check all fields and set error message
         if (itemNameField_CL.getText().toString().trim().equals("")) {
