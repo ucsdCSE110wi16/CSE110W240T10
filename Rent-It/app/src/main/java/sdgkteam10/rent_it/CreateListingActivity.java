@@ -59,7 +59,7 @@ public class CreateListingActivity extends AppCompatActivity {
 
     private CheckBox depositYes;
     private CheckBox depositNo;
-    private CheckBox priceNeg;
+    private CheckBox priceNegtble;
     private CheckBox itemBuyout;
 
 
@@ -87,11 +87,28 @@ public class CreateListingActivity extends AppCompatActivity {
             }
         });
 
-
         //when the finish button is pressed call check form method
         finishButton_CL.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 checkForm();
+            }
+        });
+
+        // when the deposit is required (Yes! check box)
+        depositYes.setOnClickListener(new CheckBox.OnClickListener() {
+            public void onClick(View v) {
+                if(depositNo.isChecked()){
+                    depositYes.toggle();
+                }
+            }
+        });
+
+        // when the deposit is not required (No. check box)
+        depositNo.setOnClickListener(new CheckBox.OnClickListener() {
+            public void onClick(View v) {
+                if(depositYes.isChecked()){
+                    depositNo.toggle();
+                }
             }
         });
     }
@@ -117,6 +134,12 @@ public class CreateListingActivity extends AppCompatActivity {
 
         ivImage_CL = (ImageView) findViewById(R.id.ivImage_CL);
         parentLayout = findViewById(R.id.ScrollView01);
+
+        depositYes = (CheckBox) findViewById(R.id.depositYes);
+        depositNo = (CheckBox) findViewById(R.id.depositNo);
+        priceNegtble = (CheckBox) findViewById(R.id.priceNegtble);
+        itemBuyout = (CheckBox) findViewById(R.id.itemBuyout);
+
     }
 
 
@@ -273,6 +296,12 @@ public class CreateListingActivity extends AppCompatActivity {
         // in the case No was selected and deposit amount is entered
         if ((depositNo.isChecked()) && !(amountOfDeposit_CL.getText().toString().trim().equals(""))) {
             amountOfDeposit_CL.setError("Amount of the deposit is entered even though 'No.' was selected.");
+            moveOn = false;
+        }
+
+        // checking if Yes or No check boxes are clicked, if non is clicked then return false
+        if ((!depositYes.isChecked()) &&  (!depositNo.isChecked())) {
+            depositNo.setError("Please specify if the deposit is required or not.");
             moveOn = false;
         }
 
