@@ -35,6 +35,9 @@ public class SearchFragment extends Fragment {
     private FirebaseListAdapter<Item> mAdapter;
     private TextView emptyView;
 
+    //helps to prevent reloading data before searches
+    private boolean hasSearched = false;
+
     //database reference
     Database db;
 
@@ -94,6 +97,7 @@ public class SearchFragment extends Fragment {
             //called when the user submits a query
             public boolean onQueryTextSubmit(String query) {
                 query = query.toLowerCase();
+                hasSearched = true;
 
                 //notify user that searching has begun
                 emptyView.setText(R.string.searching_items);
@@ -145,6 +149,7 @@ public class SearchFragment extends Fragment {
                     }
                 };
                 listView_S.setAdapter(resultsAdapter);
+                listView_S.invalidateViews();
 
                 return true;
             }
@@ -152,7 +157,8 @@ public class SearchFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 //if string is empty, refresh everything and repopulate the original listview
-                if (newText.equals("")) {
+                if (newText.equals("") && hasSearched) {
+                    hasSearched = false;
                     items.clear();
                     emptyView.setText(R.string.loading_items);
                     listView_S.setAdapter(mAdapter);
