@@ -117,9 +117,11 @@ public class Database {
         });
     }
 
+    //gets the logged in user id (used in associating listing with a user
+    String getLoggedInUser() {
+        return m_ref.getAuth().getUid();
+    }
+
     protected FirebaseError getUserCreateError() {return m_createError;}
     FirebaseError getLoginError() {return m_loginError;}
-
-
-
 }

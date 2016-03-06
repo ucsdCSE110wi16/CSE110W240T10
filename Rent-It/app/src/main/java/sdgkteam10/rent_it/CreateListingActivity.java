@@ -30,28 +30,20 @@ import com.firebase.client.Firebase;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-
-
-//To Do: upload data to fire base
-//To Do: keep images even after phone has been rotated
-//To Do: deselect a text field
-//To Do: deposit Required
-//To Do: Make money field only 2 decimal length
-
-//TODO: change to production database
+//ToDo: keep images even after phone has been rotated
+//Todo: deselect a text field
+//ToDo: deposit Required
+//ToDo: Make money field only 2 decimal length
 
 public class CreateListingActivity extends AppCompatActivity {
     private static final int IMAGE_CAMERA = 1;
     private static final int IMAGE_PICK = 2;
-
     private View parentLayout;
-
     private EditText itemNameField_CL;
     private EditText itemPriceField_CL;
     private EditText itemDescriptionField_CL;
     private EditText minRentDuration_CL;
     private EditText amountOfDeposit_CL;
-
     private Button finishButton_CL;
     private Button addPhotosButton_CL;
 
@@ -63,7 +55,7 @@ public class CreateListingActivity extends AppCompatActivity {
     private ImageView ivImage_CL;
 
     private String userID;
-    private Firebase ref;
+    private Database db;
 
     private CheckBox depositYes;
     private CheckBox depositNo;
@@ -77,17 +69,16 @@ public class CreateListingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing);
 
-        Firebase.setAndroidContext(this);
-        ref = new Firebase("https://rentit.firebaseio.com/");
-        //ref = new Firebase("https://boiling-heat-3337.firebaseio.com");
-        userID = ref.getAuth().getUid();
+        //initialize database stuff
+        Database.setContext(this);
+        db = Database.getInstance();
+        userID = db.getLoggedInUser();
 
         //gather ids of widgets
         getIds();
 
         //using eric's spinner method to change text color of drop down box
         createStateSpinner();
-
 
         //when the Add Photos Button is pressed call selectImages method
         addPhotosButton_CL.setOnClickListener(new Button.OnClickListener() {
@@ -103,9 +94,6 @@ public class CreateListingActivity extends AppCompatActivity {
                 checkForm();
             }
         });
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
 
@@ -352,9 +340,9 @@ public class CreateListingActivity extends AppCompatActivity {
 
 
         //Firebase locPath = ref.child("users").child(userID).child("items");
-        Firebase locPath = ref.child("items");
+        Firebase locPath = db.getRef().child("items");
         //locPath.child(item.getItemName()).setValue(item);
-        locPath.child(item.getItemName()).push().setValue(item);
+        locPath.push().setValue(item);
 
 
         //dialog box: item was uploaded
