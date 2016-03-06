@@ -292,7 +292,7 @@ public class CreateListingActivity extends AppCompatActivity {
 
         // in the case Yes! was selected but no deposit amount is entered
         if ((depositYes.isChecked()) && (amountOfDeposit_CL.getText().toString().trim().equals(""))) {
-            amountOfDeposit_CL.setError("Amount of the deposit required since 'Yes!' was selected.");
+            amountOfDeposit_CL.setError("Amount of the deposit is required since 'Yes!' was selected.");
             moveOn = false;
         }
 
