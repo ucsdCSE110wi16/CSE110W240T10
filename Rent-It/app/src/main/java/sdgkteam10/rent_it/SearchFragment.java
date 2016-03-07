@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -84,6 +85,7 @@ public class SearchFragment extends Fragment {
         searchView_S = (SearchView) rootView.findViewById(R.id.searchView_S);
         listView_S = (ListView) rootView.findViewById(R.id.listView_S);
         listView_S.setTextFilterEnabled(true);
+        listView_S.setFriction(ViewConfiguration.getScrollFriction() * 20);
 
 
         //set default text of list view (when no results are present)
