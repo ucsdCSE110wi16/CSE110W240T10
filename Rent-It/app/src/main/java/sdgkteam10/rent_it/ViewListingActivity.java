@@ -1,11 +1,20 @@
 package sdgkteam10.rent_it;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+
+
 
 public class ViewListingActivity extends AppCompatActivity {
 
@@ -23,6 +32,7 @@ public class ViewListingActivity extends AppCompatActivity {
     ViewPager viewPager;
     GallerySwipeAdapter adapter;
 
+    private final ArrayList<Bitmap> bitmapArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +50,35 @@ public class ViewListingActivity extends AppCompatActivity {
         viewListing_rentVal.setText("1 Century");
         viewListing_categoryVal.setText("Weapons");
         viewListing_depositVal.setText("N/A");*/
+
+
+        //gets item object passed in from search fragment
+        Intent intent = getIntent();
+        Item item = (Item)intent.getSerializableExtra("item");
+
+
+        //convert string array into bitmap images and store in bitmap array
+        for (int i = 0; i < item.getImageArray().length; i++) {
+
+            byte[] imageAsBytes = Base64.decode(item.getImageArray()[i], Base64.DEFAULT);
+            Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+
+            bitmapArray.add(bmp);
+        }
+
+        //example code on setting an image from bitmap array to an ImageView
+        //(ImageView) findViewById(R.id.ivImage_CL).setImageBitmap(bitmapArray[0]);
+
+        viewListing_title.setText(item.getItemName());
+        viewListing_description.setText(item.getDescription());
+
+        viewListing_priceVal.setText("$"+item.getPrice());
+
+        viewListing_rentVal.setText(item.getMinRentDur());
+        viewListing_rentTimeVal.setText(item.getMinDurationSpinner());
+
+        viewListing_categoryVal.setText(item.getCategory());
+        viewListing_depositVal.setText(item.getDepositAmount());
 
     }
 

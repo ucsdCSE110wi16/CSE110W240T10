@@ -1,7 +1,9 @@
 package sdgkteam10.rent_it;
 
 
-class Item {
+import java.io.Serializable;
+
+class Item implements Serializable{
     private String itemName;
     private String price;
     private String priceRate;

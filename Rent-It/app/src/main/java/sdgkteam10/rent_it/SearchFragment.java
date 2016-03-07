@@ -27,10 +27,13 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 
+
+
 public class SearchFragment extends Fragment {
 
     //stores items from Firebase query for faster searching
-    private Set<Item> items;
+    //private Set<Item> items;
+    private ArrayList<Item> items;
 
     //stores the items matching the search
     private ArrayList<Item> results;
@@ -44,34 +47,44 @@ public class SearchFragment extends Fragment {
     //helps to prevent reloading data before searches
     private boolean hasSearched = false;
 
+    //store item keys to prevent duplicates
     Hashtable<Integer,Boolean> uniqueTable
             = new Hashtable<Integer, Boolean>();
 
     //database reference
     Database db;
 
-    public SearchFragment() {}
+
+    public SearchFragment() {
+    }
+
 
     //returns a reference to this Fragment
     public static SearchFragment newInstance() {
         return new SearchFragment();
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         //initialize database stuff
         Database.setContext(getActivity());
         db = Database.getInstance();
 
-        items = new HashSet<Item>();
+        //items = new HashSet<Item>();
+        items = new ArrayList<Item>();
         results = new ArrayList<Item>();
+
 
         //initialize UI elements
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         searchView_S = (SearchView) rootView.findViewById(R.id.searchView_S);
         listView_S = (ListView) rootView.findViewById(R.id.listView_S);
         listView_S.setTextFilterEnabled(true);
+
 
         //set default text of list view (when no results are present)
         emptyView = new TextView(getActivity());
@@ -83,27 +96,32 @@ public class SearchFragment extends Fragment {
         ((ViewGroup)listView_S.getParent()).addView(emptyView);
         listView_S.setEmptyView(emptyView);
 
+
         //Query queryRef = ref.child("items").orderByChild("name").endAt("mustang").limitToLast(10);
         final Query queryRef = db.getRef().child(getActivity().getString(R.string.firebase_items)).limitToLast(20);
 
-        //display the items in the query
+        //display the items in the query to user
         mAdapter = new FirebaseListAdapter<Item>(getActivity(), Item.class, R.layout.list_item_box, queryRef) {
             @Override
             protected void populateView(View view, Item item, int i) {
-                //TODO: create custom layout and fill in all fields
                 ((TextView)view.findViewById(R.id.itemBoxTitle)).setText(item.getItemName());
                 ((TextView)view.findViewById(R.id.itemBoxPrice)).setText("$"+item.getPrice());
                 ((TextView)view.findViewById(R.id.itemBoxRate)).setText(item.getPriceRate());
+
 
                 //converting string saved in fire base to an image
                 String tmpImgArray[] = item.getImageArray();
                 byte[] imageAsBytes = Base64.decode(tmpImgArray[0], Base64.DEFAULT);
                 Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
-
                 ((ImageView)view.findViewById(R.id.itemBoxImage)).setImageBitmap(bmp);
 
-                if(uniqueTable.get(item.getUniqueID()) == null) {
-                    //add the item to the list of searchable items
+
+                /*
+                 * check if unique item hash key is already stored, prevent duplicates
+                 * if not addd item into arraylist and also add the key into hashtable
+                 */
+                if(uniqueTable.get(item.getUniqueID()) == null)
+                {
                     items.add(item);
                     uniqueTable.put(item.getUniqueID(), true);
 
@@ -113,10 +131,12 @@ public class SearchFragment extends Fragment {
                 {
                     Log.d("search", "Skipped insertion of duplicate item " + item.getItemName() + " into hash set and hash set size is "+items.size());
                 }
-
             }
         };
+
+        //set adapter to list view
         listView_S.setAdapter(mAdapter);
+
 
         //search functionality
         searchView_S.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -148,6 +168,7 @@ public class SearchFragment extends Fragment {
                     emptyView.setText(R.string.no_items_found);
                 }
 
+
                 //create a new adapter to display the results of the search
                 ArrayAdapter<Item> resultsAdapter = new ArrayAdapter<Item>(
                         getActivity(), R.layout.list_item_box, results) {
@@ -156,7 +177,6 @@ public class SearchFragment extends Fragment {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         View view = null;
 
-                        //TODO: create custom layout and fill in all fields
                         //prevent duplicate views
                         if (convertView == null) {
                             LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -194,10 +214,11 @@ public class SearchFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 //if string is empty, refresh everything and repopulate the original listview
-                if (newText.equals("") && hasSearched) {
+                if (newText.equals("") && hasSearched)
+                {
                     hasSearched = false;
-                    //items.clear();
                     emptyView.setText(R.string.loading_items);
+
                     listView_S.setAdapter(mAdapter);
                     listView_S.invalidateViews();
                 }
@@ -205,12 +226,34 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        //TODO: when an item is clicked on, go to the view listing activity
+
         //view listing activity functionality
         listView_S.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
                 Intent intent = new Intent(getActivity(), ViewListingActivity.class);
+
+                /*
+                 * pass the entire item object to view listing activity depending on
+                 * whether the item was clicked from fire base results or local results.
+                 */
+                if(hasSearched)
+                {
+                    Log.d("search", "Send item object from local array list to View Listing, item is "+ results.get(position).getItemName());
+
+                    Item item = results.get(position);
+                    intent.putExtra("item",item);
+                }
+                else
+                {
+                    Log.d("search", "Send item object from Fire base array list to View Listing, item is "+ items.get(position).getItemName());
+
+                    Item item = items.get(position);
+                    intent.putExtra("item", item);
+                }
+
                 startActivity(intent);
             }
         });

@@ -32,7 +32,6 @@ import java.util.ArrayList;
 
 //ToDo: keep images even after phone has been rotated
 //Todo: deselect a text field
-//ToDo: deposit Required
 //ToDo: Make money field only 2 decimal length
 
 public class CreateListingActivity extends AppCompatActivity {
@@ -74,11 +73,14 @@ public class CreateListingActivity extends AppCompatActivity {
         db = Database.getInstance();
         userID = db.getLoggedInUser();
 
+
         //gather ids of widgets
         getIds();
 
+
         //using eric's spinner method to change text color of drop down box
         createStateSpinner();
+
 
         //when the Add Photos Button is pressed call selectImages method
         addPhotosButton_CL.setOnClickListener(new Button.OnClickListener() {
