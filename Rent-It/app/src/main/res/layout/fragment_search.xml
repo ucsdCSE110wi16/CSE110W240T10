@@ -12,7 +12,13 @@
         android:background="@color/colorForeground" />
 
     <ListView
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="10000dp"
-        android:id="@+id/listView_S" />
+        android:id="@+id/listView_S"
+        android:smoothScrollbar="true"
+        android:scrollingCache="true"
+        android:scrollIndicators="top|bottom"
+        android:fastScrollAlwaysVisible="true"
+        android:fastScrollEnabled="true" />
+
 </LinearLayout>
