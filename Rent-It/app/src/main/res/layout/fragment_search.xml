@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/listView_S"
-        android:smoothScrollbar="true" />
+        android:smoothScrollbar="true"
+        android:layout_marginBottom="40dp" />
 
 </LinearLayout>
