@@ -53,21 +53,21 @@ public class ViewListingActivity extends AppCompatActivity {
 
 
         //gets item object passed in from search fragment
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
         //Item item = (Item)intent.getSerializableExtra("item");
 
         GlobalItem gItem = GlobalItem.getInstance();
         Item item = gItem.getItem();
 
 
-        //convert string array into bitmap images and store in bitmap array
+       /* //convert string array into bitmap images and store in bitmap array
         for (int i = 0; i < item.getImageArray().length; i++) {
 
             byte[] imageAsBytes = Base64.decode(item.getImageArray()[i], Base64.DEFAULT);
             Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
 
             bitmapArray.add(bmp);
-        }
+        }*/
 
         //example code on setting an image from bitmap array to an ImageView
         //(ImageView) findViewById(R.id.ivImage_CL).setImageBitmap(bitmapArray[0]);
