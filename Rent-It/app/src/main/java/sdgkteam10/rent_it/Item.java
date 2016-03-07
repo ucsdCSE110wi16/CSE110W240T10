@@ -14,18 +14,20 @@ class Item {
     private String minDurationSpinner;
     private String depositAmount;
     private String depositReqd;
-    private String depositNotReqd;
+    //private String depositNotReqd;
     private String priceNeg;
     private String item_Buyout;
+    private int uniqueID;
 
 
-    public Item(){
+    public Item() {
 
     }
 
     public String getItemName() {
         return itemName;
     }
+
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
@@ -34,6 +36,7 @@ class Item {
     public String getPrice() {
         return price;
     }
+
     public void setPrice(String price) {
         this.price = price;
     }
@@ -42,6 +45,7 @@ class Item {
     public String getPriceRate() {
         return priceRate;
     }
+
     public void setPriceRate(String priceRate) {
         this.priceRate = priceRate;
     }
@@ -50,14 +54,16 @@ class Item {
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
 
-    public  String[] getImageArray() {
+    public String[] getImageArray() {
         return imageArray;
     }
+
     public void setImageArray(String[] imageArray) {
         this.imageArray = imageArray;
     }
@@ -66,6 +72,7 @@ class Item {
     public String getCategory() {
         return category;
     }
+
     public void setCategory(String category) {
         this.category = category;
     }
@@ -74,6 +81,7 @@ class Item {
     public String getItemUserID() {
         return itemUserID;
     }
+
     public void setItemUserID(String itemUserID) {
         this.itemUserID = itemUserID;
     }
@@ -81,13 +89,15 @@ class Item {
     public String getMinRentDur() {
         return minRentDur;
     }
-    public void setMinRentDur (String minRentDur) {
+
+    public void setMinRentDur(String minRentDur) {
         this.minRentDur = minRentDur;
     }
 
     public String getMinDurationSpinner() {
         return minDurationSpinner;
     }
+
     public void setMinDurationSpinner(String minDurationSpinner) {
         this.minDurationSpinner = minDurationSpinner;
     }
@@ -95,6 +105,7 @@ class Item {
     public String getDepositAmount() {
         return depositAmount;
     }
+
     public void setDepositAmount(String depositAmount) {
         this.depositAmount = depositAmount;
     }
@@ -103,6 +114,7 @@ class Item {
     public String getDepositReqd() {
         return depositReqd;
     }
+
     public void setDepositReqd(String depositReqd) {
         this.depositReqd = depositReqd;
     }
@@ -118,6 +130,7 @@ class Item {
     public String getPriceNeg() {
         return priceNeg;
     }
+
     public void setPriceNeg(String priceNeg) {
         this.priceNeg = priceNeg;
     }
@@ -125,8 +138,17 @@ class Item {
     public String getItemBuyout() {
         return item_Buyout;
     }
+
     public void setItemBuyout(String item_Buyout) {
         this.item_Buyout = item_Buyout;
+    }
+
+    public int getUniqueID() {
+        return uniqueID;
+    }
+
+    public void setUniqueID(int uniqueID) {
+        this.uniqueID = uniqueID;
     }
 }
 /*

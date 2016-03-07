@@ -323,12 +323,13 @@ public class CreateListingActivity extends AppCompatActivity {
             moveOn = false;
         }
 
+        /*
         if (bitmapArray.isEmpty()) {
             Snackbar snackbar = Snackbar
                     .make(parentLayout, "Error: Please add some Photos", Snackbar.LENGTH_LONG);
             snackbar.show();
-            //EmmoveOn = false;
-        }
+            //moveOn = false;
+        }*/
 
         //if all fields are set than upload to fire base
         if (moveOn) {
@@ -343,6 +344,13 @@ public class CreateListingActivity extends AppCompatActivity {
      * upload all info to fire base
      */
     private void uploadInfo() {
+
+        //upload a stock img if user does not select photos
+        if (bitmapArray.isEmpty()) {
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stockimg);
+            bitmapArray.add(bitmap);
+        }
+
         bitmapArray.trimToSize();
         String[] stringImgArray = new String[bitmapArray.size()];
 
@@ -401,9 +409,14 @@ public class CreateListingActivity extends AppCompatActivity {
         }
 
 
+        //Create own unique hash code for item based on time in milliseconds and item name
+        String tmpStr = (Long.toString(System.currentTimeMillis()) + item.getItemName());
+        item.setUniqueID(tmpStr.hashCode());
+
+
         Log.d("createlisting", "the item name to be posted is " + item.getItemName());
 
-        //Firebase locPath = ref.child("users").child(userID).child("items");
+        //Fire base locPath = ref.child("users").child(userID).child("items");
         Firebase locPath = db.getRef().child("items");
         //locPath.child(item.getItemName()).setValue(item);
         locPath.push().setValue(item);

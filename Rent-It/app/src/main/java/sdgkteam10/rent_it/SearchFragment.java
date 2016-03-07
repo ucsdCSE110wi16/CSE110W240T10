@@ -24,6 +24,7 @@ import com.firebase.ui.FirebaseListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Set;
 
 public class SearchFragment extends Fragment {
@@ -42,6 +43,9 @@ public class SearchFragment extends Fragment {
 
     //helps to prevent reloading data before searches
     private boolean hasSearched = false;
+
+    Hashtable<Integer,Boolean> uniqueTable
+            = new Hashtable<Integer, Boolean>();
 
     //database reference
     Database db;
@@ -98,8 +102,18 @@ public class SearchFragment extends Fragment {
 
                 ((ImageView)view.findViewById(R.id.itemBoxImage)).setImageBitmap(bmp);
 
-                //add the item to the list of searchable items
-                items.add(item);
+                if(uniqueTable.get(item.getUniqueID()) == null) {
+                    //add the item to the list of searchable items
+                    items.add(item);
+                    uniqueTable.put(item.getUniqueID(), true);
+
+                    Log.d("search", "inserting " + item.getItemName() + " into hash set and hash set size is "+items.size());
+                }
+                else
+                {
+                    Log.d("search", "Skipped insertion of duplicate item " + item.getItemName() + " into hash set and hash set size is "+items.size());
+                }
+
             }
         };
         listView_S.setAdapter(mAdapter);
@@ -119,10 +133,10 @@ public class SearchFragment extends Fragment {
                 results.clear();
 
                 //search the items for matching results
-                for (Item item: items) {
+                for (Item item : items) {
                     if (item.getItemName().toLowerCase().contains(query) ||
-                        item.getCategory().toLowerCase().contains(query) ||
-                        item.getDescription().toLowerCase().contains(query)) {
+                            item.getCategory().toLowerCase().contains(query) ||
+                            item.getDescription().toLowerCase().contains(query)) {
 
                         //item matched the query, so add to results
                         results.add(item);
@@ -147,8 +161,7 @@ public class SearchFragment extends Fragment {
                         if (convertView == null) {
                             LayoutInflater inflater = getActivity().getLayoutInflater();
                             view = inflater.inflate(R.layout.list_item_box, parent, false);
-                        }
-                        else {
+                        } else {
                             view = convertView;
                         }
 
@@ -156,7 +169,7 @@ public class SearchFragment extends Fragment {
                         TextView nameText = (TextView) view.findViewById(R.id.itemBoxTitle);
                         TextView priceText = (TextView) view.findViewById(R.id.itemBoxPrice);
                         TextView RateText = (TextView) view.findViewById(R.id.itemBoxRate);
-                        ImageView itemImg = (ImageView)view.findViewById(R.id.itemBoxImage);
+                        ImageView itemImg = (ImageView) view.findViewById(R.id.itemBoxImage);
 
 
                         //converting string saved in fire base to an image
@@ -183,7 +196,7 @@ public class SearchFragment extends Fragment {
                 //if string is empty, refresh everything and repopulate the original listview
                 if (newText.equals("") && hasSearched) {
                     hasSearched = false;
-                    items.clear();
+                    //items.clear();
                     emptyView.setText(R.string.loading_items);
                     listView_S.setAdapter(mAdapter);
                     listView_S.invalidateViews();
