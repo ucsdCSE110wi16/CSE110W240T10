@@ -47,47 +47,33 @@
                 tools:ignore="UnusedAttribute"
                 />
 
-            <android.support.design.widget.TextInputLayout
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="51dp"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:id="@+id/email"
+                android:textColor="@color/colorForeground"
+                android:textColorHint="@color/colorMiddle"
+                android:background="@color/colorBackgroundT" />
 
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:id="@+id/email"
-                    android:textColor="@color/colorForeground"
-                    android:textColorHint="@color/colorMiddle"
-                    android:background="@color/colorBackground" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="@+id/login"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColor="@color/colorForeground"
-                    android:textColorHint="@color/colorMiddle"
-                    android:autoText="false"
-                    android:background="@color/colorBackground" />
-
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="51dp"
+                android:hint="@string/prompt_password"
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/colorForeground"
+                android:textColorHint="@color/colorMiddle"
+                android:autoText="false"
+                android:background="@color/colorBackgroundT" />
 
             <LinearLayout
                 android:orientation="horizontal"
