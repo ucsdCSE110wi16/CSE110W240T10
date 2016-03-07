@@ -244,14 +244,20 @@ public class SearchFragment extends Fragment {
                     Log.d("search", "Send item object from local array list to View Listing, item is "+ results.get(position).getItemName());
 
                     Item item = results.get(position);
-                    intent.putExtra("item",item);
+                    //intent.putExtra("item",item);
+
+                    GlobalItem gItem = GlobalItem.getInstance();
+                    gItem.setItem(item);
                 }
                 else
                 {
                     Log.d("search", "Send item object from Fire base array list to View Listing, item is "+ items.get(position).getItemName());
 
                     Item item = items.get(position);
-                    intent.putExtra("item", item);
+                    //intent.putExtra("item", item);
+
+                    GlobalItem gItem = GlobalItem.getInstance();
+                    gItem.setItem(item);
                 }
 
                 startActivity(intent);
