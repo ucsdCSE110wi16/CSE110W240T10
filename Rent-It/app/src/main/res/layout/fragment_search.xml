@@ -19,6 +19,6 @@
         android:scrollingCache="true"
         android:scrollIndicators="top|bottom"
         android:fastScrollAlwaysVisible="true"
-        android:fastScrollEnabled="true" />
+        android:fastScrollEnabled="true"/>
 
 </LinearLayout>
