@@ -52,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
         editProfile = (Button) findViewById(R.id.edit_button);
 
         //make the text view listeners, but make them uneditable (for now)
+        final KeyListener userNameKeyListener = userName.getKeyListener();
         final KeyListener userEmailKeyListener = userEmail.getKeyListener();
         final KeyListener userPhoneKeyListener = userPhone.getKeyListener();
         final KeyListener userAddress1KeyListener = userAddress1.getKeyListener();
@@ -59,6 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
         final KeyListener userCityKeyListener = userCity.getKeyListener();
         final KeyListener userStateKeyListener = userState.getKeyListener();
         final KeyListener userZipKeyListener = userZip.getKeyListener();
+        userName.setKeyListener(null);
         userEmail.setKeyListener(null);
         userPhone.setKeyListener(null);
         userAddress1.setKeyListener(null);
@@ -76,9 +78,11 @@ public class ProfileActivity extends AppCompatActivity {
                    edit = true;
                    editProfile.setText(R.string.edit_update);
                    //make the text views editable
+                   userName.setKeyListener(userNameKeyListener);
                    userEmail.setKeyListener(userEmailKeyListener);
                    userPhone.setKeyListener(userPhoneKeyListener);
                    userAddress1.setKeyListener(userAddress1KeyListener);
+                   userAddress2.setVisibility(View.VISIBLE);
                    userAddress2.setKeyListener(userAddress2KeyListener);
                    userCity.setKeyListener(userCityKeyListener);
                    userState.setKeyListener(userStateKeyListener);
@@ -88,6 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
                    edit = false;
                    editProfile.setText(R.string.edit_profile_ef);
                    //make the text views uneditable
+                   userName.setKeyListener(null);
                    userEmail.setKeyListener(null);
                    userPhone.setKeyListener(null);
                    userAddress1.setKeyListener(null);
@@ -126,6 +131,9 @@ public class ProfileActivity extends AppCompatActivity {
         userPhone.setText(user.getPhone());
         userAddress1.setText(user.getAddress());
         userAddress2.setText(user.getAddress2());
+        if (user.getAddress2().equals("")) {
+            userAddress2.setVisibility(View.GONE);
+        }
         userCity.setText(user.getCity());
         userState.setText(user.getState());
         userZip.setText(user.getZip());
