@@ -7,6 +7,7 @@ import android.text.method.KeyListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -24,6 +25,8 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userCity;
     private TextView userState;
     private TextView userZip;
+    // Also make spinner for editing state
+    private Spinner userStateSpinner;
     //Edit profile button
     private Button editProfile;
     private boolean edit;
@@ -48,6 +51,9 @@ public class ProfileActivity extends AppCompatActivity {
         userCity = (TextView) findViewById(R.id.profile_city);
         userState = (TextView) findViewById(R.id.profile_state);
         userZip = (TextView) findViewById(R.id.profile_zip);
+        //spinner
+        userStateSpinner = (Spinner) findViewById(R.id.profile_state_spinner);
+        userStateSpinner.setVisibility(View.GONE);
         //editProfile button
         editProfile = (Button) findViewById(R.id.edit_button);
 
@@ -85,7 +91,9 @@ public class ProfileActivity extends AppCompatActivity {
                    userAddress2.setVisibility(View.VISIBLE);
                    userAddress2.setKeyListener(userAddress2KeyListener);
                    userCity.setKeyListener(userCityKeyListener);
-                   userState.setKeyListener(userStateKeyListener);
+                   userState.setVisibility(View.GONE);
+                   userStateSpinner.setVisibility(View.VISIBLE);
+                   //userState.setKeyListener(userStateKeyListener);
                    userZip.setKeyListener(userZipKeyListener);
                }
                else {
@@ -98,7 +106,9 @@ public class ProfileActivity extends AppCompatActivity {
                    userAddress1.setKeyListener(null);
                    userAddress2.setKeyListener(null);
                    userCity.setKeyListener(null);
-                   userState.setKeyListener(null);
+                   //userState.setKeyListener(null);
+                   userState.setVisibility(View.VISIBLE);
+                   userStateSpinner.setVisibility(View.GONE);
                    userZip.setKeyListener(null);
                }
            }

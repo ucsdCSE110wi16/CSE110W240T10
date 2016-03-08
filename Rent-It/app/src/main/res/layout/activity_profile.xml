@@ -195,6 +195,16 @@
             android:layout_alignLeft="@+id/profile_city"
             android:layout_alignStart="@+id/profile_city" />
 
+        <Spinner
+            android:id="@+id/profile_state_spinner"
+            android:layout_width="301dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center_horizontal"
+            android:spinnerMode="dropdown"
+            android:layout_below="@+id/profile_city"
+            android:layout_alignLeft="@+id/profile_city"
+            android:layout_alignStart="@+id/profile_city" />
+
         <EditText
             android:inputType="textPostalAddress"
             android:id="@+id/profile_zip"
