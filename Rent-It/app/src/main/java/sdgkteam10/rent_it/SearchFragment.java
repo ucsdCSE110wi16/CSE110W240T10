@@ -159,7 +159,8 @@ public class SearchFragment extends Fragment {
                 for (Item item : items) {
                     if (item.getItemName().toLowerCase().contains(query) ||
                             item.getCategory().toLowerCase().contains(query) ||
-                            item.getDescription().toLowerCase().contains(query)) {
+                            item.getDescription().toLowerCase().contains(query) ||
+                            item.getZipcode().toLowerCase().contains(query)) {
 
                         //item matched the query, so add to results
                         results.add(item);

@@ -15,7 +15,7 @@
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="825dp"
+            android:layout_height="1025dp"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
@@ -307,6 +307,59 @@
                 android:layout_below="@+id/priceNegtble"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="273dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/zipCodeField_CL"
+                android:hint=" 90210"
+                android:singleLine="true"
+                android:textColorHint="@color/colorMiddle"
+                android:textColor="@color/colorForeground"
+                android:layout_alignBaseline="@+id/zipCode_CL"
+                android:layout_alignBottom="@+id/zipCode_CL"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/zipCode_CL"
+                android:layout_toRightOf="@+id/zipCode_CL" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Item Zipcode:"
+                android:id="@+id/zipCode_CL"
+                android:textColor="@color/colorForeground"
+                android:layout_marginTop="23dp"
+                android:layout_below="@+id/amountOfDeposit_CL"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLength="150"
+                android:ems="10"
+                android:id="@+id/contactInfoField_CL"
+                android:textColorHint="@color/colorMiddle"
+                android:hint="Message me at BBcakes@aol.com or call me whenever at 123-456-7890"
+                android:textColor="@color/colorForeground"
+                android:layout_below="@+id/contact_CL"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Enter Contact Info:"
+                android:id="@+id/contact_CL"
+                android:textColor="@color/colorForeground"
+                android:layout_below="@+id/zipCodeField_CL"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="26dp" />
 
         </RelativeLayout>
     </LinearLayout>
