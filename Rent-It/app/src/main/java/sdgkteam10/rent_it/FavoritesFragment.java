@@ -58,8 +58,8 @@ public class FavoritesFragment extends Fragment {
     public ArrayList<Item> getItems(){return this.itemz;}
 
     //returns a reference to this Fragment
-    public static SearchFragment newInstance() {
-        return new SearchFragment();
+    public static FavoritesFragment newInstance() {
+        return new FavoritesFragment();
     }
 
 
@@ -67,12 +67,9 @@ public class FavoritesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         //items = new HashSet<Item>();
         itemz = User.favoriteItems;
         resultz = new ArrayList<Item>();
-
 
         //initialize UI elements
         View rootView = inflater.inflate(R.layout.fragment_favorites, container, false);
@@ -80,7 +77,6 @@ public class FavoritesFragment extends Fragment {
         listView_F = (ListView) rootView.findViewById(R.id.listView_F);
         listView_F.setTextFilterEnabled(true);
         listView_F.setFriction(ViewConfiguration.getScrollFriction() * 20);
-
 
         //set default text of list view (when no results are present)
         emptyView = new TextView(getActivity());
@@ -92,13 +88,14 @@ public class FavoritesFragment extends Fragment {
         ((ViewGroup)listView_F.getParent()).addView(emptyView);
         listView_F.setEmptyView(emptyView);
 
+        //make it so search hint text displays when page is loaded
+        searchView_F.setIconified(false);
+        searchView_F.clearFocus();
 
         //view listing activity functionality
         listView_F.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
                 Intent intent = new Intent(getActivity(), ViewListingActivity.class);
 
                 /*
@@ -107,7 +104,7 @@ public class FavoritesFragment extends Fragment {
                  */
                 if(hasSearched)
                 {
-                    Log.d("search", "Send item object from local array list to View Listing, item is "+ resultz.get(position).getItemName());
+                    Log.d("favorites", "Send item object from local array list to View Listing, item is "+ resultz.get(position).getItemName());
 
                     Item item = resultz.get(position);
                     //intent.putExtra("item",item);
@@ -117,7 +114,7 @@ public class FavoritesFragment extends Fragment {
                 }
                 else
                 {
-                    Log.d("search", "Send item object from Fire base array list to View Listing, item is "+ itemz.get(position).getItemName());
+                    Log.d("favorites", "Send item object from Fire base array list to View Listing, item is "+ itemz.get(position).getItemName());
 
                     Item item = itemz.get(position);
                     //intent.putExtra("item", item);

@@ -99,6 +99,9 @@ public class SearchFragment extends Fragment {
         ((ViewGroup)listView_S.getParent()).addView(emptyView);
         listView_S.setEmptyView(emptyView);
 
+        //make it so search hint text displays when page is loaded
+        searchView_S.setIconified(false);
+        searchView_S.clearFocus();
 
         //Query queryRef = ref.child("items").orderByChild("name").endAt("mustang").limitToLast(10);
         final Query queryRef = db.getRef().child(getActivity().getString(R.string.firebase_items)).limitToLast(20);
@@ -235,8 +238,6 @@ public class SearchFragment extends Fragment {
         listView_S.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
                 Intent intent = new Intent(getActivity(), ViewListingActivity.class);
 
                 /*
