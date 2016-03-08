@@ -65,8 +65,11 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="load">loading…</string>
     <string name="contact_info">Contact Info</string>
-    <string name="email">Email:</string>
-    <string name="phone_">Phone:</string>
+    <string name="show_email">Email:</string>
+    <string name="show_phone">Phone:</string>
+    <string name="show_address">Address:</string>
+    <string name="show_city">City:</string>
+    <string name="show_state_zip">State/Zip:</string>
 
 
     <!-- createListingActivity Strings-->
