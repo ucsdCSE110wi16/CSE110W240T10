@@ -203,7 +203,9 @@
             android:spinnerMode="dropdown"
             android:layout_below="@+id/profile_city"
             android:layout_alignLeft="@+id/profile_city"
-            android:layout_alignStart="@+id/profile_city" />
+            android:layout_alignStart="@+id/profile_city"
+            android:layout_alignRight="@+id/profile_zip"
+            android:layout_alignEnd="@+id/profile_zip" />
 
         <EditText
             android:inputType="textPostalAddress"

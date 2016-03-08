@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.text.method.KeyListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -25,6 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userState;
     private TextView userZip;
     //Edit profile button
+    private Spinner stateSpinner;
     private Button editProfile;
     private boolean edit;
 
@@ -48,6 +51,9 @@ public class ProfileActivity extends AppCompatActivity {
         userCity = (TextView) findViewById(R.id.profile_city);
         userState = (TextView) findViewById(R.id.profile_state);
         userZip = (TextView) findViewById(R.id.profile_zip);
+        //state spinner
+        stateSpinner = (Spinner) findViewById(R.id.profile_state_spinner);
+        stateSpinner.setVisibility(View.INVISIBLE);
         //editProfile button
         editProfile = (Button) findViewById(R.id.edit_button);
 
@@ -68,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         userCity.setKeyListener(null);
         userState.setKeyListener(null);
         userZip.setKeyListener(null);
+        final ArrayAdapter<CharSequence> stateAdapter = new StateSpinnerAdapter(this);
 
         Database.setContext(this);
         Database db = Database.getInstance();
@@ -93,6 +100,9 @@ public class ProfileActivity extends AppCompatActivity {
                     userAddress2.setKeyListener(userAddress2KeyListener);
                     userCity.setKeyListener(userCityKeyListener);
                     userState.setKeyListener(userStateKeyListener);
+                    userState.setVisibility(View.INVISIBLE);
+                    stateSpinner.setVisibility(View.VISIBLE);
+                    stateSpinner.setAdapter(stateAdapter);
                     userZip.setKeyListener(userZipKeyListener);
                 }
                 //disable editing and update the user data
@@ -107,6 +117,10 @@ public class ProfileActivity extends AppCompatActivity {
                     userAddress2.setKeyListener(null);
                     userCity.setKeyListener(null);
                     userState.setKeyListener(null);
+                    userState.setVisibility(View.VISIBLE);
+                    userState.setText(stateSpinner.getSelectedItem().toString());
+                    stateSpinner.setVisibility(View.INVISIBLE);
+                    stateSpinner.setAdapter(null);
                     userZip.setKeyListener(null);
 
                     //update the user data
