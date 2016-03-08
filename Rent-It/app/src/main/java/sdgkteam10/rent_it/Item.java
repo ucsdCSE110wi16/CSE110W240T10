@@ -21,9 +21,15 @@ class Item implements Serializable{
     private String item_Buyout;
     private int uniqueID;
 
+    private boolean favored;
+
+    public boolean getFavored(){return favored;}
+    public void setFavored(boolean b){
+        favored = true;
+    }
 
     public Item() {
-
+        favored = false;
     }
 
     public String getItemName() {

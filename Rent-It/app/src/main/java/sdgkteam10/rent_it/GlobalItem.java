@@ -19,12 +19,15 @@ import android.app.Application;
  */
 public class GlobalItem extends Application {
 
+
     private static GlobalItem instance;
 
     //global item
     private Item item;
 
-    private GlobalItem(){}
+    private GlobalItem(){
+
+    }
 
     public void setItem(Item it){
         this.item = it;
@@ -41,4 +44,7 @@ public class GlobalItem extends Application {
         }
         return instance;
     }
+
+
+
 }

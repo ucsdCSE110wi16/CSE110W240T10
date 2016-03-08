@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView_F"
+        android:queryHint="Search items"
+        android:background="@color/colorForeground" />
+
+    <StackView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/stackView"
+        android:layout_gravity="right" />
+
+    <ListView
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:id="@+id/listView_F"
+        android:smoothScrollbar="true"
+        android:layout_marginBottom="40dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

@@ -3,6 +3,8 @@ package sdgkteam10.rent_it;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ViewListingActivity extends AppCompatActivity {
@@ -18,6 +20,7 @@ public class ViewListingActivity extends AppCompatActivity {
     private TextView viewListing_buyableVal;
     private TextView viewListing_emailVal;
     private TextView viewListing_phoneVal;
+    private Button buttonAddFavorite;
     ViewPager viewPager;
     GallerySwipeAdapter adapter;
 
@@ -46,6 +49,16 @@ public class ViewListingActivity extends AppCompatActivity {
 
         viewListing_categoryVal.setText(item.getCategory());
         viewListing_depositVal.setText(item.getDepositAmount());
+
+        buttonAddFavorite = (Button)findViewById(R.id.button_add_favorite);
+        buttonAddFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GlobalItem gItem = GlobalItem.getInstance();
+                User.favoriteItems.add(gItem.getItem());
+
+            }
+        });
 
     }
 

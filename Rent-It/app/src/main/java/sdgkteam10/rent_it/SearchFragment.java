@@ -59,6 +59,7 @@ public class SearchFragment extends Fragment {
     public SearchFragment() {
     }
 
+    public ArrayList<Item> getItems(){return this.items;}
 
     //returns a reference to this Fragment
     public static SearchFragment newInstance() {

@@ -1,5 +1,7 @@
 package sdgkteam10.rent_it;
 
+import java.util.ArrayList;
+
 class User {
     private String name;
     private String email;
@@ -11,6 +13,7 @@ class User {
     private String zip;
     private String phone;
 
+    public static ArrayList<Item> favoriteItems = new ArrayList<>();
     //default constructor
     User(){}
 
@@ -36,7 +39,6 @@ class User {
     {
         this.email = email;
         this.pw = password;
-
         Database.getInstance().requestLogin(email, password, this);
     }
 
