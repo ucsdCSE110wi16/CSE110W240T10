@@ -29,17 +29,18 @@ import java.util.Hashtable;
 public class FavoritesFragment extends Fragment {
 
     //stores items from Firebase query for faster searching
-    //private Set<Item> items;
-    private ArrayList<Item> itemz;
+    private ArrayList<Item> favorites;
 
     //stores the items matching the search
-    private ArrayList<Item> resultz;
+    private ArrayList<Item> results;
 
     //UI elements
     private ListView listView_F;
     private SearchView searchView_F;
 
     private TextView emptyView;
+
+    private FirebaseListAdapter<Item> mAdapter;
 
     //helps to prevent reloading data before searches
     private boolean hasSearched = false;
@@ -55,21 +56,20 @@ public class FavoritesFragment extends Fragment {
     public FavoritesFragment() {
     }
 
-    public ArrayList<Item> getItems(){return this.itemz;}
-
     //returns a reference to this Fragment
     public static FavoritesFragment newInstance() {
         return new FavoritesFragment();
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //items = new HashSet<Item>();
-        itemz = User.favoriteItems;
-        resultz = new ArrayList<Item>();
+        //initialize database stuff
+        Database.setContext(getActivity());
+        db = Database.getInstance();
+
+        results = new ArrayList<>();
+        favorites = new ArrayList<>();
 
         //initialize UI elements
         View rootView = inflater.inflate(R.layout.fragment_favorites, container, false);
@@ -92,6 +92,132 @@ public class FavoritesFragment extends Fragment {
         searchView_F.setIconified(false);
         searchView_F.clearFocus();
 
+        //get the favorites for the user from the database
+        final Query queryRef = db.getRef().child("users").child(db.getLoggedInUser()).child("favoriteItems").limitToLast(20);
+
+        //display the items in the query to user
+        mAdapter = new FirebaseListAdapter<Item>(getActivity(), Item.class, R.layout.list_item_box, queryRef) {
+            @Override
+            protected void populateView(View view, Item item, int i) {
+                ((TextView)view.findViewById(R.id.itemBoxTitle)).setText(item.getItemName());
+                ((TextView)view.findViewById(R.id.itemBoxPrice)).setText("$"+item.getPrice());
+                ((TextView)view.findViewById(R.id.itemBoxRate)).setText(item.getPriceRate());
+
+
+                //converting string saved in fire base to an image
+                String tmpImgArray[] = item.getImageArray();
+                byte[] imageAsBytes = Base64.decode(tmpImgArray[0], Base64.DEFAULT);
+                Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+                ((ImageView)view.findViewById(R.id.itemBoxImage)).setImageBitmap(bmp);
+
+
+                /*
+                 * check if unique item hash key is already stored, prevent duplicates
+                 * if not addd item into arraylist and also add the key into hashtable
+                 */
+                if(uniqueTable.get(item.getUniqueID()) == null)
+                {
+                    favorites.add(item);
+                    uniqueTable.put(item.getUniqueID(), true);
+
+                    Log.d("search", "inserting " + item.getItemName() + " into hash set and hash set size is " + favorites.size());
+                }
+                else
+                {
+                    Log.d("search", "Skipped insertion of duplicate item " + item.getItemName() + " into hash set and hash set size is " + favorites.size());
+                }
+            }
+        };
+        listView_F.setAdapter(mAdapter);
+
+        //search functionality
+        searchView_F.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            //called when the user submits a query
+            public boolean onQueryTextSubmit(String query) {
+                query = query.toLowerCase();
+                hasSearched = true;
+
+                //notify user that searching has begun
+                emptyView.setText(R.string.searching_items);
+
+                //empty the previous search results
+                results.clear();
+
+                //search the items for matching results
+                for (Item item : favorites) {
+                    if (item.getItemName().toLowerCase().contains(query) ||
+                            item.getCategory().toLowerCase().contains(query) ||
+                            item.getDescription().toLowerCase().contains(query) ||
+                            item.getZipcode().toLowerCase().contains(query)) {
+
+                        //item matched the query, so add to results
+                        results.add(item);
+                    }
+                }
+
+                //no results found
+                if (results.size() == 0) {
+                    emptyView.setText(R.string.no_items_found);
+                }
+
+
+                //create a new adapter to display the results of the search
+                ArrayAdapter<Item> resultsAdapter = new ArrayAdapter<Item>(
+                        getActivity(), R.layout.list_item_box, results) {
+                    @Override
+                    //fills in the result listView fields
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View view = null;
+
+                        //prevent duplicate views
+                        if (convertView == null) {
+                            LayoutInflater inflater = getActivity().getLayoutInflater();
+                            view = inflater.inflate(R.layout.list_item_box, parent, false);
+                        } else {
+                            view = convertView;
+                        }
+
+                        //View view = super.getView(position, convertView, parent);
+                        TextView nameText = (TextView) view.findViewById(R.id.itemBoxTitle);
+                        TextView priceText = (TextView) view.findViewById(R.id.itemBoxPrice);
+                        TextView RateText = (TextView) view.findViewById(R.id.itemBoxRate);
+                        ImageView itemImg = (ImageView) view.findViewById(R.id.itemBoxImage);
+
+
+                        //converting string saved in fire base to an image
+                        String tmpImgArray[] = results.get(position).getImageArray();
+                        byte[] imageAsBytes = Base64.decode(tmpImgArray[0], Base64.DEFAULT);
+                        Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+
+                        itemImg.setImageBitmap(bmp);
+                        nameText.setText(results.get(position).getItemName());
+                        priceText.setText("$" + results.get(position).getPrice());
+                        RateText.setText(results.get(position).getPriceRate());
+
+                        return view;
+                    }
+                };
+                listView_F.setAdapter(resultsAdapter);
+                listView_F.invalidateViews();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //if string is empty, refresh everything and repopulate the original listview
+                if (newText.equals("") && hasSearched) {
+                    hasSearched = false;
+                    emptyView.setText(R.string.loading_items);
+
+                    listView_F.setAdapter(mAdapter);
+                    listView_F.invalidateViews();
+                }
+                return true;
+            }
+        });
+
         //view listing activity functionality
         listView_F.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -104,9 +230,9 @@ public class FavoritesFragment extends Fragment {
                  */
                 if(hasSearched)
                 {
-                    Log.d("favorites", "Send item object from local array list to View Listing, item is "+ resultz.get(position).getItemName());
+                    Log.d("favorites", "Send item object from local array list to View Listing, item is "+ results.get(position).getItemName());
 
-                    Item item = resultz.get(position);
+                    Item item = results.get(position);
                     //intent.putExtra("item",item);
 
                     GlobalItem gItem = GlobalItem.getInstance();
@@ -114,9 +240,9 @@ public class FavoritesFragment extends Fragment {
                 }
                 else
                 {
-                    Log.d("favorites", "Send item object from Fire base array list to View Listing, item is "+ itemz.get(position).getItemName());
+                    Log.d("favorites", "Send item object from Fire base array list to View Listing, item is " + favorites.get(position).getItemName());
 
-                    Item item = itemz.get(position);
+                    Item item = favorites.get(position);
                     //intent.putExtra("item", item);
 
                     GlobalItem gItem = GlobalItem.getInstance();

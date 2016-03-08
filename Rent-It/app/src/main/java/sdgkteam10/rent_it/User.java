@@ -2,6 +2,7 @@ package sdgkteam10.rent_it;
 
 import java.util.ArrayList;
 
+//TODO: store items as references to places in the database, not full items themselves
 class User {
     private String name;
     private String email;
@@ -12,8 +13,8 @@ class User {
     private String state;
     private String zip;
     private String phone;
+    private ArrayList<Item> favoriteItems = new ArrayList<>();
 
-    public static ArrayList<Item> favoriteItems = new ArrayList<>();
     //default constructor
     User(){}
 
@@ -55,6 +56,7 @@ class User {
     public void setState(String state) {this.state = state;}
     public void setZip(String zip) {this.zip = zip;}
     public void setPhone(String phone) {this.phone = phone;}
+    public void setFavorites(ArrayList<Item> faves) {this.favoriteItems = faves;}
 
     //setters for updating the user info in the database
     public void updateName(String n) {
@@ -104,4 +106,17 @@ class User {
     public String getState() {return this.state;}
     public String getZip() {return this.zip;}
     public String getPhone() {return this.phone;}
+    public ArrayList<Item> getFavorites() {return this.favoriteItems;}
+
+    //adds a new favorite item for the user
+    public void addFavorite(Item item) {
+        this.favoriteItems.add(item);
+        Database.getInstance().updateFavorites(this.favoriteItems);
+    }
+
+    //removes s user favorite
+    public void removeFavorite(Item item) {
+        this.favoriteItems.remove(item);
+        Database.getInstance().updateFavorites(this.favoriteItems);
+    }
 }

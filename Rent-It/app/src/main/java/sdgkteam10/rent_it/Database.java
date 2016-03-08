@@ -9,6 +9,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Database {
@@ -108,6 +109,7 @@ public class Database {
                 user.setState(data.getState());
                 user.setZip(data.getZip());
                 user.setPhone(data.getPhone());
+                user.setFavorites(data.getFavorites());
             }
 
             @Override
@@ -120,6 +122,11 @@ public class Database {
     //updates the user data in the database
     public void setUserData(String location, String newVal) {
         m_ref.child("users").child(m_ref.getAuth().getUid()).child(location).setValue(newVal);
+    }
+
+    //updates the user's list of favorites
+    public void updateFavorites(ArrayList<Item> newFaves) {
+        m_ref.child("users").child(m_ref.getAuth().getUid()).child("favoriteItems").setValue(newFaves);
     }
 
     //gets the logged in user id (used in associating listing with a user

@@ -24,11 +24,21 @@ public class ViewListingActivity extends AppCompatActivity {
     ViewPager viewPager;
     GallerySwipeAdapter adapter;
 
+    private Database db;
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_listing);
+
+        //initialize database stuff
+        Database.setContext(this);
+        db = Database.getInstance();
+
+        user = new User();
+        user.requestDatabaseData();
 
         getIds();
         adapter = new GallerySwipeAdapter(this);
@@ -55,8 +65,7 @@ public class ViewListingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GlobalItem gItem = GlobalItem.getInstance();
-                User.favoriteItems.add(gItem.getItem());
-
+                user.addFavorite(gItem.getItem());
             }
         });
 
