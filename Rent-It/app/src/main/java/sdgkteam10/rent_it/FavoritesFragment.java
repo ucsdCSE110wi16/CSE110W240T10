@@ -26,8 +26,7 @@ public class FavoritesFragment extends Fragment {
 
         //TODO: change this to the proper elements that will be in this tab
         //connect the TextView to that in the layout
-        TextView text = (TextView) rootView.findViewById(R.id.textView);
-        text.setText(R.string.im_faves);
+
 
         return rootView;
     }

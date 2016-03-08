@@ -1,20 +1,9 @@
 package sdgkteam10.rent_it;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-
-
 
 public class ViewListingActivity extends AppCompatActivity {
 
@@ -32,8 +21,6 @@ public class ViewListingActivity extends AppCompatActivity {
     ViewPager viewPager;
     GallerySwipeAdapter adapter;
 
-    private final ArrayList<Bitmap> bitmapArray = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -43,34 +30,11 @@ public class ViewListingActivity extends AppCompatActivity {
         getIds();
         adapter = new GallerySwipeAdapter(this);
         viewPager.setAdapter(adapter);
-        //adjust padding based on number of images (# images * 325sp)
-        /*viewListing_title.setText("My Homie's Wooden Lightsaber");
-        viewListing_description.setText("Wow what a great item to use to kill people");
-        viewListing_priceVal.setText("$10");
-        viewListing_rentVal.setText("1 Century");
-        viewListing_categoryVal.setText("Weapons");
-        viewListing_depositVal.setText("N/A");*/
 
-
-        //gets item object passed in from search fragment
-        //Intent intent = getIntent();
-        //Item item = (Item)intent.getSerializableExtra("item");
 
         GlobalItem gItem = GlobalItem.getInstance();
         Item item = gItem.getItem();
 
-
-       /* //convert string array into bitmap images and store in bitmap array
-        for (int i = 0; i < item.getImageArray().length; i++) {
-
-            byte[] imageAsBytes = Base64.decode(item.getImageArray()[i], Base64.DEFAULT);
-            Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
-
-            bitmapArray.add(bmp);
-        }*/
-
-        //example code on setting an image from bitmap array to an ImageView
-        //(ImageView) findViewById(R.id.ivImage_CL).setImageBitmap(bitmapArray[0]);
 
         viewListing_title.setText(item.getItemName());
         viewListing_description.setText(item.getDescription());
@@ -100,9 +64,6 @@ public class ViewListingActivity extends AppCompatActivity {
         viewListing_buyableVal = (TextView) findViewById(R.id.viewListing_buyableVal);
         viewListing_phoneVal = (TextView) findViewById(R.id.viewListing_phoneVal);
         viewListing_emailVal = (TextView) findViewById(R.id.viewListing_emailVal);
-
-
-        //viewListing_item = (ImageView) findViewById(R.id.viewListing_item);
     }
 
 }
