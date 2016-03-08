@@ -129,6 +129,16 @@ public class ProfileActivity extends AppCompatActivity {
         userCity.setText(user.getCity());
         userState.setText(user.getState());
         userZip.setText(user.getZip());
+
+        //clear hints so "loading" goes away if the database for that field was empty
+        userName.setHint("");
+        userEmail.setHint("");
+        userPhone.setHint("");
+        userAddress1.setHint("");
+        userAddress2.setHint("");
+        userCity.setHint("");
+        userState.setHint("");
+        userZip.setHint("");
     }
 
     @Override
