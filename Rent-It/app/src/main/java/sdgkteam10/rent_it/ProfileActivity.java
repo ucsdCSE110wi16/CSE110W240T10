@@ -69,46 +69,58 @@ public class ProfileActivity extends AppCompatActivity {
         userState.setKeyListener(null);
         userZip.setKeyListener(null);
 
-        //Set boolean value for when button has been clicked
-        edit = false;
-        //Add listener for button
-        editProfile.setOnClickListener(new OnClickListener() {
-           public void onClick(View v) {
-               if (!edit) {
-                   edit = true;
-                   editProfile.setText(R.string.edit_update);
-                   //make the text views editable
-                   userName.setKeyListener(userNameKeyListener);
-                   userEmail.setKeyListener(userEmailKeyListener);
-                   userPhone.setKeyListener(userPhoneKeyListener);
-                   userAddress1.setKeyListener(userAddress1KeyListener);
-                   userAddress2.setVisibility(View.VISIBLE);
-                   userAddress2.setKeyListener(userAddress2KeyListener);
-                   userCity.setKeyListener(userCityKeyListener);
-                   userState.setKeyListener(userStateKeyListener);
-                   userZip.setKeyListener(userZipKeyListener);
-               }
-               else {
-                   edit = false;
-                   editProfile.setText(R.string.edit_profile_ef);
-                   //make the text views uneditable
-                   userName.setKeyListener(null);
-                   userEmail.setKeyListener(null);
-                   userPhone.setKeyListener(null);
-                   userAddress1.setKeyListener(null);
-                   userAddress2.setKeyListener(null);
-                   userCity.setKeyListener(null);
-                   userState.setKeyListener(null);
-                   userZip.setKeyListener(null);
-               }
-           }
-        });
-
         Database.setContext(this);
         Database db = Database.getInstance();
 
         user = new User();
         user.requestDatabaseData();
+
+        //Set boolean value for when button has been clicked
+        edit = false;
+        //Add listener for button
+        editProfile.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                //enable editing
+                if (!edit) {
+                    edit = true;
+                    editProfile.setText(R.string.edit_update);
+                    //make the text views editable
+                    userName.setKeyListener(userNameKeyListener);
+                    userEmail.setKeyListener(userEmailKeyListener);
+                    userPhone.setKeyListener(userPhoneKeyListener);
+                    userAddress1.setKeyListener(userAddress1KeyListener);
+                    userAddress2.setVisibility(View.VISIBLE);
+                    userAddress2.setKeyListener(userAddress2KeyListener);
+                    userCity.setKeyListener(userCityKeyListener);
+                    userState.setKeyListener(userStateKeyListener);
+                    userZip.setKeyListener(userZipKeyListener);
+                }
+                //disable editing and update the user data
+                else {
+                    edit = false;
+                    editProfile.setText(R.string.edit_profile_ef);
+                    //make the text views uneditable
+                    userName.setKeyListener(null);
+                    userEmail.setKeyListener(null);
+                    userPhone.setKeyListener(null);
+                    userAddress1.setKeyListener(null);
+                    userAddress2.setKeyListener(null);
+                    userCity.setKeyListener(null);
+                    userState.setKeyListener(null);
+                    userZip.setKeyListener(null);
+
+                    //update the user data
+                    //TODO: validate the data before updating the database
+                    user.updateEmail(userEmail.getText().toString());
+                    user.updatePhone(userPhone.getText().toString());
+                    user.updateAddress(userAddress1.getText().toString());
+                    user.updateAddress2(userAddress2.getText().toString());
+                    user.updateCity(userCity.getText().toString());
+                    user.updateState(userState.getText().toString());
+                    user.updateZip(userZip.getText().toString());
+                }
+            }
+        });
 
 
         //populate the fields when the user data is all loaded
