@@ -6,17 +6,11 @@
 
 
     <ImageView
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/image_view"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_count"
-        android:text="@string/viewListing_buyable"
-        android:gravity="center_vertical|center_horizontal"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:scaleType="fitCenter"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp" />
 
 </LinearLayout>

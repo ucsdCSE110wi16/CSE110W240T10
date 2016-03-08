@@ -216,7 +216,7 @@
     <string name="viewListing_negotiableVal">Yes</string>
     <string name="viewListing_emailVal">wheremyring@gmail.com</string>
     <string name="viewListing_phoneVal">666-666-6666</string>
-    <string name="numOfImages">Image %1$d of %2$d</string>
+    <string name="numOfImages_format">May remove or put image count</string>
     <string name="yesString">yes</string>
 
 

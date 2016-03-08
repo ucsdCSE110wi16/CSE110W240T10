@@ -35,7 +35,18 @@
                 android:layout_height="244dp"
                 android:layout_width="match_parent"
 
-                android:layout_weight="4.28"></android.support.v4.view.ViewPager>
+                android:layout_gravity="center"></android.support.v4.view.ViewPager>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/numOfImages_format"
+                android:id="@+id/image_count"
+                android:textColor="@color/colorMiddle"
+                android:textSize="15sp"
+                android:paddingTop="15dp"
+                android:phoneNumber="false" />
 
             <TextView
                 android:layout_width="match_parent"
