@@ -222,6 +222,7 @@
     <string name="numOfImages_format">May remove or put image count</string>
     <string name="yesString">yes</string>
     <string name="add_to_faves">Add to Fave\'s!</string>
+    <string name="remove_from_faves">Remove from Fave\'s</string>
 
 
 </resources>

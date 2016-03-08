@@ -7,6 +7,7 @@
     <string name="loading_items">Get ready for some awesomeness...</string>
     <string name="searching_items">Searching...</string>
     <string name="no_items_found">No results found :(</string>
+    <string name="firebase_faves">favoriteItems</string>
     <!--<string name="firebase_email">email</string>-->
     <!--<string name="firebase_provider">provider</string>-->
 </resources>

@@ -1,7 +1,10 @@
 package sdgkteam10.rent_it;
 
 
+import android.util.Log;
+
 import java.io.Serializable;
+import java.util.HashMap;
 
 class Item implements Serializable{
     private String itemName;
@@ -180,6 +183,41 @@ class Item implements Serializable{
     }
     public void setContactInfo(String contactInfo ) {
         this.contactInfo = contactInfo;
+    }
+
+    //used in checking favorites list
+    //TODO: make this more robust
+    @Override
+    public boolean equals(Object e) {
+        if (e != null && e instanceof Item) {
+            Item other = (Item) e;
+
+            if (this.getItemName().equals(other.getItemName()) &&
+                    this.getDescription().equals(other.getDescription())) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //TODO -- Minor Bug: initially items stored as HashMap (but still works)
+        else if (e != null && e instanceof HashMap) {
+            HashMap other = (HashMap) e;
+
+            if (this.getItemName().equals(other.get("itemName").toString()) &&
+                    this.getDescription().equals(other.get("description").toString())) {
+                return true;
+            }
+            return false;
+        }
+        else
+            return false;
+
+    }
+
+    //TODO: make this more robust
+    @Override
+    public int hashCode() {
+        return this.getItemName().hashCode() + this.getDescription().hashCode();
     }
 }
 /*

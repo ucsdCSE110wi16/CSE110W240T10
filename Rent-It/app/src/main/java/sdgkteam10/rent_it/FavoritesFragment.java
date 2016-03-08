@@ -90,10 +90,11 @@ public class FavoritesFragment extends Fragment {
 
         //make it so search hint text displays when page is loaded
         searchView_F.setIconified(false);
+        searchView_F.setFocusable(false);
         searchView_F.clearFocus();
 
         //get the favorites for the user from the database
-        final Query queryRef = db.getRef().child("users").child(db.getLoggedInUser()).child("favoriteItems").limitToLast(20);
+        final Query queryRef = db.getRef().child("users").child(db.getLoggedInUser()).child(getString(R.string.firebase_faves)).limitToLast(20);
 
         //display the items in the query to user
         mAdapter = new FirebaseListAdapter<Item>(getActivity(), Item.class, R.layout.list_item_box, queryRef) {
@@ -254,5 +255,15 @@ public class FavoritesFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    //update the displayed favorites view when returning from viewing an item
+    @Override
+    public void onResume() {
+        super.onResume();
+        favorites.clear();
+        uniqueTable.clear();
+        listView_F.invalidateViews();
+        mAdapter.notifyDataSetChanged();
     }
 }

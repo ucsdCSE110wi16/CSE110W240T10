@@ -99,6 +99,7 @@ public class SearchFragment extends Fragment {
 
         //make it so search hint text displays when page is loaded
         searchView_S.setIconified(false);
+        searchView_S.setFocusable(false);
         searchView_S.clearFocus();
 
         //Query queryRef = ref.child("items").orderByChild("name").endAt("mustang").limitToLast(10);
