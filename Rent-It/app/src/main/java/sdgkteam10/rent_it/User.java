@@ -1,8 +1,11 @@
 package sdgkteam10.rent_it;
 
+import com.shaded.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 
-//TODO: store items as references to places in the database, not full items themselves
+//TODO: store items as references to places in the database, not full items themselves?
+@JsonIgnoreProperties({"favoriteItems"})
 class User {
     private String name;
     private String email;
@@ -13,10 +16,12 @@ class User {
     private String state;
     private String zip;
     private String phone;
-    private ArrayList<Item> favoriteItems = new ArrayList<>();
+    private ArrayList<Item> favoriteItems;
 
     //default constructor
-    User(){}
+    User(){
+        this.favoriteItems = new ArrayList<>();
+    }
 
     //new user -- for use with registering new users
     public User(String name, String email, String pw, String a1, String a2,
@@ -31,6 +36,7 @@ class User {
         this.state = state;
         this.zip = zip;
         this.phone = phone;
+        this.favoriteItems = new ArrayList<>();
 
         Database.getInstance().createUser(this.getEmail(), this.getPw(), this);
     }
@@ -39,6 +45,7 @@ class User {
     public User(String email, String password) {
         this.email = email;
         this.pw = password;
+        this.favoriteItems = new ArrayList<>();
         Database.getInstance().requestLogin(email, password, this);
     }
 
@@ -106,17 +113,33 @@ class User {
     public String getState() {return this.state;}
     public String getZip() {return this.zip;}
     public String getPhone() {return this.phone;}
-    public ArrayList<Item> getFavorites() {return this.favoriteItems;}
+    public ArrayList<Item> getFavorites() {
+        if (this.favoriteItems == null) {
+            this.favoriteItems = new ArrayList<>();
+        }
+        return this.favoriteItems;
+    }
 
     //adds a new favorite item for the user
     public void addFavorite(Item item) {
+        //no favorites added yet
+        if (this.favoriteItems == null) {
+            this.favoriteItems = new ArrayList<>();
+        }
         this.favoriteItems.add(item);
         Database.getInstance().updateFavorites(this.favoriteItems);
     }
 
     //removes s user favorite
     public void removeFavorite(Item item) {
-        this.favoriteItems.remove(item);
+        //no favorites -- can't remove
+        if (this.favoriteItems == null) {
+            this.favoriteItems = new ArrayList<>();
+        }
+        //remove item (if it exists)
+        else if (this.favoriteItems.contains(item)) {
+            this.favoriteItems.remove(item);
+        }
         Database.getInstance().updateFavorites(this.favoriteItems);
     }
 }

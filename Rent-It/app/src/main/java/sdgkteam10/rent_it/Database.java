@@ -84,8 +84,6 @@ public class Database {
         if (authData != null)
         {
             this.m_ref.unauth();
-
-            //TODO -- other logging out thingalings
             return true;
         }
         else
@@ -109,7 +107,12 @@ public class Database {
                 user.setState(data.getState());
                 user.setZip(data.getZip());
                 user.setPhone(data.getPhone());
-                user.setFavorites(data.getFavorites());
+                user.setFavorites(
+                        (ArrayList<Item>) dataSnapshot
+                                .child(m_context.getResources().getString(R.string.firebase_faves))
+                                .getValue()
+                );
+                //user.setFavorites(data.getFavorites());
             }
 
             @Override
@@ -126,7 +129,10 @@ public class Database {
 
     //updates the user's list of favorites
     public void updateFavorites(ArrayList<Item> newFaves) {
-        m_ref.child("users").child(m_ref.getAuth().getUid()).child("favoriteItems").setValue(newFaves);
+        m_ref.child("users")
+                .child(m_ref.getAuth().getUid())
+                .child(m_context.getResources().getString(R.string.firebase_faves))
+                .setValue(newFaves);
     }
 
     //gets the logged in user id (used in associating listing with a user

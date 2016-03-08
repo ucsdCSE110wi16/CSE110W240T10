@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 public class ViewListingActivity extends AppCompatActivity {
 
     private TextView viewListing_title;
@@ -46,7 +51,7 @@ public class ViewListingActivity extends AppCompatActivity {
 
 
         GlobalItem gItem = GlobalItem.getInstance();
-        Item item = gItem.getItem();
+        final Item item = gItem.getItem();
 
 
         viewListing_title.setText(item.getItemName());
@@ -64,11 +69,56 @@ public class ViewListingActivity extends AppCompatActivity {
         buttonAddFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GlobalItem gItem = GlobalItem.getInstance();
-                user.addFavorite(gItem.getItem());
+                //add to the favorites if it isn't in the favorites
+                if (buttonAddFavorite.getText().toString().equals(getString(R.string.add_to_faves))) {
+                    user.addFavorite(item);
+                    buttonAddFavorite.setText(R.string.remove_from_faves);
+                }
+                //remove from favorites if it is in the favorites
+                else {
+                    user.removeFavorite(item);
+                    buttonAddFavorite.setText(R.string.add_to_faves);
+                }
             }
         });
 
+        //change the text of the add button based on if the favorite has been added
+        db.getRef().child("users").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildKey) {
+                setButtonText(item);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                setButtonText(item);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildKey) {
+
+            }
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildKey) {
+                setButtonText(item);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+    }
+
+    private void setButtonText(Item item) {
+        if (user.getFavorites().contains(item)) {
+            buttonAddFavorite.setText(R.string.remove_from_faves);
+        }
+        else {
+            buttonAddFavorite.setText(R.string.add_to_faves);
+        }
     }
 
     private void getIds()
