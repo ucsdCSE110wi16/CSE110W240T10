@@ -21,7 +21,6 @@ import java.util.ArrayList;
  */
 public class GallerySwipeAdapter extends PagerAdapter {
 
-    private int [] image_resources = {};
     private Context ctx;
     private LayoutInflater layoutInflater;
 
@@ -30,15 +29,16 @@ public class GallerySwipeAdapter extends PagerAdapter {
     public GallerySwipeAdapter(Context ctx)
     {
         this.ctx = ctx;
+        loadImages();
     }
 
     //gets item object passed in from search fragment
     GlobalItem gItem = GlobalItem.getInstance();
     Item item = gItem.getItem();
 
-    @Override
-    public int getCount() {
 
+    public void loadImages()
+    {
         for(int i = 0; i < item.getImageArray().length; i++) {
 
             byte[] imageAsBytes = Base64.decode(item.getImageArray()[i], Base64.DEFAULT);
@@ -46,6 +46,11 @@ public class GallerySwipeAdapter extends PagerAdapter {
 
             bitmapArray.add(bmp);
         }
+    }
+
+    @Override
+    public int getCount() {
+
         //return image_resources.length;
         return item.getImageArray().length;
     }
@@ -78,4 +83,5 @@ public class GallerySwipeAdapter extends PagerAdapter {
         container.removeView((LinearLayout)object);
 
     }
+
 }
