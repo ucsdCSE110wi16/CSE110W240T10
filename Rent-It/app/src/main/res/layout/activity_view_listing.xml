@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/TitleAndPicture"
             android:gravity="center"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:baselineAligned="true">
 
             <TextView
                 android:layout_width="wrap_content"

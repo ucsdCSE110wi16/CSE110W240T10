@@ -77,10 +77,8 @@ public class CreateListingActivity extends AppCompatActivity {
         //gather ids of widgets
         getIds();
 
-
         //using eric's spinner method to change text color of drop down box
         createStateSpinner();
-
 
         //when the Add Photos Button is pressed call selectImages method
         addPhotosButton_CL.setOnClickListener(new Button.OnClickListener() {
@@ -128,22 +126,17 @@ public class CreateListingActivity extends AppCompatActivity {
         itemDescriptionField_CL = (EditText) findViewById(R.id.itemDescriptionField_CL);
         minRentDuration_CL = (EditText) findViewById(R.id.minRentDuration_CL);
         amountOfDeposit_CL = (EditText) findViewById(R.id.amountOfDeposit_CL);
-
         addPhotosButton_CL = (Button) findViewById(R.id.addPhotosButton_CL);
         finishButton_CL = (Button) findViewById(R.id.finishButton_CL);
-
         itemPriceSpinner_CL = (Spinner) findViewById(R.id.itemPriceSpinner_CL);
         categorySpinner_CL = (Spinner) findViewById(R.id.categorySpinner_CL);
         minRentSpinner_CL = (Spinner) findViewById(R.id.minRentSpinner_CL);
-
         ivImage_CL = (ImageView) findViewById(R.id.ivImage_CL);
         parentLayout = findViewById(R.id.ScrollView01);
-
         depositYes = (CheckBox) findViewById(R.id.depositYes);
         depositNo = (CheckBox) findViewById(R.id.depositNo);
         priceNegtble = (CheckBox) findViewById(R.id.priceNegtble);
         itemBuyout = (CheckBox) findViewById(R.id.itemBuyout);
-
     }
 
 
