@@ -60,7 +60,6 @@ public class ViewListingActivity extends AppCompatActivity {
         Item item = gItem.getItem();
 
 
-
        /* //convert string array into bitmap images and store in bitmap array
         for (int i = 0; i < item.getImageArray().length; i++) {
 
