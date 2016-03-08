@@ -5,4 +5,5 @@
     <item name="minRentDuration_CL" type="id" />
     <item name="loginFail" type="id">Login Fail</item>
     <item name="creationFail" type="id">Creation Fail</item>
+    <item name="login_progress" type="id">loading?</item>
 </resources>

@@ -38,11 +38,16 @@ public class CreateListingActivity extends AppCompatActivity {
     private static final int IMAGE_CAMERA = 1;
     private static final int IMAGE_PICK = 2;
     private View parentLayout;
+
     private EditText itemNameField_CL;
     private EditText itemPriceField_CL;
     private EditText itemDescriptionField_CL;
+
     private EditText minRentDuration_CL;
     private EditText amountOfDeposit_CL;
+    private EditText zipCodeField_CL;
+
+    private EditText contactInfoField_CL;
     private Button finishButton_CL;
     private Button addPhotosButton_CL;
 
@@ -124,19 +129,26 @@ public class CreateListingActivity extends AppCompatActivity {
         itemNameField_CL = (EditText) findViewById(R.id.itemNameField_CL);
         itemPriceField_CL = (EditText) findViewById(R.id.itemPriceField_CL);
         itemDescriptionField_CL = (EditText) findViewById(R.id.itemDescriptionField_CL);
+
         minRentDuration_CL = (EditText) findViewById(R.id.minRentDuration_CL);
         amountOfDeposit_CL = (EditText) findViewById(R.id.amountOfDeposit_CL);
         addPhotosButton_CL = (Button) findViewById(R.id.addPhotosButton_CL);
+
         finishButton_CL = (Button) findViewById(R.id.finishButton_CL);
         itemPriceSpinner_CL = (Spinner) findViewById(R.id.itemPriceSpinner_CL);
         categorySpinner_CL = (Spinner) findViewById(R.id.categorySpinner_CL);
+
         minRentSpinner_CL = (Spinner) findViewById(R.id.minRentSpinner_CL);
         ivImage_CL = (ImageView) findViewById(R.id.ivImage_CL);
         parentLayout = findViewById(R.id.ScrollView01);
+
         depositYes = (CheckBox) findViewById(R.id.depositYes);
         depositNo = (CheckBox) findViewById(R.id.depositNo);
         priceNegtble = (CheckBox) findViewById(R.id.priceNegtble);
+
         itemBuyout = (CheckBox) findViewById(R.id.itemBuyout);
+        zipCodeField_CL = (EditText) findViewById(R.id.zipCodeField_CL);
+        contactInfoField_CL = (EditText) findViewById(R.id.contactInfoField_CL);
     }
 
 
@@ -318,6 +330,16 @@ public class CreateListingActivity extends AppCompatActivity {
             moveOn = false;
         }
 
+        if (zipCodeField_CL.getText().toString().trim().equals("")) {
+            zipCodeField_CL.setError("Item Zip Code is required!");
+            moveOn = false;
+        }
+
+        if (contactInfoField_CL.getText().toString().trim().equals("")) {
+            contactInfoField_CL.setError("Contact Info is required!");
+            moveOn = false;
+        }
+
         /*
         if (bitmapArray.isEmpty()) {
             Snackbar snackbar = Snackbar
@@ -327,8 +349,15 @@ public class CreateListingActivity extends AppCompatActivity {
         }*/
 
         //if all fields are set than upload to fire base
-        if (moveOn) {
+        if (moveOn)
+        {
             uploadInfo();
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(parentLayout, "Error: Please Fill all Fields", Snackbar.LENGTH_LONG);
+            snackbar.show();
         }
     }
 
@@ -376,9 +405,11 @@ public class CreateListingActivity extends AppCompatActivity {
         item.setMinRentDur(minRentDuration_CL.getText().toString().trim());
         item.setMinDurationSpinner(minRentSpinner_CL.getSelectedItem().toString().trim());
 
+        item.setZipcode(zipCodeField_CL.getText().toString().trim().toLowerCase());
+        item.setContactInfo(contactInfoField_CL.getText().toString().trim().toLowerCase());
+
 
         //getString(R.string.yesString)
-
         if(priceNegtble.isChecked()){
             item.setPriceNeg("yes");
         }

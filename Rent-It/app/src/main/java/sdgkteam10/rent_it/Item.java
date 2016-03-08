@@ -7,23 +7,38 @@ class Item implements Serializable{
     private String itemName;
     private String price;
     private String priceRate;
+
     private String description;
     private String[] imageArray;
     private String category;
-    private String itemUserID;
 
+    private String itemUserID;
     private String minRentDur;
     private String minDurationSpinner;
+
     private String depositAmount;
     private String depositReqd;
+
     //private String depositNotReqd;
     private String priceNeg;
     private String item_Buyout;
     private int uniqueID;
 
 
-    public Item() {
+    private String zipcode;
+    private String contactInfo;
 
+
+    private boolean favored;
+
+
+    public boolean getFavored(){return favored;}
+    public void setFavored(boolean b){
+        favored = true;
+    }
+
+    public Item() {
+        favored = false;
     }
 
     public String getItemName() {
@@ -151,6 +166,20 @@ class Item implements Serializable{
 
     public void setUniqueID(int uniqueID) {
         this.uniqueID = uniqueID;
+    }
+
+    public String getZipcode() {
+        return this.zipcode;
+    }
+    public void setZipcode(String zipcode ) {
+        this.zipcode = zipcode;
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+    public void setContactInfo(String contactInfo ) {
+        this.contactInfo = contactInfo;
     }
 }
 /*

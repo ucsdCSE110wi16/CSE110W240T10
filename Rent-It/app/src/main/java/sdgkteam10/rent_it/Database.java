@@ -41,7 +41,7 @@ public class Database {
     Firebase getRef() { return m_ref; }
 
     //attempts to create a new user
-    void createUser(String email, String pw, final User user) {
+    public void createUser(String email, String pw, final User user) {
         m_ref.createUser(email, pw, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
@@ -58,7 +58,7 @@ public class Database {
     }
 
     //attempts to login the desired user
-    void requestLogin(String email, String pw, final User user) {
+    public void requestLogin(String email, String pw, final User user) {
         m_ref.authWithPassword(email, pw, new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
@@ -76,7 +76,7 @@ public class Database {
     }
 
     //logs out the user and returns a boolean on the success of the logout
-    boolean logoutUser()
+    public boolean logoutUser()
     {
         AuthData authData = m_ref.getAuth();
 
@@ -92,7 +92,7 @@ public class Database {
     }
 
     //gets the current logged in user's information
-    void getUserData(final User user) {
+    public void getUserData(final User user) {
         //retrieve data from database
         m_ref.child("users").child(m_ref.getAuth().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -117,8 +117,13 @@ public class Database {
         });
     }
 
+    //updates the user data in the database
+    public void setUserData(String location, String newVal) {
+        m_ref.child("users").child(m_ref.getAuth().getUid()).child(location).setValue(newVal);
+    }
+
     //gets the logged in user id (used in associating listing with a user
-    String getLoggedInUser() {
+    public String getLoggedInUser() {
         return m_ref.getAuth().getUid();
     }
 

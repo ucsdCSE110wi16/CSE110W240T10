@@ -1,5 +1,7 @@
 package sdgkteam10.rent_it;
 
+import java.util.ArrayList;
+
 class User {
     private String name;
     private String email;
@@ -11,6 +13,7 @@ class User {
     private String zip;
     private String phone;
 
+    public static ArrayList<Item> favoriteItems = new ArrayList<>();
     //default constructor
     User(){}
 
@@ -32,11 +35,9 @@ class User {
     }
 
     //login constructor
-    public User(String email, String password)
-    {
+    public User(String email, String password) {
         this.email = email;
         this.pw = password;
-
         Database.getInstance().requestLogin(email, password, this);
     }
 
@@ -44,9 +45,8 @@ class User {
         Database.getInstance().getUserData(this);
     }
 
-    //setters
-    //TODO: make the setters change the actual value in the database
-    public void setName(String f) {this.name = f;}
+    //setters for initializing user info
+    public void setName(String n) {this.name = n;}
     public void setEmail(String e) {this.email = e;}
     public void setPw(String pass) {this.pw = pass;}
     public void setAddress(String a) {this.address = a;}
@@ -55,6 +55,44 @@ class User {
     public void setState(String state) {this.state = state;}
     public void setZip(String zip) {this.zip = zip;}
     public void setPhone(String phone) {this.phone = phone;}
+
+    //setters for updating the user info in the database
+    public void updateName(String n) {
+        this.name = n;
+        Database.getInstance().setUserData("name", n);
+    }
+    public void updateEmail(String e) {
+        this.email = e;
+        Database.getInstance().setUserData("email", e);
+    }
+    public void updatePw(String pass) {
+        this.pw = pass;
+        Database.getInstance().setUserData("pw", pass);
+    }
+    public void updateAddress(String a) {
+        this.address = a;
+        Database.getInstance().setUserData("address", a);
+    }
+    public void updateAddress2(String a2) {
+        this.address2 = a2;
+        Database.getInstance().setUserData("address2", a2);
+    }
+    public void updateCity(String city) {
+        this.city = city;
+        Database.getInstance().setUserData("city", city);
+    }
+    public void updateState(String state) {
+        this.state = state;
+        Database.getInstance().setUserData("state", state);
+    }
+    public void updateZip(String zip) {
+        this.zip = zip;
+        Database.getInstance().setUserData("zip", zip);
+    }
+    public void updatePhone(String phone) {
+        this.phone = phone;
+        Database.getInstance().setUserData("phone", phone);
+    }
 
     //getters
     public String getName() {return this.name;}

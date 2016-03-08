@@ -7,7 +7,6 @@ import android.text.method.KeyListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -25,8 +24,6 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userCity;
     private TextView userState;
     private TextView userZip;
-    // Also make spinner for editing state
-    private Spinner userStateSpinner;
     //Edit profile button
     private Button editProfile;
     private boolean edit;
@@ -51,9 +48,6 @@ public class ProfileActivity extends AppCompatActivity {
         userCity = (TextView) findViewById(R.id.profile_city);
         userState = (TextView) findViewById(R.id.profile_state);
         userZip = (TextView) findViewById(R.id.profile_zip);
-        //spinner
-        userStateSpinner = (Spinner) findViewById(R.id.profile_state_spinner);
-        userStateSpinner.setVisibility(View.GONE);
         //editProfile button
         editProfile = (Button) findViewById(R.id.edit_button);
 
@@ -75,50 +69,58 @@ public class ProfileActivity extends AppCompatActivity {
         userState.setKeyListener(null);
         userZip.setKeyListener(null);
 
-        //Set boolean value for when button has been clicked
-        edit = false;
-        //Add listener for button
-        editProfile.setOnClickListener(new OnClickListener() {
-           public void onClick(View v) {
-               if (!edit) {
-                   edit = true;
-                   editProfile.setText(R.string.edit_update);
-                   //make the text views editable
-                   userName.setKeyListener(userNameKeyListener);
-                   userEmail.setKeyListener(userEmailKeyListener);
-                   userPhone.setKeyListener(userPhoneKeyListener);
-                   userAddress1.setKeyListener(userAddress1KeyListener);
-                   userAddress2.setVisibility(View.VISIBLE);
-                   userAddress2.setKeyListener(userAddress2KeyListener);
-                   userCity.setKeyListener(userCityKeyListener);
-                   userState.setVisibility(View.GONE);
-                   userStateSpinner.setVisibility(View.VISIBLE);
-                   //userState.setKeyListener(userStateKeyListener);
-                   userZip.setKeyListener(userZipKeyListener);
-               }
-               else {
-                   edit = false;
-                   editProfile.setText(R.string.edit_profile_ef);
-                   //make the text views uneditable
-                   userName.setKeyListener(null);
-                   userEmail.setKeyListener(null);
-                   userPhone.setKeyListener(null);
-                   userAddress1.setKeyListener(null);
-                   userAddress2.setKeyListener(null);
-                   userCity.setKeyListener(null);
-                   //userState.setKeyListener(null);
-                   userState.setVisibility(View.VISIBLE);
-                   userStateSpinner.setVisibility(View.GONE);
-                   userZip.setKeyListener(null);
-               }
-           }
-        });
-
         Database.setContext(this);
         Database db = Database.getInstance();
 
         user = new User();
         user.requestDatabaseData();
+
+        //Set boolean value for when button has been clicked
+        edit = false;
+        //Add listener for button
+        editProfile.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                //enable editing
+                if (!edit) {
+                    edit = true;
+                    editProfile.setText(R.string.edit_update);
+                    //make the text views editable
+                    userName.setKeyListener(userNameKeyListener);
+                    userEmail.setKeyListener(userEmailKeyListener);
+                    userPhone.setKeyListener(userPhoneKeyListener);
+                    userAddress1.setKeyListener(userAddress1KeyListener);
+                    userAddress2.setVisibility(View.VISIBLE);
+                    userAddress2.setKeyListener(userAddress2KeyListener);
+                    userCity.setKeyListener(userCityKeyListener);
+                    userState.setKeyListener(userStateKeyListener);
+                    userZip.setKeyListener(userZipKeyListener);
+                }
+                //disable editing and update the user data
+                else {
+                    edit = false;
+                    editProfile.setText(R.string.edit_profile_ef);
+                    //make the text views uneditable
+                    userName.setKeyListener(null);
+                    userEmail.setKeyListener(null);
+                    userPhone.setKeyListener(null);
+                    userAddress1.setKeyListener(null);
+                    userAddress2.setKeyListener(null);
+                    userCity.setKeyListener(null);
+                    userState.setKeyListener(null);
+                    userZip.setKeyListener(null);
+
+                    //update the user data
+                    //TODO: validate the data before updating the database
+                    user.updateEmail(userEmail.getText().toString());
+                    user.updatePhone(userPhone.getText().toString());
+                    user.updateAddress(userAddress1.getText().toString());
+                    user.updateAddress2(userAddress2.getText().toString());
+                    user.updateCity(userCity.getText().toString());
+                    user.updateState(userState.getText().toString());
+                    user.updateZip(userZip.getText().toString());
+                }
+            }
+        });
 
 
         //populate the fields when the user data is all loaded

@@ -31,6 +31,13 @@
                 android:textSize="30sp"
                 android:gravity="center_vertical|center_horizontal" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_to_faves"
+                android:id="@+id/button_add_favorite"
+                android:layout_gravity="right" />
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/view_pager"
                 android:layout_height="244dp"
