@@ -11,6 +11,7 @@
         android:id="@+id/image_view"
         android:scaleType="fitCenter"
         android:paddingLeft="10sp"
-        android:paddingRight="10sp" />
+        android:paddingRight="10sp"
+        android:contentDescription="@string/nqr" />
 
 </LinearLayout>

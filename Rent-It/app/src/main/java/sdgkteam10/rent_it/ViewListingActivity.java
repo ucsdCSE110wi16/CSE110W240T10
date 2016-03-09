@@ -1,5 +1,6 @@
 package sdgkteam10.rent_it;
 
+import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,7 +66,10 @@ public class ViewListingActivity extends AppCompatActivity {
         viewListing_categoryVal.setText(item.getCategory());
         viewListing_depositVal.setText(item.getDepositAmount());
 
+
         buttonAddFavorite = (Button)findViewById(R.id.button_add_favorite);
+
+
         buttonAddFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

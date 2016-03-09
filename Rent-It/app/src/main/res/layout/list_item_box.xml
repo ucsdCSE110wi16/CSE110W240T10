@@ -18,13 +18,14 @@
         android:paddingTop="5sp"
         android:paddingRight="5sp"
         android:paddingLeft="5sp"
-        android:paddingBottom="5sp" />
+        android:paddingBottom="5sp"
+        android:contentDescription="@string/picture" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Sweg Shades"
+        android:text="@string/ss"
         android:id="@+id/itemBoxTitle"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/itemBoxImage"
@@ -34,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="$15.99"
+        android:text="@string/fmm"
         android:id="@+id/itemBoxPrice"
         android:layout_marginTop="12dp"
         android:layout_below="@+id/itemBoxTitle"
@@ -45,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Per Month(s)"
+        android:text="@string/pm"
         android:id="@+id/itemBoxRate"
         android:layout_below="@+id/itemBoxPrice"
         android:layout_alignLeft="@+id/itemBoxPrice"

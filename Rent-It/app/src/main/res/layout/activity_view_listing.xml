@@ -36,7 +36,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_to_faves"
                 android:id="@+id/button_add_favorite"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:textColor="@color/colorMiddle"
+                android:background="@color/colorForeground"/>
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/view_pager"

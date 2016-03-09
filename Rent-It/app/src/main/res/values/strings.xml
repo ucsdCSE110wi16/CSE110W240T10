@@ -223,6 +223,15 @@
     <string name="yesString">yes</string>
     <string name="add_to_faves">Add to Fave\'s!</string>
     <string name="remove_from_faves">Remove from Fave\'s</string>
+    <string name="enterContactInfo">Enter Contact Info:</string>
+    <string name="cif_cl">Message me at BBcakes@aol.com or call me whenever at 123-456-7890</string>
+    <string name="itemzip">Item Zipcode:</string>
+    <string name="zcf_cl">90210</string>
+    <string name="pm">Per Month(s)</string>
+    <string name="fmm">$15.99</string>
+    <string name="ss">Sweg Shades</string>
+    <string name="picture">picture</string>
+    <string name="nqr">notquitesure</string>
 
 
 </resources>
