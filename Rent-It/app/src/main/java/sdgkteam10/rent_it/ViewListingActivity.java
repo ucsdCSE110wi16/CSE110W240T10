@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 public class ViewListingActivity extends AppCompatActivity {
 
