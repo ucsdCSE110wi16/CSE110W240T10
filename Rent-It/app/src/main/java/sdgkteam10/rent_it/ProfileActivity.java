@@ -102,6 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
                     userState.setKeyListener(userStateKeyListener);
                     userState.setVisibility(View.INVISIBLE);
                     stateSpinner.setVisibility(View.VISIBLE);
+                    stateSpinner.setSelection(5);
                     stateSpinner.setAdapter(stateAdapter);
                     userZip.setKeyListener(userZipKeyListener);
                 }
@@ -118,7 +119,10 @@ public class ProfileActivity extends AppCompatActivity {
                     userCity.setKeyListener(null);
                     userState.setKeyListener(null);
                     userState.setVisibility(View.VISIBLE);
-                    userState.setText(stateSpinner.getSelectedItem().toString());
+                    if (!stateSpinner.getSelectedItem().toString().equals(
+                            stateSpinner.getItemAtPosition(0).toString())) {
+                        userState.setText(stateSpinner.getSelectedItem().toString());
+                    }
                     stateSpinner.setVisibility(View.INVISIBLE);
                     stateSpinner.setAdapter(null);
                     userZip.setKeyListener(null);
