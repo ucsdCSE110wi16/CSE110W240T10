@@ -11,10 +11,7 @@ import java.util.ArrayList;
  */
 public class StateSpinnerAdapter extends ArrayAdapter<CharSequence> {
 
-    // Context and sequence of states
-    private Context context;
-    private ArrayList<CharSequence> states;
-
+    //Constructor (this is all we need)
     public StateSpinnerAdapter(Context context) {
         super(context, R.layout.special_spinner_item,
                 context.getResources().getStringArray(R.array.states_array));
