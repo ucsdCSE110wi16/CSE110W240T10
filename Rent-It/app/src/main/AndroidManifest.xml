@@ -65,7 +65,7 @@
 
         <activity
             android:name=".ViewListingActivity"
-            android:title="@string/title_view_listing"/>
+            android:label="@string/title_view_listing"/>
     </application>
 
 </manifest>
