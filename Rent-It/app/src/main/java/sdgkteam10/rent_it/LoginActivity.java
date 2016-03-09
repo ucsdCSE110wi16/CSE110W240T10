@@ -406,13 +406,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             showProgress(false);
 
-            if (success) {
-                //load the main page
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                mAuthTask = null;
-                finish();
+
+
+
+            if (success)
+
+        {
+            new Thread(new Runnable() {
+                public void run() {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    startActivity(intent);
+
+                    mAuthTask = null;
+
+                    finish();
+                }
+            }).start();
 
             } else {
                 //check the error message thrown by Firebase
