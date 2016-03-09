@@ -149,10 +149,11 @@ public class CreateListingActivityTest {
 
 
         //wait for error message to go away and show finish button again
-        Thread.sleep(500);
+        Thread.sleep(2000);
         onView(withId(R.id.finishButton_CL)).perform(ViewActions.scrollTo(), click());
-        Thread.sleep(500);
+        Thread.sleep(5000);
         onView(withText("Your Item has been Posted!")).check(matches(isDisplayed()));
+        Thread.sleep(2000);
 
 
     }
