@@ -13,8 +13,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true">
 
-        <!--TODO: move this to the top right as a dropdown option -->
-
         <TextView
             android:id="@+id/profile_name"
             android:layout_width="fill_parent"

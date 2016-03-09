@@ -35,6 +35,7 @@
             android:name=".RegistrationActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_registration"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme">
             <intent-filter>

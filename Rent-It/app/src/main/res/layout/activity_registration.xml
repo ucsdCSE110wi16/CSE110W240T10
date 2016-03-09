@@ -1,15 +1,19 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context="sdgkteam10.rent_it.RegistrationActivity">
+    tools:context="sdgkteam10.rent_it.RegistrationActivity">-->
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/registration_scroll"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/colorBackground"
+        tools:context="sdgkteam10.rent_it.RegistrationActivity">
 
 
         <LinearLayout
@@ -152,4 +156,4 @@
 
         </LinearLayout>
     </ScrollView>
-</FrameLayout>
+<!--</FrameLayout>-->
