@@ -2,8 +2,9 @@ package sdgkteam10.rent_it;
 
 import junit.framework.TestCase;
 
+import java.util.UUID;
 
-
+import android.app.Instrumentation;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -31,9 +32,6 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 
 /*
- * note: cant run this test more than once because a user can only be created once with a specific
- * email address. will require manual deletion from database, thus the final submit is commented out
- *
  * The following tests registering a new user for Rent-it, it does so in the following way
  *
  * First: it fill out only some of the fields than press the finish button
@@ -69,13 +67,16 @@ public class RegistrationActivityTest {
     public void initValidString() {
         //strings to be typed by tester
         nameToBeTyped = "Espresso Tester";
-        emailToBeTyped = "espresso@tester.com";
         passwordToBeTyped = "espresso";
         address1ToBeTyped = "123 Espresso Street";
         address2ToBeTyped = "Apt. 789";
         cityToBeTyped = "San Diego";
         zipToBeTyped = "92122";
         phoneToBeTyped = "1238675309";
+
+        //generate a random email
+        String rand = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 10);
+        emailToBeTyped = rand + "@espresso.com";
     }
 
 
@@ -130,11 +131,13 @@ public class RegistrationActivityTest {
                 .perform(ViewActions.scrollTo(),typeText(phoneToBeTyped), closeSoftKeyboard());
 
         //presses submit button when everything is filled out
-        //onView(withId(R.id.submit_button)).perform(ViewActions.scrollTo(), click());
+        onView(withId(R.id.submit_button)).perform(ViewActions.scrollTo(), click());
 
 
         //wait for database to create a user
         Thread.sleep(1000);
+
+        //verified in database under *databaseURL*/users
     }
 }
 
