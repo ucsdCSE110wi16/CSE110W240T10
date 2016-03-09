@@ -31,14 +31,39 @@
                 android:textSize="30sp"
                 android:gravity="center_vertical|center_horizontal" />
 
-            <Button
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_to_faves"
-                android:id="@+id/button_add_favorite"
-                android:layout_gravity="right"
-                android:textColor="@color/colorMiddle"
-                android:background="@color/colorForeground"/>
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="20sp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_button_str"
+                    android:id="@+id/button_rent"
+                    android:textColor="@color/colorMiddle"
+                    android:background="@color/colorForeground"
+                    android:layout_gravity="left"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_to_faves"
+                    android:id="@+id/button_add_favorite"
+                    android:layout_gravity="right"
+                    android:textColor="@color/colorMiddle"
+                    android:background="@color/colorForeground"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/view_pager"

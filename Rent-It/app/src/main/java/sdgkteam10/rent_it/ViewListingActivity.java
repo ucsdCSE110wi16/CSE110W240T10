@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -26,8 +27,9 @@ public class ViewListingActivity extends AppCompatActivity {
     private TextView viewListing_emailVal;
     private TextView viewListing_phoneVal;
     private Button buttonAddFavorite;
-    ViewPager viewPager;
-    GallerySwipeAdapter adapter;
+    private Button buttonRent;
+    private ViewPager viewPager;
+    private GallerySwipeAdapter adapter;
 
     private Database db;
     private User user;
@@ -49,10 +51,8 @@ public class ViewListingActivity extends AppCompatActivity {
         adapter = new GallerySwipeAdapter(this);
         viewPager.setAdapter(adapter);
 
-
         GlobalItem gItem = GlobalItem.getInstance();
         final Item item = gItem.getItem();
-
 
         viewListing_title.setText(item.getItemName());
         viewListing_description.setText(item.getDescription());
@@ -65,10 +65,10 @@ public class ViewListingActivity extends AppCompatActivity {
         viewListing_categoryVal.setText(item.getCategory());
         viewListing_depositVal.setText(item.getDepositAmount());
 
-
         buttonAddFavorite = (Button)findViewById(R.id.button_add_favorite);
+        buttonRent = (Button)findViewById(R.id.button_rent);
 
-
+        //button to add/remove the item in the favorites
         buttonAddFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +85,21 @@ public class ViewListingActivity extends AppCompatActivity {
             }
         });
 
-        //change the text of the add button based on if the favorite has been added
+        //button to "rent" tbe item
+        //Eventual goal: add paypal/money-handling logic
+        buttonRent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //temporary: display message that item has been "rented"
+                Toast.makeText(getApplicationContext(),
+                        getString(R.string.rentit_toast),
+                        Toast.LENGTH_SHORT)
+                .show();
+                buttonRent.setEnabled(false);
+            }
+        });
+
+        //update the add button text when the item's favorites status changes
         db.getRef().child("users").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String previousChildKey) {
@@ -112,7 +126,6 @@ public class ViewListingActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void setButtonText(Item item) {

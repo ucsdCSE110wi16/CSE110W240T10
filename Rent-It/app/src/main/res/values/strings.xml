@@ -208,6 +208,8 @@
     <string name="viewListing_contact">Contact</string>
     <string name="viewListing_email">Email:</string>
     <string name="viewListing_phone">Phone Number:</string>
+    <string name="rent_button_str">Rent-It!</string>
+    <string name="rentit_toast">Item successfully rented!</string>
 
     <!-- ViewListingActivity Values to be updated -->
     <string name="viewListing_priceVal">$20</string>
