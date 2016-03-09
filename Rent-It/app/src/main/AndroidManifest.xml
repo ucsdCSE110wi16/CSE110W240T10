@@ -51,21 +51,21 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_profile"/>
 
         <activity
             android:name=".CreateListingActivity"
-            android:label="@string/title_activity_createListing">
-
-        </activity>
+            android:label="@string/title_activity_createListing"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".ViewListingActivity">
-
-        </activity>
+        <activity
+            android:name=".ViewListingActivity"
+            android:title="@string/title_view_listing"/>
     </application>
 
 </manifest>

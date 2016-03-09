@@ -26,7 +26,6 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userCity;
     private TextView userState;
     private TextView userZip;
-    //Edit profile button
     private Spinner stateSpinner;
     private Button editProfile;
     private boolean edit;
@@ -151,7 +150,7 @@ public class ProfileActivity extends AppCompatActivity {
         };
 
         //populate the fields when the user data is all loaded
-        db.getRef().child("users").addListenerForSingleValueEvent(updateFieldsListener);
+        db.getRef().child("users").child(db.getLoggedInUser()).addListenerForSingleValueEvent(updateFieldsListener);
     }
 
     private void populateProfileFields() {
@@ -192,7 +191,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        db.getRef().child("users").removeEventListener(updateFieldsListener);
+        //db.getRef().child("users").removeEventListener(updateFieldsListener);
         finish();
     }
 }

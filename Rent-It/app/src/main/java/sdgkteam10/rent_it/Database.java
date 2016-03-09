@@ -59,6 +59,7 @@ public class Database {
     }
 
     //attempts to login the desired user
+    //stores the user data in user
     public void requestLogin(String email, String pw, final User user) {
         m_ref.authWithPassword(email, pw, new Firebase.AuthResultHandler() {
             @Override

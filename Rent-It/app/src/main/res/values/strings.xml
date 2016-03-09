@@ -20,6 +20,8 @@
     <string name="logout_activity">Logout</string>
 
     <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_profile">My Profile</string>
+    <string name="title_view_listing">Item Information</string>
     <!--<string name="dummy_button">Dummy Button</string>-->
     <!--<string name="dummy_content">DUMMY\nCONTENT</string>-->
     <string name="title_activity_main">Rent-It</string>
