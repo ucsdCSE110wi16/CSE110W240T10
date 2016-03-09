@@ -64,14 +64,12 @@ public class SearchFragment extends Fragment {
         return new SearchFragment();
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         //initialize database stuff
-        Database.setContext(getActivity());
+        Database.setContext(getActivity().getApplicationContext());
         db = Database.getInstance();
 
         //items = new HashSet<Item>();
@@ -269,5 +267,11 @@ public class SearchFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mAdapter.cleanup();
     }
 }

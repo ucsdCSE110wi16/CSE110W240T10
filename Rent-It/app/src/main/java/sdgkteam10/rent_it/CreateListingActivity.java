@@ -74,10 +74,9 @@ public class CreateListingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_listing);
 
         //initialize database stuff
-        Database.setContext(this);
+        Database.setContext(getApplicationContext());
         db = Database.getInstance();
         userID = db.getLoggedInUser();
-
 
         //gather ids of widgets
         getIds();

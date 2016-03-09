@@ -113,6 +113,7 @@ public class Database {
                                 .getValue()
                 );
                 //user.setFavorites(data.getFavorites());
+                m_ref.removeEventListener(this);
             }
 
             @Override

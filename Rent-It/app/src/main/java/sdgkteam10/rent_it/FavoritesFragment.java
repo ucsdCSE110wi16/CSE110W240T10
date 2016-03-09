@@ -1,5 +1,6 @@
 package sdgkteam10.rent_it;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -65,7 +66,7 @@ public class FavoritesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //initialize database stuff
-        Database.setContext(getActivity());
+        Database.setContext(getActivity().getApplicationContext());
         db = Database.getInstance();
 
         results = new ArrayList<>();
@@ -130,6 +131,10 @@ public class FavoritesFragment extends Fragment {
             }
         };
         listView_F.setAdapter(mAdapter);
+
+        if (favorites.isEmpty()) {
+            emptyView.setText(R.string.no_items_found);
+        }
 
         //search functionality
         searchView_F.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -265,5 +270,11 @@ public class FavoritesFragment extends Fragment {
         uniqueTable.clear();
         listView_F.invalidateViews();
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mAdapter.cleanup();
     }
 }

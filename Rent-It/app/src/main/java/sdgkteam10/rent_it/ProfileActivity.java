@@ -32,10 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
     private boolean edit;
 
     private User user;
-
-
-    public ProfileActivity() {
-    }
+    private Database db;
+    private ValueEventListener updateFieldsListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +74,8 @@ public class ProfileActivity extends AppCompatActivity {
         userZip.setKeyListener(null);
         final ArrayAdapter<CharSequence> stateAdapter = new StateSpinnerAdapter(this);
 
-        Database.setContext(this);
-        Database db = Database.getInstance();
+        Database.setContext(getApplicationContext());
+        db = Database.getInstance();
 
         user = new User();
         user.requestDatabaseData();
@@ -140,9 +138,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
-        //populate the fields when the user data is all loaded
-        db.getRef().child("users").addValueEventListener(new ValueEventListener() {
+        updateFieldsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 populateProfileFields();
@@ -152,7 +148,10 @@ public class ProfileActivity extends AppCompatActivity {
             public void onCancelled(FirebaseError firebaseError) {
 
             }
-        });
+        };
+
+        //populate the fields when the user data is all loaded
+        db.getRef().child("users").addListenerForSingleValueEvent(updateFieldsListener);
     }
 
     private void populateProfileFields() {
@@ -188,5 +187,12 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        db.getRef().child("users").removeEventListener(updateFieldsListener);
+        finish();
     }
 }

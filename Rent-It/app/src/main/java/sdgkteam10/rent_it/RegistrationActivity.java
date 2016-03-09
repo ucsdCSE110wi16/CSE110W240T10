@@ -176,7 +176,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Database.setContext(this);
+        Database.setContext(getApplicationContext());
         db = Database.getInstance();
 
         setContentView(R.layout.activity_registration);
@@ -201,6 +201,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     //load the main page
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    db.getRef().removeAuthStateListener(this);
                     startActivity(intent);
                 }
             }
@@ -313,12 +314,14 @@ public class RegistrationActivity extends AppCompatActivity {
                        @Override
                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                            db.requestLogin(user.getEmail(), user.getPw(), user);
+                           db.getRef().removeEventListener(this);
                        }
 
                        //TODO: add error handling for creating user
                        @Override
                        public void onCancelled(FirebaseError firebaseError) {
                            Log.e("My Logging", "creation fail: " + firebaseError.getMessage());
+                           db.getRef().removeEventListener(this);
                        }
 
                        //the following are required and ignored
@@ -344,6 +347,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                //load the main page
                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                               db.getRef().removeAuthStateListener(this);
                                startActivity(intent);
                                finish();
                            }
@@ -355,6 +359,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                    Log.e("My Logging", "login fail: " + error.getMessage());
                                else
                                    Log.e("My Logging", "login fail");
+                               db.getRef().removeAuthStateListener(this);
                            }
                        }
                    });

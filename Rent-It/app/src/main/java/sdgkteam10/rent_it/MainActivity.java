@@ -80,9 +80,11 @@ public class MainActivity extends AppCompatActivity {
         //logout current user
         if (id == R.id.action_logout) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                Intent.FLAG_ACTIVITY_NEW_TASK);
             Database.getInstance().logoutUser();
             startActivity(intent);
+            finish();
             return true;
         }
 

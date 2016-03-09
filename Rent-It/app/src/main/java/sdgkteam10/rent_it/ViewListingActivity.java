@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.style.QuoteSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,10 @@ import android.widget.Toast;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class ViewListingActivity extends AppCompatActivity {
 
@@ -32,6 +37,8 @@ public class ViewListingActivity extends AppCompatActivity {
     private GallerySwipeAdapter adapter;
 
     private Database db;
+    //private ChildEventListener favesListener;
+    private ValueEventListener favesListener;
     private User user;
 
     @Override
@@ -41,7 +48,7 @@ public class ViewListingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_listing);
 
         //initialize database stuff
-        Database.setContext(this);
+        Database.setContext(getApplicationContext());
         db = Database.getInstance();
 
         user = new User();
@@ -94,30 +101,15 @@ public class ViewListingActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         getString(R.string.rentit_toast),
                         Toast.LENGTH_SHORT)
-                .show();
+                        .show();
                 buttonRent.setEnabled(false);
             }
         });
 
-        //update the add button text when the item's favorites status changes
-        db.getRef().child("users").addChildEventListener(new ChildEventListener() {
+        //gets the status of the item as a favorite or not
+        favesListener = new ValueEventListener() {
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildKey) {
-                setButtonText(item);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                setButtonText(item);
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildKey) {
-
-            }
-
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildKey) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 setButtonText(item);
             }
 
@@ -125,7 +117,10 @@ public class ViewListingActivity extends AppCompatActivity {
             public void onCancelled(FirebaseError firebaseError) {
 
             }
-        });
+        };
+
+        //update the add button text when the item's favorites status changes
+        db.getRef().child("users").child(db.getLoggedInUser()).addListenerForSingleValueEvent(favesListener);
     }
 
     private void setButtonText(Item item) {
@@ -152,6 +147,13 @@ public class ViewListingActivity extends AppCompatActivity {
         viewListing_buyableVal = (TextView) findViewById(R.id.viewListing_buyableVal);
         viewListing_phoneVal = (TextView) findViewById(R.id.viewListing_phoneVal);
         viewListing_emailVal = (TextView) findViewById(R.id.viewListing_emailVal);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //db.getRef().child("users").child(db.getLoggedInUser()).removeEventListener(favesListener);
+        finish();
     }
 
 }

@@ -4,6 +4,7 @@ import android.animation.Animator;                  //  http://developer.android
 import android.animation.AnimatorListenerAdapter;   //  http://developer.android.com/reference/android/animation/AnimatorListenerAdapter.html
 import android.annotation.TargetApi;                //  http://developer.android.com/reference/android/annotation/TargetApi.html
 import android.app.AlertDialog;                     //  http://developer.android.com/reference/android/app/AlertDialog.html
+import android.app.Application;
 import android.content.Intent;                      //  http://developer.android.com/reference/android/content/Intent.html
 import android.content.pm.PackageManager;           //  http://developer.android.com/reference/android/content/pm/PackageManager.html
 import android.support.annotation.NonNull;          //  http://tools.android.com/tech-docs/support-annotations
@@ -99,25 +100,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         Button buttonRegister = (Button)findViewById(R.id.button_register);
         buttonRegister.setOnClickListener(new OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {
-                                                  new Thread(new Runnable() {
-                                                      public void run() {
-                                                          Intent intent;
-                                                          intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-                                                          startActivity(intent);
-                                                      }
-                                                  }).start();
-                                              }
-
-                                              ;
-                                          });
+              @Override
+              public void onClick(View v) {
+                  new Thread(new Runnable() {
+                      public void run() {
+                          Intent intent;
+                          intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                          startActivity(intent);
+                      }
+                  }).start();
+              }
+          });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
 
-        Database.setContext(this);
+        Database.setContext(getApplicationContext());
         db = Database.getInstance();
     }
 
@@ -310,18 +309,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     public void onStart() {
         super.onStart();
-
-
-
-
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
-
-
     }
 
 
@@ -345,15 +337,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private final String mPassword;
         private Firebase.AuthResultHandler mHandler;
         private FirebaseError mLoginError;
-
+        private Firebase.AuthStateListener loginListener;
+        private boolean success;
 
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
             mLoginError = null;
+            success = false;
 
             //log out anyone previously logged in
             db.logoutUser();
+
+            loginListener = new Firebase.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(AuthData authData) {
+                    if (authData != null) {
+                        //successful login
+                        success = true;
+                    }
+                    else {
+                        success = false;
+                    }
+                }
+            };
         }
 
         /**
@@ -364,26 +371,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             //authenticate user login info with the database
             User user = new User(mEmail, mPassword);
 
-            //workaround for anonymous classes unable to edit local data
-            final boolean[] success = new boolean[1];
-            success[0] = false;
-
             //listen for successful login
-            db.getRef().addAuthStateListener(new Firebase.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(AuthData authData) {
-                    if (authData != null) {
-                        //successful login
-                        success[0] = true;
-                    }
-                    else {
-                        success[0] = false;
-                    }
-                }
-            });
+            db.getRef().addAuthStateListener(loginListener);
 
             //wait for login to complete
-            while (!success[0] && db.getLoginError() == null);
+            while (!success && db.getLoginError() == null);
 
             //unsuccessful login
             if (db.getLoginError() != null) {
@@ -405,25 +397,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             //super.onPostExecute(success);
 
             showProgress(false);
+            db.getRef().removeAuthStateListener(loginListener);
 
+            if (success) {
+                new Thread(new Runnable() {
+                    public void run() {
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                Intent.FLAG_ACTIVITY_NEW_TASK);
 
+                        startActivity(intent);
 
+                        mAuthTask = null;
 
-            if (success)
-
-        {
-            new Thread(new Runnable() {
-                public void run() {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                    startActivity(intent);
-
-                    mAuthTask = null;
-
-                    finish();
-                }
-            }).start();
+                        finish();
+                    }
+                }).start();
 
             } else {
                 //check the error message thrown by Firebase
