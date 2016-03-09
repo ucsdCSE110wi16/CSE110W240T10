@@ -222,14 +222,14 @@
     <string name="viewListing_depositVal">N/A</string>
     <string name="viewListing_buyableVal">Yes</string>
     <string name="viewListing_negotiableVal">Yes</string>
-    <string name="viewListing_emailVal">loading…</string>
-    <string name="viewListing_phoneVal">loading…</string>
+    <string name="viewListing_emailVal">loading...</string>
+    <string name="viewListing_phoneVal">loading...</string>
     <string name="viewListing_addInfoVal"></string>
     <string name="yesString">yes</string>
     <string name="add_to_faves">Add to Fave\'s!</string>
     <string name="remove_from_faves">Remove from Fave\'s</string>
     <string name="enterContactInfo">Enter Contact Info:</string>
-    <string name="cif_cl">Message me at BBcakes@aol.com or call me whenever at 123–456-7890</string>
+    <string name="cif_cl">Message me at BBcakes@aol.com or call me whenever at 123-456-7890</string>
     <string name="itemzip">Item Zipcode:</string>
     <string name="zcf_cl">90210</string>
     <string name="pm">Per Month(s)</string>
