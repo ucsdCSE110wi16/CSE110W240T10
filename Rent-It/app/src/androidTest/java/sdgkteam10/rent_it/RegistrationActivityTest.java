@@ -135,67 +135,8 @@ public class RegistrationActivityTest {
 
 
         //wait for database to create a user
-        Thread.sleep(1000);
+        Thread.sleep(10000);
 
         //verified in database under *databaseURL*/users
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-public class RegistrationActivityTest extends TestCase {
-
-    public void setUp() throws Exception {
-        super.setUp();
-
-    }
-
-    public void tearDown() throws Exception {
-
-    }
-
-    public void testOnCreate() throws Exception {
-
-    }
-
-    public void testOnPostCreate() throws Exception {
-
-    }
-
-    public void testOnOptionsItemSelected() throws Exception {
-
-    }
-
-    public void testOnStart() throws Exception {
-
-    }
-
-    public void testOnStop() throws Exception {
-
-    }
-}*/

@@ -55,7 +55,8 @@ public class SearchFragmentTest {
     private String search1ToBeTyped;
     private String search2ToBeTyped;
     private String search3ToBeTyped;
-
+    private String search4ToBeTyped;
+    private String search5ToBeTyped;
 
     @Before
     public void initValidString() {
@@ -63,7 +64,9 @@ public class SearchFragmentTest {
         //strings to be typed by tester
         search1ToBeTyped = "mustang\n";
         search2ToBeTyped = "90210\n";
-        search3ToBeTyped = "vehicle\n";
+        search5ToBeTyped = "vehicle\n";
+        search4ToBeTyped = "grass\n";
+        search3ToBeTyped = "uag9uj\n";
     }
 
     @Test
@@ -105,32 +108,30 @@ public class SearchFragmentTest {
 
         Thread.sleep(5000);
 
+        onView(withId(R.id.searchView_S))
+                .perform(pressKey(67), pressKey(67), pressKey(67), pressKey(67), pressKey(67),
+                        pressKey(67), pressKey(67), closeSoftKeyboard());
+
+        //search by description
+        onView(withId(R.id.searchView_S))
+                .perform(typeText(search4ToBeTyped), closeSoftKeyboard());
+
+        Thread.sleep(7000);
+
+        onView(withId(R.id.searchView_S))
+                .perform(pressKey(67), pressKey(67), pressKey(67), pressKey(67), pressKey(67),
+                        pressKey(67), pressKey(67), closeSoftKeyboard());
+
+        onView(withId(R.id.searchView_S))
+                .perform(typeText(search5ToBeTyped), closeSoftKeyboard());
+
+        Thread.sleep(7000);
+
+
         //click on the list view
-        onData(anything()).inAdapterView(withId(R.id.listView_S)).atPosition(0).perform(click());
-        Thread.sleep(5000);
+        //onData(anything()).inAdapterView(withId(R.id.listView_S)).atPosition(0).perform(click());
+        //Thread.sleep(9000);
     }
 
 
- }
-
-/*
-    public class SearchFragmentTest extends TestCase {
-
-    public void setUp() throws Exception {
-        super.setUp();
-
-    }
-
-    public void tearDown() throws Exception {
-
-    }
-
-    public void testNewInstance() throws Exception {
-
-    }
-
-    public void testOnCreateView() throws Exception {
-
-    }
 }
-*/
