@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -10,6 +9,7 @@ android {
         multiDexEnabled true
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -28,7 +28,6 @@ android {
     productFlavors {
     }
 }
-
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -39,4 +38,9 @@ dependencies {
     //compile 'com.firebase:firebase-client-android:2.5.0+'
     compile project(':firebase-client-android-2.5.0')
     compile 'com.firebaseui:firebase-ui:0.3.1'
+
+    androidTestCompile 'com.android.support:support-annotations:23.2.0'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.4.1'
 }
