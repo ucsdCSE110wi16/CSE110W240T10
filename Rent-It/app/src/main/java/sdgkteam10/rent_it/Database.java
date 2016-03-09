@@ -139,6 +139,11 @@ public class Database {
 
     //gets the logged in user id (used in associating listing with a user
     public String getLoggedInUser() {
+        //return empty if no user logged in
+        if (m_ref.getAuth() == null) {
+            return "";
+        }
+
         return m_ref.getAuth().getUid();
     }
 

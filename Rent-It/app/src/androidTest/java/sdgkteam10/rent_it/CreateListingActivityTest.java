@@ -42,6 +42,8 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
  * Third: fills out all required fields than presses the finish button
  * and checks for an alert dialog message stating that the item has been posted.
  *
+ * Fourth: The new Items very visibly added in our database, Firebase
+ *
  */
 
 @RunWith(AndroidJUnit4.class)
@@ -69,7 +71,15 @@ public class CreateListingActivityTest {
         itemDepositToBeTyped = "45";
         itemZipToBeTyped = "90210";
         itemContactToBeTyped = "test contact info input";
+
+
+        //Database.setContext();
+        //Database db = Database.getInstance();
+        //User user = new User();
+        //db.requestLogin("a@a.com", "a", user);
     }
+
+
 
 
     @Test
