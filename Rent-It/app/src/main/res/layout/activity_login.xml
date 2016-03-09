@@ -35,8 +35,8 @@
             android:clickable="true">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="180dp"
+                android:layout_width="330dp"
+                android:layout_height="212dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Rentit"
                 android:id="@+id/textView_Rentit"
@@ -45,7 +45,9 @@
                 android:elegantTextHeight="true"
                 android:layout_gravity="center"
                 tools:ignore="UnusedAttribute"
-                />
+                android:background="@color/colorBackgroundT"
+                android:allowUndo="true"
+                android:gravity="center" />
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
@@ -93,7 +95,6 @@
                     android:foreground="#381e1e"
                     android:textColor="@color/colorForeground"
                     android:background="@color/colorBackground"
-                    android:onClick="goRegister"
                     android:layout_marginLeft="50dp"
                     android:layout_marginStart="50dp"
                     android:layout_weight="0.05"

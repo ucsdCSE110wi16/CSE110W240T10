@@ -47,7 +47,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
         app:borderWidth="0dp"
-        android:src="@drawable/ic_add_white_2x"
+        android:src="@mipmap/ic_add_white_2x"
         app:backgroundTint="@color/colorForeground"
         />
 
