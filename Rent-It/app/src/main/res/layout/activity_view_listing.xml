@@ -371,31 +371,6 @@
                 android:layout_toRightOf="@+id/viewListing_deposit"
                 android:layout_toEndOf="@+id/viewListing_deposit" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/viewListing_additionalInfo"
-                android:id="@+id/viewListing_additionalInfo"
-                android:textColor="@color/colorForeground"
-                android:textSize="18sp"
-                android:paddingTop="15sp"
-                android:paddingBottom="5sp"
-                android:gravity="center_vertical|center|center_horizontal"
-                android:clickable="false"
-                android:layout_below="@+id/viewListing_phone"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/viewListing_addInfoVal"
-                android:id="@+id/viewListing_addInfoVal"
-                android:textColor="@color/colorMiddle"
-                android:gravity="center_vertical|center_horizontal"
-                android:textSize="18sp"
-                android:layout_below="@+id/viewListing_additionalInfo"
-                android:layout_centerHorizontal="true" />
-
         </RelativeLayout>
     </TableLayout>
 </ScrollView>

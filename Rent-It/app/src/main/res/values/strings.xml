@@ -222,8 +222,8 @@
     <string name="viewListing_depositVal">N/A</string>
     <string name="viewListing_buyableVal">Yes</string>
     <string name="viewListing_negotiableVal">Yes</string>
-    <string name="viewListing_emailVal">wheremyring@gmail.com</string>
-    <string name="viewListing_phoneVal">666-666-6666</string>
+    <string name="viewListing_emailVal">loading...</string>
+    <string name="viewListing_phoneVal">loading...</string>
     <string name="viewListing_addInfoVal"></string>
     <string name="yesString">yes</string>
     <string name="add_to_faves">Add to Fave\'s!</string>

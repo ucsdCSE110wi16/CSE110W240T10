@@ -31,7 +31,6 @@ public class ViewListingActivity extends AppCompatActivity {
     private TextView viewListing_buyableVal;
     private TextView viewListing_emailVal;
     private TextView viewListing_phoneVal;
-    private TextView viewListing_addInfoVal;
     private Button buttonAddFavorite;
     private Button buttonRent;
     private ViewPager viewPager;
@@ -76,7 +75,6 @@ public class ViewListingActivity extends AppCompatActivity {
 
         viewListing_negotiableVal.setText(item.getPriceNeg());
         viewListing_buyableVal.setText(item.getItemBuyout());
-        viewListing_addInfoVal.setText(item.getContactInfo());
 
         buttonAddFavorite = (Button)findViewById(R.id.button_add_favorite);
         buttonRent = (Button)findViewById(R.id.button_rent);
@@ -176,7 +174,6 @@ public class ViewListingActivity extends AppCompatActivity {
         viewListing_buyableVal = (TextView) findViewById(R.id.viewListing_buyableVal);
         viewListing_phoneVal = (TextView) findViewById(R.id.viewListing_phoneVal);
         viewListing_emailVal = (TextView) findViewById(R.id.viewListing_emailVal);
-        viewListing_addInfoVal = (TextView) findViewById(R.id.viewListing_addInfoVal);
     }
 
     @Override
