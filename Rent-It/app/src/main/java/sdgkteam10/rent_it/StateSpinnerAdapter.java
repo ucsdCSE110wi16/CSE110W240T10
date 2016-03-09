@@ -3,8 +3,6 @@ package sdgkteam10.rent_it;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
-import java.util.ArrayList;
-
 /**
  * Allows for quick addition of the specific Spinner Adapter required for
  * the State Spinner, wherever it may be
