@@ -31,6 +31,7 @@ public class ViewListingActivity extends AppCompatActivity {
     private TextView viewListing_buyableVal;
     private TextView viewListing_emailVal;
     private TextView viewListing_phoneVal;
+    private TextView viewListing_addInfoVal;
     private Button buttonAddFavorite;
     private Button buttonRent;
     private ViewPager viewPager;
@@ -63,14 +64,19 @@ public class ViewListingActivity extends AppCompatActivity {
 
         viewListing_title.setText(item.getItemName());
         viewListing_description.setText(item.getDescription());
-
         viewListing_priceVal.setText("$"+item.getPrice());
-
         viewListing_rentVal.setText(item.getMinRentDur());
         viewListing_rentTimeVal.setText(item.getMinDurationSpinner());
-
         viewListing_categoryVal.setText(item.getCategory());
-        viewListing_depositVal.setText(item.getDepositAmount());
+
+        if(item.getDepositReqd().equals("no"))
+            viewListing_depositVal.setText(item.getDepositAmount());
+        else
+            viewListing_depositVal.setText("$"+item.getDepositAmount());
+
+        viewListing_negotiableVal.setText(item.getPriceNeg());
+        viewListing_buyableVal.setText(item.getItemBuyout());
+        viewListing_addInfoVal.setText(item.getContactInfo());
 
         buttonAddFavorite = (Button)findViewById(R.id.button_add_favorite);
         buttonRent = (Button)findViewById(R.id.button_rent);
@@ -121,6 +127,29 @@ public class ViewListingActivity extends AppCompatActivity {
 
         //update the add button text when the item's favorites status changes
         db.getRef().child("users").child(db.getLoggedInUser()).addListenerForSingleValueEvent(favesListener);
+
+        //get contact info from user who created the listing
+        /* work of sri the magnificent */
+        Query queryRef = db.getRef().child("users").child(item.getItemUserID()).child("email");
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                viewListing_emailVal.setText((String)snapshot.getValue());
+            }
+            @Override
+            public void onCancelled(FirebaseError error) {
+            }
+        });
+        Query queryRefP = db.getRef().child("users").child(item.getItemUserID()).child("phone");
+        queryRefP.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                viewListing_phoneVal.setText((String) snapshot.getValue());
+            }
+            @Override
+            public void onCancelled(FirebaseError error) {
+            }
+        });
     }
 
     private void setButtonText(Item item) {
@@ -147,6 +176,7 @@ public class ViewListingActivity extends AppCompatActivity {
         viewListing_buyableVal = (TextView) findViewById(R.id.viewListing_buyableVal);
         viewListing_phoneVal = (TextView) findViewById(R.id.viewListing_phoneVal);
         viewListing_emailVal = (TextView) findViewById(R.id.viewListing_emailVal);
+        viewListing_addInfoVal = (TextView) findViewById(R.id.viewListing_addInfoVal);
     }
 
     @Override

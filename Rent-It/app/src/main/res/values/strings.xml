@@ -208,6 +208,7 @@
     <string name="viewListing_contact">Contact</string>
     <string name="viewListing_email">Email:</string>
     <string name="viewListing_phone">Phone Number:</string>
+    <string name="viewListing_additionalInfo">Additional Contact Info</string>
     <string name="rent_button_str">Rent-It!</string>
     <string name="rentit_toast">Item successfully rented!</string>
 
@@ -221,7 +222,7 @@
     <string name="viewListing_negotiableVal">Yes</string>
     <string name="viewListing_emailVal">wheremyring@gmail.com</string>
     <string name="viewListing_phoneVal">666-666-6666</string>
-    <string name="numOfImages_format">May remove or put image count</string>
+    <string name="viewListing_addInfoVal"></string>
     <string name="yesString">yes</string>
     <string name="add_to_faves">Add to Fave\'s!</string>
     <string name="remove_from_faves">Remove from Fave\'s</string>
