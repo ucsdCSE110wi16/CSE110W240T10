@@ -98,14 +98,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button buttonRegister = (Button)findViewById(R.id.button_register);
-        buttonRegister.setOnClickListener(new OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-                startActivity(intent);
-            }
-        });
+        buttonRegister.setOnClickListener(new OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  new Thread(new Runnable() {
+                                                      public void run() {
+                                                          Intent intent;
+                                                          intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                                                          startActivity(intent);
+                                                      }
+                                                  }).start();
+                                              }
+
+                                              ;
+                                          });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -145,11 +151,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
-    public void goRegister() {
-        Intent intent;
-        intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-        startActivity(intent);
-    }
+
 
 
     /**
