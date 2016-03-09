@@ -121,7 +121,7 @@ public class ProfileActivity extends AppCompatActivity {
                         userState.setText(stateSpinner.getSelectedItem().toString());
                     }
                     stateSpinner.setVisibility(View.INVISIBLE);
-                    stateSpinner.setAdapter(null);
+                    //stateSpinner.setAdapter(null);
                     userZip.setKeyListener(null);
 
                     //update the user data

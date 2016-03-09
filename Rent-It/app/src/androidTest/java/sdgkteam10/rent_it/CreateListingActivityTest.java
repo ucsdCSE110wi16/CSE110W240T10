@@ -59,7 +59,7 @@ public class CreateListingActivityTest {
     private String itemMinRentToBeTyped;
     private String itemDepositToBeTyped;
     private String itemZipToBeTyped;
-    private String itemContactToBeTyped;
+    //private String itemContactToBeTyped;
 
     @Before
     public void initValidString() {
@@ -70,7 +70,7 @@ public class CreateListingActivityTest {
         itemMinRentToBeTyped = "4";
         itemDepositToBeTyped = "45";
         itemZipToBeTyped = "90210";
-        itemContactToBeTyped = "test contact info input";
+      //  itemContactToBeTyped = "test contact info input";
 
 
         //Database.setContext();
@@ -99,8 +99,8 @@ public class CreateListingActivityTest {
 
 
         //presses submit button when only half the required fields are set
-        onView(withId(R.id.finishButton_CL)).perform(ViewActions.scrollTo(), click());
-        onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
+        //onView(withId(R.id.finishButton_CL)).perform(ViewActions.scrollTo(), click());
+        //onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
 
         //set item description
         onView(withId(R.id.itemDescriptionField_CL))
@@ -130,7 +130,7 @@ public class CreateListingActivityTest {
 
         //presses submit button when only third of  the required fields are set
         onView(withId(R.id.finishButton_CL)).perform(ViewActions.scrollTo(), click());
-        onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
+       // onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
 
         //set the deposit amount
         onView(withId(R.id.amountOfDeposit_CL))
@@ -140,12 +140,12 @@ public class CreateListingActivityTest {
         onView(withId(R.id.zipCodeField_CL))
                 .perform(typeText(itemZipToBeTyped), closeSoftKeyboard());
 
-        onView(withId(R.id.finishButton_CL)).perform(click());
-        onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
+        //onView(withId(R.id.finishButton_CL)).perform(click());
+        //onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
 
         //set the contact information
-        onView(withId(R.id.contactInfoField_CL))
-                .perform(typeText(itemContactToBeTyped), closeSoftKeyboard());
+        //onView(withId(R.id.contactInfoField_CL))
+         //       .perform(typeText(itemContactToBeTyped), closeSoftKeyboard());
 
 
         //wait for error message to go away and show finish button again

@@ -346,7 +346,9 @@ public class RegistrationActivity extends AppCompatActivity {
                            if (authData != null) {
                                //load the main page
                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                                       Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                       Intent.FLAG_ACTIVITY_NEW_TASK);
                                db.getRef().removeAuthStateListener(this);
                                startActivity(intent);
                                finish();

@@ -47,7 +47,7 @@ public class CreateListingActivity extends AppCompatActivity {
     private EditText amountOfDeposit_CL;
     private EditText zipCodeField_CL;
 
-    private EditText contactInfoField_CL;
+    //private EditText contactInfoField_CL;
     private Button finishButton_CL;
     private Button addPhotosButton_CL;
 
@@ -147,7 +147,7 @@ public class CreateListingActivity extends AppCompatActivity {
 
         itemBuyout = (CheckBox) findViewById(R.id.itemBuyout);
         zipCodeField_CL = (EditText) findViewById(R.id.zipCodeField_CL);
-        contactInfoField_CL = (EditText) findViewById(R.id.contactInfoField_CL);
+       // contactInfoField_CL = (EditText) findViewById(R.id.contactInfoField_CL);
     }
 
 
@@ -334,10 +334,10 @@ public class CreateListingActivity extends AppCompatActivity {
             moveOn = false;
         }
 
-        if (contactInfoField_CL.getText().toString().trim().equals("")) {
+       /* if (contactInfoField_CL.getText().toString().trim().equals("")) {
             contactInfoField_CL.setError("Contact Info is required!");
             moveOn = false;
-        }
+        }*/
 
         /*
         if (bitmapArray.isEmpty()) {
@@ -405,7 +405,8 @@ public class CreateListingActivity extends AppCompatActivity {
         item.setMinDurationSpinner(minRentSpinner_CL.getSelectedItem().toString().trim());
 
         item.setZipcode(zipCodeField_CL.getText().toString().trim().toLowerCase());
-        item.setContactInfo(contactInfoField_CL.getText().toString().trim().toLowerCase());
+        //item.setContactInfo(contactInfoField_CL.getText().toString().trim().toLowerCase());
+        item.setContactInfo("NA");
 
 
         //getString(R.string.yesString)
