@@ -33,7 +33,7 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 
 /*
- * The following test case searches for an item in the database
+ * The following is a User Scenario test for searching of items in the database
  *
  * First: it will wait 10 seconds or so for the items to populate locally from the
  * database.
@@ -41,8 +41,8 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
  * Second: it will search varies items based on item name, item description, item category,
  * as well as item zip code.
  *
- * Third: it will display these relevant items.
- *
+ * Third: it will display these relevant items. if no items are found it will display
+ * "no results found :(" message
  */
 
 @RunWith(AndroidJUnit4.class)
@@ -89,7 +89,7 @@ public class SearchFragmentTest {
                         pressKey(67),pressKey(67),closeSoftKeyboard());
 
 
-        //search by zipcode
+        //search by zip code
         onView(withId(R.id.searchView_S))
                 .perform(typeText(search2ToBeTyped), closeSoftKeyboard());
 
@@ -108,6 +108,8 @@ public class SearchFragmentTest {
 
         Thread.sleep(5000);
 
+
+        //backspace
         onView(withId(R.id.searchView_S))
                 .perform(pressKey(67), pressKey(67), pressKey(67), pressKey(67), pressKey(67),
                         pressKey(67), pressKey(67), closeSoftKeyboard());
@@ -118,10 +120,14 @@ public class SearchFragmentTest {
 
         Thread.sleep(7000);
 
+
+        //backspace
         onView(withId(R.id.searchView_S))
                 .perform(pressKey(67), pressKey(67), pressKey(67), pressKey(67), pressKey(67),
                         pressKey(67), pressKey(67), closeSoftKeyboard());
 
+
+        //search by category
         onView(withId(R.id.searchView_S))
                 .perform(typeText(search5ToBeTyped), closeSoftKeyboard());
 

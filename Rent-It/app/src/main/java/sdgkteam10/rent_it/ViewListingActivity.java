@@ -127,7 +127,6 @@ public class ViewListingActivity extends AppCompatActivity {
         db.getRef().child("users").child(db.getLoggedInUser()).addListenerForSingleValueEvent(favesListener);
 
         //get contact info from user who created the listing
-        /* work of sri the magnificent */
         Query queryRef = db.getRef().child("users").child(item.getItemUserID()).child("email");
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

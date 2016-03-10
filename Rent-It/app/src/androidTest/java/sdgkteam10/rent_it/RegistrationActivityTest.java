@@ -32,17 +32,17 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 
 /*
- * The following tests registering a new user for Rent-it, it does so in the following way
+ * The following is a User Scenario test for registering a new user on Rent-it,
+ * it does so in the following way:
  *
  * First: it fill out only some of the fields than press the finish button
  * than it waits to see it moves on to the main activity, which it wont since
  * all field marked with an asterik are required
  *
- * Second: Fills out all field and clicks submit,checks to see
- * if we moved onto new activity
+ * Second: Fills out all field and clicks submit,new user gets logged in
  *
  * Third: There is a visual indication in our database that a new user
- * was successfully created.
+ * was successfully created
  *
  */
 
@@ -135,7 +135,7 @@ public class RegistrationActivityTest {
 
 
         //wait for database to create a user
-        Thread.sleep(10000);
+        Thread.sleep(14000);
 
         //verified in database under *databaseURL*/users
     }

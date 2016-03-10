@@ -30,7 +30,8 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 
 /*
- * The following test case checks if an item was posted successfully, it does so in the following way
+ * The following is a User Scenario test case that creates an item to be posted,
+ * it does so in the following way:
  *
  * First: it fill out only some of the fields than press the finish button
  * than checks for an error message from setError stating all item fields
@@ -93,14 +94,14 @@ public class CreateListingActivityTest {
         onView(withId(R.id.itemPriceField_CL))
                 .perform(typeText(itemPriceToBeTyped), closeSoftKeyboard());
 
-        //selcet the price length from drop down box
+        //select the price length from drop down box
         onView(withId(R.id.itemPriceSpinner_CL)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Per Day"))).perform(click());
 
 
         //presses submit button when only half the required fields are set
-        //onView(withId(R.id.finishButton_CL)).perform(ViewActions.scrollTo(), click());
-        //onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
+        onView(withId(R.id.finishButton_CL)).perform(ViewActions.scrollTo(), click());
+        onView(withId(R.id.zipCodeField_CL)).check(matches(hasErrorText("Item Zip Code is required!")));
 
         //set item description
         onView(withId(R.id.itemDescriptionField_CL))
@@ -130,20 +131,22 @@ public class CreateListingActivityTest {
 
         //presses submit button when only third of  the required fields are set
         onView(withId(R.id.finishButton_CL)).perform(ViewActions.scrollTo(), click());
-       // onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
+       onView(withId(R.id.zipCodeField_CL)).check(matches(hasErrorText("Item Zip Code is required!")));
 
         //set the deposit amount
         onView(withId(R.id.amountOfDeposit_CL))
                 .perform(ViewActions.scrollTo(),typeText(itemDepositToBeTyped), closeSoftKeyboard());
 
+        onView(withId(R.id.finishButton_CL)).perform(click());
+        onView(withId(R.id.zipCodeField_CL)).check(matches(hasErrorText("Item Zip Code is required!")));
+
         //enter the zip code
         onView(withId(R.id.zipCodeField_CL))
                 .perform(typeText(itemZipToBeTyped), closeSoftKeyboard());
 
-        //onView(withId(R.id.finishButton_CL)).perform(click());
-        //onView(withId(R.id.contactInfoField_CL)).check(matches(hasErrorText("Contact Info is required!")));
 
-        //set the contact information
+
+        //set the contact information(removed)
         //onView(withId(R.id.contactInfoField_CL))
          //       .perform(typeText(itemContactToBeTyped), closeSoftKeyboard());
 
@@ -151,6 +154,8 @@ public class CreateListingActivityTest {
         //wait for error message to go away and show finish button again
         Thread.sleep(2000);
         onView(withId(R.id.finishButton_CL)).perform(ViewActions.scrollTo(), click());
+
+        //wait for alert dialog to appear
         Thread.sleep(5000);
         onView(withText("Your Item has been Posted!")).check(matches(isDisplayed()));
         Thread.sleep(2000);
